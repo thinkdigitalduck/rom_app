@@ -1,0 +1,53 @@
+{
+ "actions": [],
+ "autoname": "autoincrement",
+ "creation": "2024-07-18 07:32:19.747420",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "chef_open_template_branch",
+  "chef_open_template_question"
+ ],
+ "fields": [
+  {
+   "fieldname": "chef_open_template_branch",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Branch",
+   "options": "Branch",
+   "reqd": 1
+  },
+  {
+   "fieldname": "chef_open_template_question",
+   "fieldtype": "Table",
+   "label": "Question",
+   "options": "Chef Opening Checklist Template Child"
+  }
+ ],
+ "links": [],
+ "modified": "2024-07-18 07:55:54.647400",
+ "modified_by": "Administrator",
+ "module": "Restaurant Ops Mgmt",
+ "name": "Chef Opening Checklist Template",
+ "naming_rule": "Autoincrement",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "show_title_field_in_link": 1,
+ "sort_field": "creation",
+ "sort_order": "ASC",
+ "states": [],
+ "title_field": "chef_open_template_branch"
+}
