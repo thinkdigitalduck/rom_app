@@ -1,37 +1,30 @@
 {
  "actions": [],
  "autoname": "autoincrement",
- "creation": "2024-07-17 20:02:17.071703",
+ "creation": "2024-07-20 10:59:11.220444",
+ "default_view": "List",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "chef_open_child_yes",
-  "chef_open_child_question"
+  "template_question"
  ],
  "fields": [
   {
-   "fieldname": "chef_open_child_question",
+   "fieldname": "template_question",
    "fieldtype": "Data",
    "in_list_view": 1,
    "label": "Question",
    "reqd": 1
-  },
-  {
-   "default": "0",
-   "fieldname": "chef_open_child_yes",
-   "fieldtype": "Check",
-   "in_list_view": 1,
-   "label": "Yes"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2024-07-20 10:09:39.388886",
+ "modified": "2024-07-20 10:59:11.220444",
  "modified_by": "Administrator",
  "module": "Restaurant Ops Mgmt",
- "name": "Chef Opening Checklist Child",
+ "name": "Dm Opening Checklist Template Child",
  "naming_rule": "Autoincrement",
  "owner": "Administrator",
  "permissions": [],

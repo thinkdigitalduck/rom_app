@@ -1,6 +1,6 @@
 {
  "charts": [],
- "content": "[{\"id\":\"yVUeKquW3k\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Restaurant Operations Management<br></span>\",\"col\":12}},{\"id\":\"XvDDw5dTRP\",\"type\":\"spacer\",\"data\":{\"col\":6}},{\"id\":\"0tDCWZpvAR\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"DocType\",\"col\":3}},{\"id\":\"WUVbd3Wn9X\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Branch\",\"col\":3}},{\"id\":\"Iv4vuO1EzJ\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Chef Opening Checklist Template\",\"col\":3}},{\"id\":\"kZsBBnZNOz\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"vcljSZQMwl\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Module Def\",\"col\":3}},{\"id\":\"5ReKeO9_r_\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Chef Opening Checklist\",\"col\":3}},{\"id\":\"E1aqsO9WFY\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Package Release\",\"col\":3}},{\"id\":\"95qTD8dQ8Q\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Package\",\"col\":3}}]",
+ "content": "[{\"id\":\"yVUeKquW3k\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Restaurant Operations Management<br></span>\",\"col\":12}},{\"id\":\"XvDDw5dTRP\",\"type\":\"spacer\",\"data\":{\"col\":6}},{\"id\":\"0tDCWZpvAR\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"DocType\",\"col\":3}},{\"id\":\"WUVbd3Wn9X\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Branch\",\"col\":3}},{\"id\":\"Iv4vuO1EzJ\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Chef Opening Checklist Template\",\"col\":3}},{\"id\":\"kZsBBnZNOz\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"vcljSZQMwl\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Module Def\",\"col\":3}},{\"id\":\"FunQrMD4Vl\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"User\",\"col\":3}},{\"id\":\"5ReKeO9_r_\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Chef Opening Checklist\",\"col\":3}},{\"id\":\"E1aqsO9WFY\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Package Release\",\"col\":3}},{\"id\":\"95qTD8dQ8Q\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Package\",\"col\":3}}]",
  "creation": "2024-07-17 18:22:09.140172",
  "custom_blocks": [],
  "docstatus": 0,
@@ -13,7 +13,7 @@
  "is_hidden": 0,
  "label": "Restaurant Ops Mgmt",
  "links": [],
- "modified": "2024-07-18 17:40:22.458090",
+ "modified": "2024-07-20 12:21:43.727088",
  "modified_by": "Administrator",
  "module": "Restaurant Ops Mgmt",
  "name": "Restaurant Ops Mgmt",
@@ -23,13 +23,21 @@
  "public": 1,
  "quick_lists": [],
  "roles": [],
- "sequence_id": 28.0,
+ "sequence_id": 10.0,
  "shortcuts": [
   {
    "color": "Grey",
    "doc_view": "List",
    "label": "Chef Opening Checklist",
    "link_to": "Chef Opening Checklist",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "User",
+   "link_to": "User",
    "stats_filter": "[]",
    "type": "DocType"
   },
