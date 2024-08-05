@@ -7,6 +7,7 @@
  "engine": "InnoDB",
  "field_order": [
   "dm_open_child_yes",
+  "rm_audit",
   "dm_open_child_question"
  ],
  "fields": [
@@ -15,7 +16,8 @@
    "fieldname": "dm_open_child_yes",
    "fieldtype": "Check",
    "in_list_view": 1,
-   "label": "Yes"
+   "label": "Yes",
+   "permlevel": 2
   },
   {
    "fieldname": "dm_open_child_question",
@@ -23,12 +25,20 @@
    "in_list_view": 1,
    "label": "Question",
    "reqd": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "rm_audit",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "RM Audit",
+   "permlevel": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2024-07-20 12:32:30.773129",
+ "modified": "2024-07-22 17:33:11.671200",
  "modified_by": "Administrator",
  "module": "Restaurant Ops Mgmt",
  "name": "Dm Opening Checklist Child",

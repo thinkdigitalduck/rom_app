@@ -1,0 +1,54 @@
+{
+ "actions": [],
+ "autoname": "autoincrement",
+ "creation": "2024-07-21 15:55:07.942007",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "chef_close_template_branch",
+  "chef_close_template_question"
+ ],
+ "fields": [
+  {
+   "fieldname": "chef_close_template_question",
+   "fieldtype": "Table",
+   "label": "Question",
+   "options": "Chef Closing Checklist Template Child"
+  },
+  {
+   "fieldname": "chef_close_template_branch",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Branch",
+   "options": "Branch",
+   "reqd": 1
+  }
+ ],
+ "links": [],
+ "modified": "2024-07-22 18:17:26.029034",
+ "modified_by": "Administrator",
+ "module": "Restaurant Ops Mgmt",
+ "name": "Chef Closing Checklist Template",
+ "naming_rule": "Autoincrement",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "show_title_field_in_link": 1,
+ "sort_field": "creation",
+ "sort_order": "ASC",
+ "states": [],
+ "title_field": "chef_close_template_branch",
+ "track_changes": 1
+}

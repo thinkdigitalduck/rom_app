@@ -1,0 +1,51 @@
+{
+ "actions": [],
+ "autoname": "autoincrement",
+ "creation": "2024-07-21 15:57:32.969917",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "chef_close_child_yes",
+  "rm_audit",
+  "chef_close_child_question"
+ ],
+ "fields": [
+  {
+   "default": "0",
+   "fieldname": "rm_audit",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "RM Audit",
+   "permlevel": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "chef_close_child_yes",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Yes",
+   "permlevel": 2
+  },
+  {
+   "fieldname": "chef_close_child_question",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Question",
+   "reqd": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2024-07-22 17:02:38.454655",
+ "modified_by": "Administrator",
+ "module": "Restaurant Ops Mgmt",
+ "name": "Chef Closing Checklist Child",
+ "naming_rule": "Autoincrement",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}

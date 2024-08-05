@@ -1,6 +1,6 @@
 {
  "charts": [],
- "content": "[{\"id\":\"yVUeKquW3k\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Restaurant Operations Management<br></span>\",\"col\":12}},{\"id\":\"XvDDw5dTRP\",\"type\":\"spacer\",\"data\":{\"col\":6}},{\"id\":\"0tDCWZpvAR\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"DocType\",\"col\":3}},{\"id\":\"WUVbd3Wn9X\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Branch\",\"col\":3}},{\"id\":\"Iv4vuO1EzJ\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Chef Opening Checklist Template\",\"col\":3}},{\"id\":\"kZsBBnZNOz\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"vcljSZQMwl\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Module Def\",\"col\":3}},{\"id\":\"FunQrMD4Vl\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"User\",\"col\":3}},{\"id\":\"5ReKeO9_r_\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Chef Opening Checklist\",\"col\":3}},{\"id\":\"E1aqsO9WFY\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Package Release\",\"col\":3}},{\"id\":\"95qTD8dQ8Q\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Package\",\"col\":3}}]",
+ "content": "[{\"id\":\"yVUeKquW3k\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Rom Admin Workspace <br></span>\",\"col\":12}},{\"id\":\"0tDCWZpvAR\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"DocType\",\"col\":4}},{\"id\":\"WUVbd3Wn9X\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Branch\",\"col\":4}},{\"id\":\"Iv4vuO1EzJ\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Chef Opening Checklist\",\"col\":4}},{\"id\":\"0AJv2S2uI9\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Chef Opening Checklist Template\",\"col\":4}},{\"id\":\"0NBap6kU_w\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"RM Audit - Chef Opening Checklist\",\"col\":4}},{\"id\":\"HCFm0UtOyP\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Chef Production\",\"col\":4}},{\"id\":\"yIMJm9mZny\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Chef Closing Checklist\",\"col\":4}},{\"id\":\"coWQJWy8b8\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Chef Closing Checklist Template\",\"col\":4}},{\"id\":\"vcljSZQMwl\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Module Def\",\"col\":4}},{\"id\":\"FunQrMD4Vl\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"User\",\"col\":4}},{\"id\":\"5ReKeO9_r_\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Chef Opening Checklist\",\"col\":4}},{\"id\":\"E1aqsO9WFY\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Package Release\",\"col\":4}},{\"id\":\"95qTD8dQ8Q\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Package\",\"col\":4}},{\"id\":\"rs8f6u-x1h\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Report\",\"col\":4}},{\"id\":\"wEXzPG185O\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Server Script\",\"col\":4}},{\"id\":\"4WFNDLg0gs\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"System Console\",\"col\":4}}]",
  "creation": "2024-07-17 18:22:09.140172",
  "custom_blocks": [],
  "docstatus": 0,
@@ -13,7 +13,7 @@
  "is_hidden": 0,
  "label": "Restaurant Ops Mgmt",
  "links": [],
- "modified": "2024-07-20 12:21:43.727088",
+ "modified": "2024-08-01 19:26:59.057346",
  "modified_by": "Administrator",
  "module": "Restaurant Ops Mgmt",
  "name": "Restaurant Ops Mgmt",
@@ -22,13 +22,65 @@
  "parent_page": "",
  "public": 1,
  "quick_lists": [],
- "roles": [],
- "sequence_id": 10.0,
+ "roles": [
+  {
+   "role": "Administrator"
+  }
+ ],
+ "sequence_id": 11.0,
  "shortcuts": [
   {
    "color": "Grey",
    "doc_view": "List",
+   "label": "Chef Closing Checklist",
+   "link_to": "Chef Closing Checklist",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Chef Closing Checklist Template",
+   "link_to": "Chef Closing Checklist Template",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
    "label": "Chef Opening Checklist",
+   "link_to": "Chef Opening Checklist",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Report",
+   "link_to": "Report",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Server Script",
+   "link_to": "Server Script",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Chef Production",
+   "link_to": "Chef Production",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "RM Audit - Chef Opening Checklist",
    "link_to": "Chef Opening Checklist",
    "stats_filter": "[]",
    "type": "DocType"
@@ -47,6 +99,13 @@
    "label": "Chef Opening Checklist Template",
    "link_to": "Chef Opening Checklist Template",
    "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "System Console",
+   "link_to": "System Console",
    "type": "DocType"
   },
   {

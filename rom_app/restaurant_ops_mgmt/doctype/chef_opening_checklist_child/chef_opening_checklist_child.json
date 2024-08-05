@@ -7,6 +7,7 @@
  "engine": "InnoDB",
  "field_order": [
   "chef_open_child_yes",
+  "rm_audit",
   "chef_open_child_question"
  ],
  "fields": [
@@ -22,13 +23,22 @@
    "fieldname": "chef_open_child_yes",
    "fieldtype": "Check",
    "in_list_view": 1,
-   "label": "Yes"
+   "label": "Chef Audit",
+   "permlevel": 2
+  },
+  {
+   "default": "0",
+   "fieldname": "rm_audit",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "RM Audit",
+   "permlevel": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2024-07-20 10:09:39.388886",
+ "modified": "2024-08-03 11:03:28.364923",
  "modified_by": "Administrator",
  "module": "Restaurant Ops Mgmt",
  "name": "Chef Opening Checklist Child",

@@ -1,0 +1,76 @@
+{
+ "actions": [],
+ "allow_auto_repeat": 1,
+ "autoname": "autoincrement",
+ "creation": "2024-07-29 05:43:34.036327",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "data1",
+  "data3",
+  "read_only_field",
+  "column_break_txta",
+  "categ",
+  "data2"
+ ],
+ "fields": [
+  {
+   "fieldname": "data1",
+   "fieldtype": "Data",
+   "label": "data1"
+  },
+  {
+   "fieldname": "data2",
+   "fieldtype": "Data",
+   "label": "data2"
+  },
+  {
+   "fieldname": "data3",
+   "fieldtype": "Data",
+   "label": "data3"
+  },
+  {
+   "fieldname": "categ",
+   "fieldtype": "Link",
+   "label": "category",
+   "options": "Category"
+  },
+  {
+   "fieldname": "column_break_txta",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "read_only_field",
+   "fieldtype": "Read Only",
+   "label": "read only field",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-07-30 09:46:02.411752",
+ "modified_by": "Administrator",
+ "module": "Restaurant Ops Mgmt",
+ "name": "teststandard",
+ "naming_rule": "Autoincrement",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "show_title_field_in_link": 1,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "data1"
+}

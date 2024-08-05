@@ -1,0 +1,77 @@
+{
+ "actions": [],
+ "autoname": "autoincrement",
+ "creation": "2024-07-24 16:28:32.499633",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "chicken_category",
+  "uom",
+  "rate",
+  "production_qty",
+  "wastage_pcs",
+  "wastage_amt"
+ ],
+ "fields": [
+  {
+   "fieldname": "uom",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "UOM",
+   "read_only": 1
+  },
+  {
+   "fieldname": "rate",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Rate",
+   "options": "0",
+   "read_only": 1
+  },
+  {
+   "fieldname": "chicken_category",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Chicken Category",
+   "read_only": 1
+  },
+  {
+   "fieldname": "production_qty",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Prod Qty",
+   "options": "0",
+   "reqd": 1
+  },
+  {
+   "fieldname": "wastage_pcs",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Waste Pcs",
+   "options": "0",
+   "reqd": 1
+  },
+  {
+   "fieldname": "wastage_amt",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Wastage Amt",
+   "options": "0",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2024-07-25 15:17:07.195983",
+ "modified_by": "Administrator",
+ "module": "Restaurant Ops Mgmt",
+ "name": "Chef Prod Child Chicken",
+ "naming_rule": "Autoincrement",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}

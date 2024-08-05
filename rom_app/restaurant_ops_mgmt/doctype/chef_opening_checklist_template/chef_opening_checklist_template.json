@@ -25,7 +25,7 @@
   }
  ],
  "links": [],
- "modified": "2024-07-18 07:55:54.647400",
+ "modified": "2024-07-22 18:16:41.092509",
  "modified_by": "Administrator",
  "module": "Restaurant Ops Mgmt",
  "name": "Chef Opening Checklist Template",
@@ -49,5 +49,6 @@
  "sort_field": "creation",
  "sort_order": "ASC",
  "states": [],
- "title_field": "chef_open_template_branch"
+ "title_field": "chef_open_template_branch",
+ "track_changes": 1
 }

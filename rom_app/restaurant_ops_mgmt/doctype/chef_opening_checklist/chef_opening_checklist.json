@@ -5,24 +5,15 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
-  "chef_open_branch",
+  "branch_name",
   "user_name",
   "column_break_mexu",
   "chef_open_date",
+  "branch_id",
   "section_break_prku",
   "chef_open_questions"
  ],
  "fields": [
-  {
-   "fieldname": "chef_open_branch",
-   "fieldtype": "Link",
-   "in_list_view": 1,
-   "in_standard_filter": 1,
-   "label": "Branch",
-   "not_nullable": 1,
-   "options": "Branch",
-   "reqd": 1
-  },
   {
    "fieldname": "chef_open_questions",
    "fieldtype": "Table",
@@ -40,7 +31,7 @@
    "in_list_view": 1,
    "in_standard_filter": 1,
    "label": "Date",
-   "reqd": 1
+   "read_only": 1
   },
   {
    "fieldname": "section_break_prku",
@@ -54,11 +45,25 @@
    "in_standard_filter": 1,
    "label": "User Name",
    "read_only": 1
+  },
+  {
+   "fieldname": "branch_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Branch Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "branch_id",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Branch Id"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-07-18 15:04:53.205711",
+ "modified": "2024-08-02 14:27:32.003693",
  "modified_by": "Administrator",
  "module": "Restaurant Ops Mgmt",
  "name": "Chef Opening Checklist",
@@ -82,5 +87,6 @@
  "sort_field": "creation",
  "sort_order": "DESC",
  "states": [],
- "title_field": "chef_open_branch"
+ "title_field": "branch_name",
+ "track_changes": 1
 }

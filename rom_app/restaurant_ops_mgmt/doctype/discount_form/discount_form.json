@@ -1,0 +1,119 @@
+{
+ "actions": [],
+ "autoname": "autoincrement",
+ "creation": "2024-08-01 09:51:24.811162",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "branch_name",
+  "user_name",
+  "known_to",
+  "customer_name",
+  "branch_id",
+  "column_break_slgp",
+  "date",
+  "bill_value",
+  "discount_percentage"
+ ],
+ "fields": [
+  {
+   "fieldname": "branch_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Branch Name",
+   "read_only": 1
+  },
+  {
+   "default": "user_fullname",
+   "fieldname": "user_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "User Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "customer_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Customer Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "branch_id",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Branch Id"
+  },
+  {
+   "fieldname": "column_break_slgp",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Today",
+   "fieldname": "date",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "known_to",
+   "fieldtype": "Data",
+   "label": "Known To",
+   "reqd": 1
+  },
+  {
+   "fieldname": "bill_value",
+   "fieldtype": "Currency",
+   "label": "Bill Value",
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "discount_percentage",
+   "fieldtype": "Int",
+   "label": "Discount Percentage"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-08-01 09:54:49.017490",
+ "modified_by": "Administrator",
+ "module": "Restaurant Ops Mgmt",
+ "name": "Discount Form",
+ "naming_rule": "Autoincrement",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Rom_RM_Role",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "show_title_field_in_link": 1,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "customer_name"
+}
