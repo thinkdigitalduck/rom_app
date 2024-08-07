@@ -8,15 +8,11 @@ app_license = "mit"
 
 fixtures = [
     {
-        "dt": "Custom DocPerm",
+        "dt": "Branch",
         "filters": [
             [
-                "role", "in", [
-                    "Rom_Dashboard_Role",
-                    "Rom_Admin_Role",
-                    "Rom_Chef_Role",
-                    "Rom_RM_Role",
-                    "Rom_DM_Role"
+                "branch_name", "in", [
+                    "Food Park"
                 ]
             ]
         ]
@@ -31,6 +27,67 @@ fixtures = [
                     "Rom_Chef_Role",
                     "Rom_RM_Role",
                     "Rom_DM_Role"
+                ]
+            ]
+        ]
+    },
+    {
+        "dt": "User",
+        "filters": [
+            [
+                "email", "in", [
+                    "chef1@email.com",
+                    "chef2@email.com",
+                    "dm1@email.com",
+                    "dm2@email.com",
+                    "rm1@email.com",
+                    "adm1@email.com",
+                    "dash1@email.com"
+                ]
+            ]
+        ]
+    },
+    {
+        "dt": "User to Branch Assignment",
+        "filters": [
+            [
+                "branch", "in", [
+                    "Food Park"
+                ]
+            ]
+        ]
+    },
+    {
+        "dt": "Custom DocPerm",
+        "filters": [
+            [
+                "role", "in", [
+                    "Rom_Dashboard_Role",
+                    "Rom_Admin_Role",
+                    "Rom_Chef_Role",
+                    "Rom_RM_Role",
+                    "Rom_DM_Role"
+                ]
+            ]
+        ]
+    },
+    {
+        "dt": "Role Permission for Page and Report",
+        "filters": [
+            [
+                "report", "in", [
+                    "Chef Opening Checklist Register",
+                    "Chef Closing Checklist Register",
+                    "Chef Indent Register",
+                    "Chef Production Register",
+                    "Cutlery Inventory Count Register",
+                    "NC Report Register",
+                    "Breakages Report Register",
+                    "Dm Opening Checklist Register",
+                    "Dm Closing Checklist Register",
+                    "Incident Report Register",
+                    "Sales Report Register",
+                    "Discount Form Register"
                 ]
             ]
         ]

@@ -14,29 +14,35 @@
   {
    "fieldname": "branch",
    "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Branch",
    "options": "Branch"
   },
   {
    "fieldname": "category",
    "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Category",
    "options": "Category"
   },
   {
    "fieldname": "item",
    "fieldtype": "Data",
+   "in_list_view": 1,
    "label": "Item"
   },
   {
    "fieldname": "standard_stock",
    "fieldtype": "Int",
+   "in_list_view": 1,
    "label": "Standard Stock"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-07-31 12:02:59.069448",
+ "modified": "2024-08-05 19:12:18.760242",
  "modified_by": "Administrator",
  "module": "Restaurant Ops Mgmt",
  "name": "Cutlery Master",
