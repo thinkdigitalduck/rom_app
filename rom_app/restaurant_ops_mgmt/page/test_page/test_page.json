@@ -1,0 +1,26 @@
+{
+ "content": null,
+ "creation": "2024-08-08 16:54:44.544092",
+ "docstatus": 0,
+ "doctype": "Page",
+ "idx": 0,
+ "modified": "2024-08-08 16:54:44.544092",
+ "modified_by": "Administrator",
+ "module": "Restaurant Ops Mgmt",
+ "name": "test-page",
+ "owner": "Administrator",
+ "page_name": "test-page",
+ "roles": [
+  {
+   "role": "Administrator"
+  },
+  {
+   "role": "System Manager"
+  }
+ ],
+ "script": null,
+ "standard": "Yes",
+ "style": null,
+ "system_page": 0,
+ "title": "Test Page"
+}
