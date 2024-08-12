@@ -232,6 +232,7 @@ def get_cutlery_master_child_based_on_branch_category(branch_param, category_par
     # print(sql_text)
     return result
 
+
 @frappe.whitelist(allow_guest=True)
 def get_cutlery_master_singltable_child_based_on_branch_category(branch_param, category_param):
     # branch_param = 1

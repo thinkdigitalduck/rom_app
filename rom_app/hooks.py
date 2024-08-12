@@ -51,8 +51,8 @@ fixtures = [
 # ------------------
 
 # include js, css files in header of desk.html
-# app_include_css = "/assets/rom_app/css/rom_app.css"
-# app_include_js = "/assets/rom_app/js/rom_app.js"
+app_include_css = "/assets/rom_app/css/billboard.css"
+app_include_js = ["/assets/rom_app/js/d3.v6.min.js", "/assets/rom_app/js/billboard.js"]
 
 # include js, css files in header of web template
 # web_include_css = "/assets/rom_app/css/rom_app.css"

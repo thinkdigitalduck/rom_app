@@ -1,5 +1,6 @@
 import frappe
 import yaml
+import json
 
 
 def execute(filters=None):
@@ -73,20 +74,44 @@ def get_columns():
         }
     ]
 
-
+@frappe.whitelist(allow_guest=True)
 def get_data(filters):
     conditions = get_conditions(filters)
     print("-------- get data ------------")
     print(conditions)
-    build_sql = """
+
+
+    build_sql = ""
+    if (type(filters) is str):
+        build_sql = """
         SELECT coc.name, coc.dm_open_date, coc.user_name, coc.branch_name,
+        cocc.dm_open_child_yes,
+        cocc.rm_audit,
+        cocc.dm_open_child_question
+        FROM `tabDm Opening Checklist` coc
+        JOIN `tabDm Opening Checklist Child` cocc
+        ON coc.name= cocc.parent
+            """
+    else:
+        build_sql = """
+         SELECT coc.name, coc.dm_open_date, coc.user_name, coc.branch_name,
         CASE WHEN cocc.dm_open_child_yes =0 THEN 'No' ELSE 'Yes' END dm_open_child_yes,
         CASE WHEN cocc.rm_audit = 0 THEN 'No' ELSE 'Yes' END rm_audit,
         cocc.dm_open_child_question
         FROM `tabDm Opening Checklist` coc
         JOIN `tabDm Opening Checklist Child` cocc
         ON coc.name= cocc.parent
-        """
+            """
+
+    # build_sql = """
+    #     SELECT coc.name, coc.dm_open_date, coc.user_name, coc.branch_name,
+    #     CASE WHEN cocc.dm_open_child_yes =0 THEN 'No' ELSE 'Yes' END dm_open_child_yes,
+    #     CASE WHEN cocc.rm_audit = 0 THEN 'No' ELSE 'Yes' END rm_audit,
+    #     cocc.dm_open_child_question
+    #     FROM `tabDm Opening Checklist` coc
+    #     JOIN `tabDm Opening Checklist Child` cocc
+    #     ON coc.name= cocc.parent
+    #    """
     where_cond = f" WHERE coc.dm_open_date between '{conditions['from_date_filter']}' AND  '{conditions['to_date_filter']}' "
 
     if "branch_filter" in conditions:
@@ -120,6 +145,9 @@ def get_data(filters):
 
 def get_conditions(filters):
     conditions = {}
+    if (type(filters) is str):
+        filters = json.loads(filters)
+
     for key, value in filters.items():
         if filters.get(key):
             conditions[key] = value
