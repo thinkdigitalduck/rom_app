@@ -166,7 +166,12 @@ def get_data_group_by_date(filters):
     SELECT
     date,
     sum(target) as target,
-    sum(actual_sales) as actual_sales
+    sum(actual_sales) as actual_sales,
+    sum(cash_sales) as cash_sales,
+    sum(card_sales) as card_sales,
+    sum(online_pay) as online_pay,
+    sum(swiggy) as swiggy,
+    sum(zomato_sales) as zomato_sales
     FROM
     `tabSales Report`
         """
