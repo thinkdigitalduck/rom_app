@@ -77,10 +77,13 @@ frappe.pages['single-page-chart'].on_page_load = function(wrapper) {
 		fieldtype: 'Button',
 		fieldname: 'submit_button',
 		click: function ()  {
-			chef_opening_checklist_audit('on-submit');
-			chef_closing_checklist_audit('on-submit');
-			dm_opening_checklist_audit('on-submit');
-			dm_closing_checklist_audit('on-submit');
+			// chef_opening_checklist_audit('on-submit');
+			// chef_closing_checklist_audit('on-submit');
+			// dm_opening_checklist_audit('on-submit');
+			// dm_closing_checklist_audit('on-submit');
+			 chef_production_register('on-submit');
+
+
 		}
 	});
 
@@ -89,7 +92,20 @@ frappe.pages['single-page-chart'].on_page_load = function(wrapper) {
 	};
 
 	 // ---------- NEW TAB START ------------
-	let opening_new_tab = function (report_name, filters, report_cond, report_cond_result){
+	let opening_new_tab = function (report_name, filters,
+									report_cond,     report_cond_result,
+									 report_cond2='', report_cond_result2='',
+									// report_cond3='', report_cond_result3=''
+									){
+
+		console.log('opening_new_tab');
+		// http://rom_site:8000/app/query-report/Chef%20Production%20Register
+		// ?from_date_filter=2024-07-29&to_date_filter=2024-08-12
+		// &category_filter=Briyani
+		// &item_filter=Mandi+Briyani
+
+		let report_cond2_path = "&{report_cond2}={report_cond_result2}";
+//		let report_cond3_path = "&{report_cond3}={report_cond_result3}";
 
 		let protocol_host = window.location.protocol + '//' + window.location.host;
 
@@ -119,6 +135,18 @@ frappe.pages['single-page-chart'].on_page_load = function(wrapper) {
 			console.log(branch_id, path_branch);
 			report_url = report_url + path_branch;
 		}
+
+		if(report_cond2.length>0){
+			report_cond2_path = report_cond2_path.replace("{report_cond2}", report_cond2);
+			report_cond2_path = report_cond2_path.replace("{report_cond_result2}", report_cond_result2);
+			report_url = report_url + report_cond2_path;
+		}
+  //
+		// if(report_cond3.length>0){
+		// 	report_cond3_path = report_cond3_path.replace("{report_cond3}", report_cond3);
+		// 	report_cond3_path = report_cond3_path.replace("{report_cond_result3}", report_cond_result3);
+		// 	report_url = report_url + report_cond3_path;
+		// }
 
 		console.log("report_url");
 		console.log(report_url);
@@ -548,19 +576,150 @@ frappe.pages['single-page-chart'].on_page_load = function(wrapper) {
 		}
 		});
 	}
-
-
-
    //  ***********************  dm closing checklist audit - end   **************************************
 
-	//
+
+	// !!!!!!!!!!!!!!!!!!Chef Production Register START !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+	let chef_production_register  = function(time_of_invoke){
+		let filters = "";
+		if(time_of_invoke == 'on-load'){
+			console.log('on-load');
+		    filters = global_get_filters();
+		} else {
+			console.log('on-submit');
+			filters = global_get_filters_on_submit();
+		}
+
+		console.log('-----filters----- chef_production_register ')
+		console.log(filters);
+		frappe.call({
+			method: "rom_app.restaurant_ops_mgmt.report.chef_production_register.chef_production_register.get_data_groupby_briyani",
+			args: {
+				'filters':filters
+			},
+			callback: function(data) {
+				chef_production_register_briyani(data);
+			}
+		})
+
+
+		frappe.call({
+			method: "rom_app.restaurant_ops_mgmt.report.chef_production_register.chef_production_register.get_data_groupby_chicken",
+			args: {
+				'filters':filters
+			},
+			callback: function(data) {
+				chef_production_register_chicken(data);
+			}
+		})
+
+
+	}
+
+	let chef_production_register_briyani  = function(data){
+		console.log("-------------- chef_production_register_briyani -------------- ");
+
+		// http://rom_site:8000/app/query-report/Chef%20Production%20Register
+		// ?from_date_filter=2024-07-29&to_date_filter=2024-08-12&
+		//category_filter=Briyani&item_filter=Mandi+Briyani
+		let category_filter = "Briyani";
+		let report_name = "Chef Production Register";
+		console.log(data);
+		let briyani_items = [];
+		let briyani_waste = [];
+
+		briyani_waste.push("item");
+
+		let message = data.message;
+		message.forEach((item) => {
+			console.log(item);
+				briyani_items.push(item.item);
+				briyani_waste.push(item.wastage_amount);
+		});
+		console.log('briyani_items', briyani_items);
+		console.log('briyani_waste', briyani_waste);
+
+		var chart = bb.generate({
+			title: {text: "Briyani Category Wastage"},
+			data: {
+			type: "bar",
+			onclick: function(arg1){
+				console.log(arg1);
+				console.log(arg1.x);
+
+				let item_filter=briyani_items[arg1.x];
+				console.log(item_filter); // Mutton briyani
+				console.log(arg1.value);
+				opening_new_tab(report_name, filters, "category_filter", category_filter, "item_filter", item_filter);
+			},
+			columns: [briyani_waste,],
+		},
+		axis: {
+			x: {type: "category",categories: briyani_items,},
+		},
+		bindto: "#chef_production_register_briyani",
+		});
+	}
+
+
+	let chef_production_register_chicken  = function(data){
+		console.log("-------------- chef_production_register_chicken -------------- ");
+
+		// http://rom_site:8000/app/query-report/Chef%20Production%20Register
+		// ?from_date_filter=2024-07-29&to_date_filter=2024-08-12&
+		//category_filter=Briyani&item_filter=Mandi+Briyani
+
+		let category_filter = "Chicken";
+		let report_name = "Chef Production Register";
+		console.log(data);
+		let chicken_items = [];
+		let chicken_waste = [];
+
+		chicken_waste.push("item");
+
+		let message = data.message;
+		message.forEach((item) => {
+			console.log(item);
+			chicken_items.push(item.item);
+			chicken_waste.push(item.wastage_amount);
+		});
+
+		console.log('chicken_items', chicken_items);
+		console.log('chicken_waste', chicken_waste);
+
+		var chart = bb.generate({
+			title: {text: "Chicken Category Wastage"},
+			data: {
+			type: "bar",
+			onclick: function(arg1){
+				console.log(arg1);
+				console.log(arg1.x);
+
+				let item_filter=chicken_items[arg1.x];
+				console.log(chicken_items[arg1.x]); // Mutton briyani
+				console.log(arg1.value);
+				opening_new_tab(report_name, filters, "category_filter", category_filter, "item_filter", item_filter);
+			},
+			columns: [chicken_waste,],
+		},
+		axis: {
+			x: {type: "category",categories: chicken_items,},
+		},
+		bindto: "#chef_production_register_chicken",
+		});
+	}
+
+	// !!!!!!!!!!!!!!!!!!Chef Production Register END !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 
 	$(frappe.render_template("single_page_chart", {})).appendTo(page.body);
-	chef_opening_checklist_audit('on-load');
-	chef_closing_checklist_audit('on-load');
-	dm_opening_checklist_audit('on-load');
-	dm_closing_checklist_audit('on-load');
+	// chef_opening_checklist_audit('on-load');
+	// chef_closing_checklist_audit('on-load');
+	// dm_opening_checklist_audit('on-load');
+	// dm_closing_checklist_audit('on-load');
+
+	 chef_production_register('on-load');
 
  }
 
