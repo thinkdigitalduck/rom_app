@@ -251,7 +251,7 @@ let opening_new_tab_simple = function (report_name, filters, date_clicked){
 
 		var chart = bb.generate({
 		title: {
-			text: "Chef Opening Checklist - Chef Audit"
+			text: "Chef Audit"
 		},
 		bindto: "#chef_opening_checklist_chef_audit_chart",
 		data: {
@@ -289,7 +289,7 @@ let opening_new_tab_simple = function (report_name, filters, date_clicked){
 
 		var chart = bb.generate({
 		title: {
-			text: "Chef Opening Checklist - RM Audit"
+			text: "RM Audit"
 		},
 		bindto: "#chef_opening_checklist_rm_audit_chart",
 		data: {
@@ -354,7 +354,7 @@ let opening_new_tab_simple = function (report_name, filters, date_clicked){
 
 		var chart = bb.generate({
 			title: {
-			text: "Chef Closing Checklist - Chef Audit"
+			text: "Chef Audit"
 			},
 			bindto: "#chef_closing_checklist_chef_audit_chart",
 			data: {
@@ -390,7 +390,7 @@ let opening_new_tab_simple = function (report_name, filters, date_clicked){
 
 		var chart = bb.generate({
 			title: {
-			text: "Chef Closing Checklist - RM Audit"
+			text: "RM Audit"
 			},
 			bindto: "#chef_closing_checklist_rm_audit_chart",
 			data: {
@@ -460,7 +460,7 @@ let opening_new_tab_simple = function (report_name, filters, date_clicked){
 
 		var chart = bb.generate({
 			title: {
-			text: "DM Opening Checklist - DM Audit"
+			text: "DM Audit"
 			},
 			bindto: "#dm_opening_checklist_dm_audit_chart",
 			data: {
@@ -500,7 +500,7 @@ let opening_new_tab_simple = function (report_name, filters, date_clicked){
 		console.log('audit_no',audit_no);
 		var chart = bb.generate({
 			title: {
-			text: "DM Opening Checklist - RM Audit"
+			text: "RM Audit"
 			},
 			bindto: "#dm_opening_checklist_rm_audit_chart",
 			data: {
@@ -567,7 +567,7 @@ let opening_new_tab_simple = function (report_name, filters, date_clicked){
 
 		var chart = bb.generate({
 			title: {
-			text: "DM Closing Checklist - DM Audit"
+			text: "DM Audit"
 			},
 			bindto: "#dm_closing_checklist_dm_audit_chart",
 			data: {
@@ -604,7 +604,7 @@ let opening_new_tab_simple = function (report_name, filters, date_clicked){
 
 		var chart = bb.generate({
 		title: {
-		text: "DM Closing Checklist - RM Audit"
+		text: "RM Audit"
 		},
 		bindto: "#dm_closing_checklist_rm_audit_chart",
 		data: {
@@ -689,7 +689,7 @@ let opening_new_tab_simple = function (report_name, filters, date_clicked){
 		console.log('briyani_waste', briyani_waste);
 
 		var chart = bb.generate({
-			title: {text: "Briyani Category Wastage"},
+			title: {text: "Briyani Category"},
 			data: {
 			type: "bar",
 			onclick: function(arg1){
@@ -737,7 +737,7 @@ let opening_new_tab_simple = function (report_name, filters, date_clicked){
 		console.log('chicken_waste', chicken_waste);
 
 		var chart = bb.generate({
-			title: {text: "Chicken Category Wastage"},
+			title: {text: "Chicken Category"},
 			data: {
 			type: "bar",
 			onclick: function(arg1){
