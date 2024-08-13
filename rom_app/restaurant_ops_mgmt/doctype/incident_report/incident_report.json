@@ -72,7 +72,7 @@
   {
    "default": "Today",
    "fieldname": "date",
-   "fieldtype": "Data",
+   "fieldtype": "Date",
    "in_list_view": 1,
    "in_standard_filter": 1,
    "label": "Date",
@@ -139,7 +139,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-08-04 20:02:43.938578",
+ "modified": "2024-08-13 15:44:14.780444",
  "modified_by": "Administrator",
  "module": "Restaurant Ops Mgmt",
  "name": "Incident Report",

@@ -77,16 +77,17 @@ frappe.pages['single-page-chart'].on_page_load = function(wrapper) {
 		fieldtype: 'Button',
 		fieldname: 'submit_button',
 		click: function ()  {
-			// chef_opening_checklist_audit('on-submit');
-			// chef_closing_checklist_audit('on-submit');
-			// dm_opening_checklist_audit('on-submit');
-			// dm_closing_checklist_audit('on-submit');
-			// chef_production_register('on-submit');
-			 sales_report_register('on-submit');
+			chef_opening_checklist_audit('on-submit');
+			chef_closing_checklist_audit('on-submit');
+			dm_opening_checklist_audit('on-submit');
+			dm_closing_checklist_audit('on-submit');
+			chef_production_register('on-submit');
+			sales_report_register('on-submit');
 			sales_by_payment_mode('on-submit');
 			breakages_report_register('on-submit');
 
-
+			nc_report_register_by_count('on-submit');
+			incident_report_register_by_count('on-submit');
 
 		}
 	});
@@ -812,7 +813,7 @@ let opening_new_tab_simple = function (report_name, filters, date_clicked){
 		console.log('target', target);
 
 		var chart = bb.generate({
-			title: {text: "Sales Target Vs Actual"},
+			title: {text: "Sales Target Vs Actual Sales"},
 			data: {
 				type: "bar",
 				onclick: function(arg1){
@@ -967,17 +968,11 @@ let opening_new_tab_simple = function (report_name, filters, date_clicked){
 
 	let breakages_report_register_draw  = function(data){
 		console.log("-------------- breakages_report_register_draw -------------- ");
-
-
 		let report_name = "Breakages Report Register";
 		console.log(data);
 		let date = [];
-
 		let cost = [];
-
-
 		cost.push("Cost");
-
 
 		let message = data.message;
 		message.forEach((item) => {
@@ -989,9 +984,8 @@ let opening_new_tab_simple = function (report_name, filters, date_clicked){
 		console.log('date', date);
 		console.log('cost', cost);
 
-
 		var chart = bb.generate({
-			title: {text: "Breakages Report "},
+			title: {text: "Breakages Report by Cost "},
 			data: {
 				type: "bar",
 				onclick: function(arg1){
@@ -1011,20 +1005,161 @@ let opening_new_tab_simple = function (report_name, filters, date_clicked){
 		bindto: "#breakages_report_register",
 		});
 	}
-
 	// ^^^^^^^^^^^^^^^^^  Breakages report - END  ^^^^^^^^^^^^^^^^^^^^^^
 
 
-	$(frappe.render_template("single_page_chart", {})).appendTo(page.body);
-	// chef_opening_checklist_audit('on-load');
-	// chef_closing_checklist_audit('on-load');
-	// dm_opening_checklist_audit('on-load');
-	// dm_closing_checklist_audit('on-load');
 
-	//chef_production_register('on-load');
+	// ^^^^^^^^^^^^^^^^^ nc_report_register- START  ^^^^^^^^^^^^^^^^^^^^^^
+let nc_report_register_by_count  = function(time_of_invoke){
+		let filters = "";
+		if(time_of_invoke == 'on-load'){
+			console.log('on-load');
+		    filters = global_get_filters();
+		} else {
+			console.log('on-submit');
+			filters = global_get_filters_on_submit();
+		}
+
+		console.log('-----filters----- nc_report_register_by_count ')
+		console.log(filters);
+		frappe.call({
+			method: "rom_app.restaurant_ops_mgmt.report.nc_report_register.nc_report_register.get_data_by_count",
+			args: {
+				'filters':filters
+			},
+			callback: function(data) {
+				console.log('data', data);
+				nc_report_register_by_count_draw(data);
+			}
+		});
+	}
+
+	let nc_report_register_by_count_draw  = function(data){
+		console.log("-------------- nc_report_register_by_count_draw -------------- ");
+		let report_name = "NC Report Register";
+		console.log(data);
+		let date = [];
+		let count = [];
+		count.push("Count");
+
+		let message = data.message;
+		message.forEach((item) => {
+			console.log(item);
+			date.push(item.date);
+			count.push(item.count);
+		});
+
+		console.log('date', date);
+		console.log('count', count);
+
+		var chart = bb.generate({
+			title: {text: "NC Report by Count "},
+			data: {
+				type: "bar",
+				onclick: function(arg1){
+					console.log(arg1);
+					let date_clicked = date[arg1.index];
+					console.log(date_clicked); // date
+					opening_new_tab_simple(report_name, filters, date_clicked);
+				},
+				columns: [
+					count
+				]
+			},
+		axis: {
+			x: {type: "category",categories: date,},
+		},
+		bindto: "#nc_report_register_by_count",
+		});
+	}
+
+
+
+	// ^^^^^^^^^^^^^^^^^ nc_report_register- END  ^^^^^^^^^^^^^^^^^^^^^^
+
+
+	// ^^^^^^^^^^^^^^^^^ incident_report_register   START  ^^^^^^^^^^^^^^^^^
+let incident_report_register_by_count  = function(time_of_invoke){
+		let filters = "";
+		if(time_of_invoke == 'on-load'){
+			console.log('on-load');
+		    filters = global_get_filters();
+		} else {
+			console.log('on-submit');
+			filters = global_get_filters_on_submit();
+		}
+
+		console.log('-----filters----- incident_report_register_by_count ')
+		console.log(filters);
+		frappe.call({
+			method: "rom_app.restaurant_ops_mgmt.report.incident_report_register.incident_report_register.get_data_by_count",
+			args: {
+				'filters':filters
+			},
+			callback: function(data) {
+				console.log('data', data);
+				incident_report_register_by_count_draw(data);
+			}
+		});
+	}
+
+	let incident_report_register_by_count_draw  = function(data){
+		console.log("-------------- incident_report_register_by_count_draw -------------- ");
+		let report_name = "Incident Report Register";
+		console.log(data);
+		let date = [];
+		let count = [];
+		count.push("Count");
+
+		let message = data.message;
+		message.forEach((item) => {
+			console.log(item);
+			date.push(item.date);
+			count.push(item.count);
+		});
+
+		console.log('date', date);
+		console.log('count', count);
+
+		var chart = bb.generate({
+			title: {text: "Incident Report by Count "},
+			data: {
+				type: "bar",
+				onclick: function(arg1){
+					console.log(arg1);
+					let date_clicked = date[arg1.index];
+					console.log(date_clicked); // date
+					opening_new_tab_simple(report_name, filters, date_clicked);
+				},
+				columns: [
+					count
+				]
+			},
+		axis: {
+			x: {type: "category",categories: date,},
+		},
+		bindto: "#incident_report_register_by_count",
+		});
+	}
+
+
+
+	// ^^^^^^^^^^^^^^^^^ incident_report_register  - END  ^^^^^^^^^^^^^^^^^^^
+
+
+	$(frappe.render_template("single_page_chart", {})).appendTo(page.body);
+	chef_opening_checklist_audit('on-load');
+	chef_closing_checklist_audit('on-load');
+	dm_opening_checklist_audit('on-load');
+	dm_closing_checklist_audit('on-load');
+
+	chef_production_register('on-load');
 	sales_report_register('on-load');
 	sales_by_payment_mode('on-load');
 	breakages_report_register('on-load');
+
+	nc_report_register_by_count('on-load');
+	incident_report_register_by_count('on-load');
 
  }
 

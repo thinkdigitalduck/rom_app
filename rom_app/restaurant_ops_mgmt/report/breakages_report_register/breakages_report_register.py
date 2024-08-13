@@ -137,6 +137,7 @@ def get_conditions(filters):
             conditions[key] = value
     return conditions
 
+
 @frappe.whitelist(allow_guest=True)
 def get_data_by_group_by_date(filters):
     conditions = get_conditions(filters)
