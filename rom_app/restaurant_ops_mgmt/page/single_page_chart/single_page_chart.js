@@ -81,7 +81,8 @@ frappe.pages['single-page-chart'].on_page_load = function(wrapper) {
 			// chef_closing_checklist_audit('on-submit');
 			// dm_opening_checklist_audit('on-submit');
 			// dm_closing_checklist_audit('on-submit');
-			 chef_production_register('on-submit');
+			// chef_production_register('on-submit');
+			sales_report_register('on-submit');
 
 
 		}
@@ -154,6 +155,49 @@ frappe.pages['single-page-chart'].on_page_load = function(wrapper) {
 	}
 	// ---------- NEW TAB END ------------
 
+
+//  ^^^^^^^^^^^^^^^^^^   NEW TAB simple START   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+let opening_new_tab_simple = function (report_name, filters, date_clicked){
+
+		console.log('opening_new_tab_simple');
+		// http://rom_site:8000/app/query-report/Sales Report Register?
+		// from_date_filter=2024-08-13&to_date_filter=2024-08-13
+
+		let protocol_host = window.location.protocol + '//' + window.location.host;
+
+		let from_date = filters.from_date_filter;
+		let to_date = filters.to_date_filter;
+
+
+		let path_report_name = "/app/query-report/{report_name}?";
+		let path_cond ="from_date_filter={from_date_filter}&to_date_filter={to_date_filter}";
+		//"&{report_cond}={report_cond_result}";
+		let path_branch="&branch_filter={branch_filter}";
+
+		path_report_name = path_report_name.replace("{report_name}", report_name);
+
+		path_cond = path_cond.replace("{from_date_filter}", date_clicked);
+		path_cond = path_cond.replace("{to_date_filter}", date_clicked);
+
+		let report_url = protocol_host + path_report_name + path_cond;
+
+		console.log('filters', filters);
+		if (filters.hasOwnProperty("branch_filter")) {
+			console.log("branch_filter exists");
+			let branch_id = filters.branch_filter;
+			path_branch = path_branch.replace("{branch_filter}", branch_id);
+			console.log(branch_id, path_branch);
+			report_url = report_url + path_branch;
+		}
+
+
+		console.log("report_url");
+		console.log(report_url);
+		window.open(report_url,'_blank', 'noopener,noreferrer');
+	}
+
+	// ^^^^^^^^^^^^^^^^   NEW TAB simple end   ^^^^^^^^^^^^^^^^^^
 
 
 
@@ -601,7 +645,7 @@ frappe.pages['single-page-chart'].on_page_load = function(wrapper) {
 			callback: function(data) {
 				chef_production_register_briyani(data);
 			}
-		})
+		});
 
 
 		frappe.call({
@@ -612,7 +656,7 @@ frappe.pages['single-page-chart'].on_page_load = function(wrapper) {
 			callback: function(data) {
 				chef_production_register_chicken(data);
 			}
-		})
+		});
 
 
 	}
@@ -713,13 +757,91 @@ frappe.pages['single-page-chart'].on_page_load = function(wrapper) {
 	// !!!!!!!!!!!!!!!!!!Chef Production Register END !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 
+	// @@@@@@@@@@@  Sales Report Register START  @@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+	let sales_report_register  = function(time_of_invoke){
+		let filters = "";
+		if(time_of_invoke == 'on-load'){
+			console.log('on-load');
+		    filters = global_get_filters();
+		} else {
+			console.log('on-submit');
+			filters = global_get_filters_on_submit();
+		}
+
+		console.log('-----filters----- sales_report_register ')
+		console.log(filters);
+		frappe.call({
+			method: "rom_app.restaurant_ops_mgmt.report.sales_report_register.sales_report_register.get_data_group_by_date",
+			args: {
+				'filters':filters
+			},
+			callback: function(data) {
+				console.log('data', data);
+				sales_report_register_draw(data);
+			}
+		});
+	}
+
+	let sales_report_register_draw  = function(data){
+		console.log("-------------- sales_report_register_draw -------------- ");
+
+
+		let report_name = "Sales Report Register";
+		console.log(data);
+		let date = [];
+		let actual_sales = [];
+		let target = [];
+
+		actual_sales.push("Actual Sales");
+		target.push("Target");
+
+		let message = data.message;
+		message.forEach((item) => {
+			console.log(item);
+			date.push(item.date);
+			actual_sales.push(item.actual_sales);
+			target.push(item.target);
+		});
+
+		console.log('date', date);
+		console.log('actual_sales', actual_sales);
+		console.log('target', target);
+
+		var chart = bb.generate({
+			title: {text: "Sales Target Vs Actual"},
+			data: {
+				type: "bar",
+				onclick: function(arg1){
+					console.log(arg1);
+					let date_clicked = date[arg1.index];
+					console.log(date_clicked); // date
+
+					opening_new_tab_simple(report_name, filters, date_clicked);
+				 },
+				columns: [
+					target,
+					actual_sales
+				]
+			},
+		axis: {
+			x: {type: "category",categories: date,},
+		},
+		bindto: "#sales_report_register",
+		});
+	}
+
+
+	// @@@@@@@@@@@  Sales Report Register END  @@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
 	$(frappe.render_template("single_page_chart", {})).appendTo(page.body);
 	// chef_opening_checklist_audit('on-load');
 	// chef_closing_checklist_audit('on-load');
 	// dm_opening_checklist_audit('on-load');
 	// dm_closing_checklist_audit('on-load');
 
-	 chef_production_register('on-load');
+	 //chef_production_register('on-load');
+	 sales_report_register('on-load');
 
  }
 
