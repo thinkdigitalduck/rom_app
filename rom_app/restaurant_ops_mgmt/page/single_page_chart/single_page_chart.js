@@ -1249,7 +1249,7 @@ let discount_form_by_percentage_draw  = function(data){
 		console.log(data);
 		let date = [];
 		let percentage = [];
-		percentage.push("Difference");
+		percentage.push("Percentage");
 
 		let message = data.message;
 		message.forEach((item) => {
