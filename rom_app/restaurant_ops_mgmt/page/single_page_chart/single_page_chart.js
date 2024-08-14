@@ -88,6 +88,8 @@ frappe.pages['single-page-chart'].on_page_load = function(wrapper) {
 
 			nc_report_register_by_count('on-submit');
 			incident_report_register_by_count('on-submit');
+			cutlery_inventory_count_register_by_difference('on-submit');
+			discount_form_by_percentage('on-submit');
 
 		}
 	});
@@ -1147,6 +1149,142 @@ let incident_report_register_by_count  = function(time_of_invoke){
 	// ^^^^^^^^^^^^^^^^^ incident_report_register  - END  ^^^^^^^^^^^^^^^^^^^
 
 
+
+
+	// ~~~~~~~~~~~~~~~~~~ Cutlery Inventory Count Register ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+let cutlery_inventory_count_register_by_difference  = function(time_of_invoke){
+		let filters = "";
+		if(time_of_invoke == 'on-load'){
+			console.log('on-load');
+		    filters = global_get_filters();
+		} else {
+			console.log('on-submit');
+			filters = global_get_filters_on_submit();
+		}
+
+		console.log('-----filters----- cutlery_inventory_count_register_by_difference')
+		console.log(filters);
+		frappe.call({
+			method: "rom_app.restaurant_ops_mgmt.report.cutlery_inventory_count_register.cutlery_inventory_count_register.get_data_by_difference",
+			args: {
+				'filters':filters
+			},
+			callback: function(data) {
+				console.log('data', data);
+				cutlery_inventory_count_register_by_difference_draw(data);
+			}
+		});
+	}
+
+
+	let cutlery_inventory_count_register_by_difference_draw  = function(data){
+		console.log("-------------- cutlery_inventory_count_register_by_difference_draw -------------- ");
+		let report_name = "Cutlery Inventory Count Register";
+		console.log(data);
+		let date = [];
+		let difference = [];
+		difference.push("Difference");
+
+		let message = data.message;
+		message.forEach((item) => {
+			console.log(item);
+			date.push(item.date);
+			difference.push(item.difference);
+		});
+
+		console.log('date', date);
+		console.log('difference', difference);
+
+		var chart = bb.generate({
+			title: {text: "Cutlery Inventory Count by Difference "},
+			data: {
+				type: "bar",
+				onclick: function(arg1){
+					console.log(arg1);
+					let date_clicked = date[arg1.index];
+					console.log(date_clicked); // date
+					opening_new_tab_simple(report_name, filters, date_clicked);
+				},
+				columns: [
+					difference
+				]
+			},
+		axis: {
+			x: {type: "category",categories: date,},
+		},
+		bindto: "#cutlery_inventory_count_register_by_difference",
+		});
+	}
+
+
+	// ~~~~~~~~~~~~~~~~~~ discount_form_by_percentage start ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+let discount_form_by_percentage  = function(time_of_invoke){
+		let filters = "";
+		if(time_of_invoke == 'on-load'){
+			console.log('on-load');
+		    filters = global_get_filters();
+		} else {
+			console.log('on-submit');
+			filters = global_get_filters_on_submit();
+		}
+
+		console.log('-----filters----- discount_form_by_percentage')
+		console.log(filters);
+		frappe.call({
+			method: "rom_app.restaurant_ops_mgmt.report.discount_form_register.discount_form_register.get_data_by_percentage",
+			args: {
+				'filters':filters
+			},
+			callback: function(data) {
+				console.log('data', data);
+				discount_form_by_percentage_draw(data);
+			}
+		});
+	}
+
+let discount_form_by_percentage_draw  = function(data){
+		console.log("-------------- discount_form_by_percentage_draw -------------- ");
+		let report_name = "Discount Form Register";
+		console.log(data);
+		let date = [];
+		let percentage = [];
+		percentage.push("Difference");
+
+		let message = data.message;
+		message.forEach((item) => {
+			console.log(item);
+			date.push(item.date);
+			percentage.push(item.percentage);
+		});
+
+		console.log('date', date);
+		console.log('percentage', percentage);
+
+		var chart = bb.generate({
+			title: {text: "Discount Form by Percentage"},
+			data: {
+				type: "bar",
+				onclick: function(arg1){
+					console.log(arg1);
+					let date_clicked = date[arg1.index];
+					console.log(date_clicked); // date
+					opening_new_tab_simple(report_name, filters, date_clicked);
+				},
+				columns: [
+					percentage
+				]
+			},
+		axis: {
+			x: {type: "category",categories: date,},
+		},
+		bindto: "#discount_form_by_percentage",
+		});
+	}
+
+	// ~~~~~~~~~~~~~~~~~~ discount_form_by_percentage end ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	$(frappe.render_template("single_page_chart", {})).appendTo(page.body);
 	chef_opening_checklist_audit('on-load');
 	chef_closing_checklist_audit('on-load');
@@ -1160,6 +1298,9 @@ let incident_report_register_by_count  = function(time_of_invoke){
 
 	nc_report_register_by_count('on-load');
 	incident_report_register_by_count('on-load');
+
+	cutlery_inventory_count_register_by_difference('on-load');
+	discount_form_by_percentage('on-load');
 
  }
 

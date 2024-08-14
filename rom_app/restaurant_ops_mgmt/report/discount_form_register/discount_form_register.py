@@ -1,5 +1,6 @@
 import frappe
 import yaml
+import json
 
 
 def execute(filters=None):
@@ -98,7 +99,6 @@ def get_data(filters):
     if "customer_name_filter" in conditions:
         where_cond = where_cond + f" AND customer_name LIKE '%{conditions['customer_name_filter']}%' "
 
-
     build_sql = f"{build_sql}  {where_cond}"
     print("-------- full sql ------------")
     print(build_sql)
@@ -108,8 +108,36 @@ def get_data(filters):
 
 def get_conditions(filters):
     conditions = {}
+    if (type(filters) is str):
+        filters = json.loads(filters)
+
     for key, value in filters.items():
         if filters.get(key):
             conditions[key] = value
     return conditions
 
+
+@frappe.whitelist(allow_guest=True)
+def get_data_by_percentage(filters):
+    conditions = get_conditions(filters)
+    print("-------- get data ------------")
+    print(conditions)
+    build_sql = """
+        SELECT
+        `date`,
+        sum(discount_percentage) as percentage
+        FROM
+        `tabDiscount Form`
+        """
+    where_cond = f" WHERE date between '{conditions['from_date_filter']}' AND '{conditions['to_date_filter']}' "
+
+    if "branch_filter" in conditions:
+        where_cond = where_cond + f" AND branch_id = '{conditions['branch_filter']}' "
+
+    group_by = " GROUP By date "
+    order_by = " ORDER BY date DESC "
+    build_sql = f"{build_sql}  {where_cond} {group_by} {order_by}"
+    print("-------- full sql ------------")
+    print(build_sql)
+    data = frappe.db.sql(build_sql, as_dict=True)
+    return data

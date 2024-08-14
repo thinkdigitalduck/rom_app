@@ -1,5 +1,6 @@
 import frappe
 import yaml
+import json
 
 
 def execute(filters=None):
@@ -117,8 +118,41 @@ def get_data(filters):
 
 def get_conditions(filters):
     conditions = {}
+    if (type(filters) is str):
+        filters = json.loads(filters)
+
     for key, value in filters.items():
         if filters.get(key):
             conditions[key] = value
     return conditions
+
+
+@frappe.whitelist(allow_guest=True)
+def get_data_by_difference(filters):
+    conditions = get_conditions(filters)
+    print("--------  get_data_by_difference ------------")
+    print(conditions)
+    build_sql = """
+    SELECT
+    ic.date,
+    sum(icc.difference) as difference
+    FROM
+    `tabCutlery Inventory Count` ic
+    INNER JOIN
+    `tabCutlery Inventory Count Child2` icc
+    ON ic.name = icc.parent
+        """
+    where_cond = f" WHERE ic.`date` between '{conditions['from_date_filter']}' AND  '{conditions['to_date_filter']}' "
+    if "branch_filter" in conditions:
+        where_cond = where_cond + f" AND ic.branch_id = '{conditions['branch_filter']}' "
+
+    group_by = " GROUP By ic.date "
+    order_by = " ORDER BY ic.date DESC "
+
+    build_sql = f"{build_sql}  {where_cond} {group_by} {order_by}"
+    print("-------- full sql ------------")
+    print(build_sql)
+    data = frappe.db.sql(build_sql, as_dict=True)
+    return data
+
 
