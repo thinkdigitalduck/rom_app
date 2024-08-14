@@ -40,11 +40,6 @@ frappe.query_reports["NC Report Register"] = {
 			"fieldname": "reported_by_filter",
 			"label": "Reported By",
 			"fieldtype": "Data"
-		},
-		{
-			"fieldname": "employee_filter",
-			"label": "Employee",
-			"fieldtype": "Data"
 		}
 	]
 };

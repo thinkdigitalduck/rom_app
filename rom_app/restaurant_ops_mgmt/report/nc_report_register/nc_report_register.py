@@ -22,7 +22,6 @@ def execute(filters=None):
             'date_time': d.date_time,
             'responsible_person': d.responsible_person,
             'reported_by': d.reported_by,
-            'employee': d.employee,
             'remarks': d.remarks
         })
         data.append(row)
@@ -79,11 +78,6 @@ def get_columns():
             'fieldtype': 'Data',
         },
         {
-            'fieldname': 'employee',
-            'label': 'Employee',
-            'fieldtype': 'Data',
-        },
-        {
             'fieldname': 'remarks',
             'label': 'Remarks',
             'fieldtype': 'Data',
@@ -106,7 +100,6 @@ def get_data(filters):
     nc.date_time,
     nc.responsible_person,
     nc.reported_by,
-    nc.employee,
     nc.remarks
     FROM
     `tabNC Report` nc
@@ -123,8 +116,6 @@ def get_data(filters):
         where_cond = where_cond + f" AND nc.department = '{conditions['department_filter']}' "
     if "nc_filter" in conditions:
         where_cond = where_cond + f" AND nc.nc LIKE '%{conditions['nc_filter']}%' "
-    if "employee_filter" in conditions:
-        where_cond = where_cond + f" AND nc.employee LIKE '%{conditions['employee_filter']}%' "
     if "responsible_person_filter" in conditions:
         where_cond = where_cond + f" AND nc.responsible_person LIKE '%{conditions['responsible_person_filter']}%' "
     if "reported_by_filter" in conditions:
