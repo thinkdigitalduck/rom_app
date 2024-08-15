@@ -22,28 +22,28 @@ fixtures = [
             ]
         ]
     },
-    {
-        "dt": "Role Permission for Page and Report",
-        "filters": [
-            [
-                "report", "in", [
-                    "Chef Opening Checklist Register",
-                    "Chef Closing Checklist Register",
-                    "Chef Indent Register",
-                    "Chef Production Register",
-                    "Cutlery Inventory Count Register",
-                    "NC Report Register",
-                    "Breakages Report Register",
-                    "Dm Opening Checklist Register",
-                    "Dm Closing Checklist Register",
-                    "Incident Report Register",
-                    "Sales Report Register",
-                    "Discount Form Register"
-                ]
-            ]
-        ]
-    },
-    ]
+    # {
+    #     "dt": "Role Permission for Page and Report",
+    #     "filters": [
+    #         [
+    #             "report", "in", [
+    #                 "Chef Opening Checklist Register",
+    #                 "Chef Closing Checklist Register",
+    #                 "Chef Indent Register",
+    #                 "Chef Production Register",
+    #                 "Cutlery Inventory Count Register",
+    #                 "NC Report Register",
+    #                 "Breakages Report Register",
+    #                 "Dm Opening Checklist Register",
+    #                 "Dm Closing Checklist Register",
+    #                 "Incident Report Register",
+    #                 "Sales Report Register",
+    #                 "Discount Form Register"
+    #             ]
+    #         ]
+    #     ]
+    # },
+]
 
 
 
