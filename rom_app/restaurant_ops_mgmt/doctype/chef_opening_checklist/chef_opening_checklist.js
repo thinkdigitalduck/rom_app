@@ -5,6 +5,7 @@ frappe.ui.form.on("Chef Opening Checklist", {
         frm.set_df_property('chef_open_questions', 'cannot_delete_rows', true);
         frm.set_df_property('chef_open_questions', 'cannot_delete_all_rows', true);
 		console.log("refresh call");
+		disable_drag_drop(frm);
 	},
 
 //=====================================================================
@@ -50,10 +51,15 @@ frappe.ui.form.on("Chef Opening Checklist", {
 			});
 			//------------------------------------
 
-		}
+		};
+		disable_drag_drop(frm);
 	},
 //=====================================================================
+
 
 }
 
 );
+function disable_drag_drop(frm) {
+		frm.page.body.find('[data-fieldname="chef_open_questions"] [data-idx] .data-row  .sortable-handle').removeClass('sortable-handle');
+	}

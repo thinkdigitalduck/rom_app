@@ -307,6 +307,10 @@ let opening_new_tab_simple = function (report_name, filters, date_clicked){
 				let report_name = "Chef Opening Checklist Register";
 				let report_cond = "rm_audit_filter";
 				opening_new_tab(report_name, filters, report_cond, d.id);
+			},
+			colors: {
+				Yes: "green",
+				No: "red"
 			}
 		}
 		});
@@ -408,6 +412,10 @@ let opening_new_tab_simple = function (report_name, filters, date_clicked){
 					let report_name = "Chef Closing Checklist Register";
 					let report_cond = "rm_audit_filter";
 					opening_new_tab(report_name, filters, report_cond, d.id);
+				},
+				colors: {
+					Yes: "green",
+					No: "red"
 				}
 			}
 		});
@@ -518,7 +526,11 @@ let opening_new_tab_simple = function (report_name, filters, date_clicked){
 					let report_name = "Dm Opening Checklist Register";
 					let report_cond = "rm_audit_filter";
 					opening_new_tab(report_name, filters, report_cond, d.id);
-				}
+				},
+			colors: {
+				Yes: "green",
+				No: "red"
+			}
 			}
 		});
 	}
@@ -622,6 +634,10 @@ let opening_new_tab_simple = function (report_name, filters, date_clicked){
 				let report_name = "Dm Closing Checklist Register";
 				let report_cond = "rm_audit_filter";
 				opening_new_tab(report_name, filters, report_cond, d.id);
+			},
+			colors: {
+				Yes: "green",
+				No: "red"
 			}
 		}
 		});
@@ -1042,17 +1058,22 @@ let nc_report_register_by_count  = function(time_of_invoke){
 		console.log(data);
 		let date = [];
 		let count = [];
+		let completed = [];
 		count.push("Count");
+		completed.push("Completed");
+
 
 		let message = data.message;
 		message.forEach((item) => {
 			console.log(item);
 			date.push(item.date);
 			count.push(item.count);
+			completed.push(item.completed);
 		});
 
 		console.log('date', date);
 		console.log('count', count);
+		console.log('completed', completed);
 
 		var chart = bb.generate({
 			title: {text: "NC Report by Count "},
@@ -1065,7 +1086,7 @@ let nc_report_register_by_count  = function(time_of_invoke){
 					opening_new_tab_simple(report_name, filters, date_clicked);
 				},
 				columns: [
-					count
+					count, completed
 				]
 			},
 		axis: {
@@ -1249,17 +1270,25 @@ let discount_form_by_percentage_draw  = function(data){
 		console.log(data);
 		let date = [];
 		let percentage = [];
+		let bill_value = [];
+
+
 		percentage.push("Percentage");
+		bill_value.push("Bill Value");
 
 		let message = data.message;
 		message.forEach((item) => {
 			console.log(item);
 			date.push(item.date);
 			percentage.push(item.percentage);
+			bill_value.push(item.bill_value);
+
 		});
 
 		console.log('date', date);
 		console.log('percentage', percentage);
+		console.log('bill_value', bill_value);
+
 
 		var chart = bb.generate({
 			title: {text: "Discount Form by Percentage"},
@@ -1272,7 +1301,7 @@ let discount_form_by_percentage_draw  = function(data){
 					opening_new_tab_simple(report_name, filters, date_clicked);
 				},
 				columns: [
-					percentage
+					bill_value, percentage
 				]
 			},
 		axis: {

@@ -4,6 +4,7 @@ frappe.ui.form.on("Cutlery Inventory Count", {
 		frm.set_df_property('items', 'cannot_add_rows', true);
         frm.set_df_property('items', 'cannot_delete_rows', true);
         frm.set_df_property('items', 'cannot_delete_all_rows', true);
+		disable_drag_drop(frm);
 
 		//frm.set_df_property('category', 'read_only', 1)
 
@@ -100,7 +101,8 @@ frappe.ui.form.on("Cutlery Inventory Count", {
 
 					}
 				});
-			}
+			};
+			disable_drag_drop(frm);
 	},
 
 
@@ -139,27 +141,6 @@ frappe.ui.form.on("Cutlery Inventory Count Child2", {
     }
 });
 
-
-/*
-print('server script')
-user = frappe.session.user
-print(user)
-branch_id = frappe.db.get_value("User to Branch Assignment", {"user": user}, "branch")
-print(branch_id)
-
-user_doc = frappe.get_doc('User', frappe.user)
-has_dm_role = [r for r in user_doc.roles if r.role == 'Rom_DM_Role']
-has_chef_role = [r for r in user_doc.roles if r.role == 'Rom_Chef_Role']
-print(has_dm_role)
-print(has_chef_role)
-
-category_name = ''
-if has_dm_role:
-    category_name = 'Dining'
-
-if has_chef_role:
-    category_name = 'Kitchen'
-
-print(category_name)
-conditions = f""" (branch_id = '{branch_id}'  and category_name = '{category_name}') """
-print(conditions)*/
+function disable_drag_drop(frm) {
+		frm.page.body.find('[data-fieldname="items"] [data-idx] .data-row  .sortable-handle').removeClass('sortable-handle');
+	}

@@ -10,6 +10,7 @@
   "nc",
   "responsible_person",
   "reported_by",
+  "completed",
   "column_break_iipw",
   "date",
   "date_time",
@@ -24,7 +25,8 @@
    "fieldtype": "Data",
    "in_list_view": 1,
    "in_standard_filter": 1,
-   "label": "Branch Name"
+   "label": "Branch Name",
+   "read_only": 1
   },
   {
    "default": "user_fullname",
@@ -99,11 +101,17 @@
    "fieldname": "photo",
    "fieldtype": "Attach",
    "label": "Photo"
+  },
+  {
+   "default": "0",
+   "fieldname": "completed",
+   "fieldtype": "Check",
+   "label": "Completed"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-08-13 15:41:42.400167",
+ "modified": "2024-08-15 10:55:57.862678",
  "modified_by": "Administrator",
  "module": "Restaurant Ops Mgmt",
  "name": "NC Report",
@@ -127,5 +135,6 @@
  "sort_field": "creation",
  "sort_order": "DESC",
  "states": [],
- "title_field": "nc"
+ "title_field": "nc",
+ "track_changes": 1
 }

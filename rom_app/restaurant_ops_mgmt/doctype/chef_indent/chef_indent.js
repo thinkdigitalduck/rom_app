@@ -1,6 +1,7 @@
 
 frappe.ui.form.on("Chef Indent", {
 	refresh(frm) {
+		disable_drag_drop(frm);
 
 	},
 	onload(frm) {
@@ -23,8 +24,14 @@ frappe.ui.form.on("Chef Indent", {
 				console.log('branch_id-', branch__id, '=== branch_name-', branch__name);
 				}
 			});
-		}
+		};
+		disable_drag_drop(frm);
     },
 
 
 });
+
+function disable_drag_drop(frm) {
+		frm.page.body.find('[data-fieldname="raw_material_list"] [data-idx] .data-row  .sortable-handle').removeClass('sortable-handle');
+	}
+

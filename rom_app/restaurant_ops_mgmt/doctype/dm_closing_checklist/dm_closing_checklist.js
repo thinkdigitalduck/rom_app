@@ -4,6 +4,7 @@ frappe.ui.form.on("Dm Closing Checklist", {
 		frm.set_df_property('dm_close_questions', 'cannot_add_rows', true);
         frm.set_df_property('dm_close_questions', 'cannot_delete_rows', true);
         frm.set_df_property('dm_close_questions', 'cannot_delete_all_rows', true);
+		disable_drag_drop(frm);
 	},
 
 		onload(frm) {
@@ -45,10 +46,14 @@ frappe.ui.form.on("Dm Closing Checklist", {
 
 				}
 			});
-		}
+		};
+		disable_drag_drop(frm);
     },
 
 // ======================================================
 
 });
+function disable_drag_drop(frm) {
+		frm.page.body.find('[data-fieldname="dm_close_questions"] [data-idx] .data-row  .sortable-handle').removeClass('sortable-handle');
+	}
 

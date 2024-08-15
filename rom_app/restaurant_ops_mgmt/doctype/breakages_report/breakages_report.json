@@ -25,7 +25,8 @@
    "fieldtype": "Data",
    "in_list_view": 1,
    "in_standard_filter": 1,
-   "label": "Branch Name"
+   "label": "Branch Name",
+   "read_only": 1
   },
   {
    "fieldname": "column_break_iipw",
@@ -111,7 +112,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-07-31 14:41:17.402621",
+ "modified": "2024-08-15 13:18:18.129001",
  "modified_by": "Administrator",
  "module": "Restaurant Ops Mgmt",
  "name": "Breakages Report",

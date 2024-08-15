@@ -8,6 +8,8 @@ frappe.ui.form.on("Chef Production", {
         frm.set_df_property('chicken_category_list', 'cannot_delete_rows', true);
         frm.set_df_property('chicken_category_list', 'cannot_delete_all_rows', true);
 		console.log("refresh call");
+		disable_drag_drop_briyani_category_list(frm);
+		disable_drag_drop_chicken_category_list(frm);
 	},
 	onload(frm) {
 		if (frm.is_new()) {
@@ -87,7 +89,9 @@ frappe.ui.form.on("Chef Production", {
 			});
 
 
-		}
+		};
+		disable_drag_drop_briyani_category_list(frm);
+		disable_drag_drop_chicken_category_list(frm);
     },
 });
 
@@ -191,3 +195,10 @@ frappe.ui.form.on("Chef Prod Child Chicken", {
 		frappe.model.set_value(cdt, cdn, 'wastage_amt', cal_val);
     }
 });
+
+function disable_drag_drop_briyani_category_list(frm) {
+		frm.page.body.find('[data-fieldname="briyani_category_list"] [data-idx] .data-row  .sortable-handle').removeClass('sortable-handle');
+	}
+function disable_drag_drop_chicken_category_list(frm) {
+		frm.page.body.find('[data-fieldname="chicken_category_list"] [data-idx] .data-row  .sortable-handle').removeClass('sortable-handle');
+	}

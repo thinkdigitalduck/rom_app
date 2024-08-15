@@ -125,6 +125,7 @@ def get_data_by_percentage(filters):
     build_sql = """
         SELECT
         `date`,
+        sum(bill_value) as bill_value,
         sum(discount_percentage) as percentage
         FROM
         `tabDiscount Form`

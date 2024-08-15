@@ -22,7 +22,8 @@ def execute(filters=None):
             'date_time': d.date_time,
             'responsible_person': d.responsible_person,
             'reported_by': d.reported_by,
-            'remarks': d.remarks
+            'remarks': d.remarks,
+            'completed': d.completed
         })
         data.append(row)
 
@@ -82,6 +83,11 @@ def get_columns():
             'label': 'Remarks',
             'fieldtype': 'Data',
         },
+        {
+            'fieldname': 'completed',
+            'label': 'Completed',
+            'fieldtype': 'Check',
+        },
     ]
 
 
@@ -100,7 +106,8 @@ def get_data(filters):
     nc.date_time,
     nc.responsible_person,
     nc.reported_by,
-    nc.remarks
+    nc.remarks,
+    nc.completed
     FROM
     `tabNC Report` nc
      INNER JOIN
@@ -148,7 +155,8 @@ def get_data_by_count(filters):
     build_sql = """
     SELECT
     nc.date as date,
-    count(nc.name) as count
+    count(nc.name) as count,
+    sum(nc.completed) as completed
     FROM
     `tabNC Report` nc
      INNER JOIN
