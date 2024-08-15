@@ -309,8 +309,8 @@ let opening_new_tab_simple = function (report_name, filters, date_clicked){
 				opening_new_tab(report_name, filters, report_cond, d.id);
 			},
 			colors: {
-				Yes: "green",
-				No: "red"
+				Yes: "#2e8b57",
+				No: "#ff6347"
 			}
 		}
 		});
@@ -414,8 +414,8 @@ let opening_new_tab_simple = function (report_name, filters, date_clicked){
 					opening_new_tab(report_name, filters, report_cond, d.id);
 				},
 				colors: {
-					Yes: "green",
-					No: "red"
+					Yes: "#2e8b57",
+					No: "#ff6347"
 				}
 			}
 		});
@@ -528,8 +528,8 @@ let opening_new_tab_simple = function (report_name, filters, date_clicked){
 					opening_new_tab(report_name, filters, report_cond, d.id);
 				},
 			colors: {
-				Yes: "green",
-				No: "red"
+				Yes: "#2e8b57",
+				No: "#ff6347"
 			}
 			}
 		});
@@ -636,8 +636,8 @@ let opening_new_tab_simple = function (report_name, filters, date_clicked){
 				opening_new_tab(report_name, filters, report_cond, d.id);
 			},
 			colors: {
-				Yes: "green",
-				No: "red"
+				Yes: "#2e8b57",
+				No: "#ff6347"
 			}
 		}
 		});
