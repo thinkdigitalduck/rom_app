@@ -1,6 +1,6 @@
 {
  "charts": [],
- "content": "[{\"id\":\"RLrxSEV-I6\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Admin Workspace<br></span>\",\"col\":12}},{\"id\":\"6hCHtJ9bP1\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Chef Opening Checklist Template\",\"col\":5}},{\"id\":\"Q9YcTZpmH7\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Chef Closing Checklist Template\",\"col\":5}},{\"id\":\"W9NVyW5Vx9\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Dm Opening Checklist Template\",\"col\":5}},{\"id\":\"aAQD85PYVG\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Dm Closing Checklist Template\",\"col\":5}},{\"id\":\"qkt_Ejzmxz\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Chef Production Template\",\"col\":5}},{\"id\":\"bPDWZyXAgB\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Cutlery Master\",\"col\":5}},{\"id\":\"B4VyawkvTi\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Branch\",\"col\":5}},{\"id\":\"hhm1qwk_fG\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Category\",\"col\":5}},{\"id\":\"F1AkFkLgc-\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Raw Material\",\"col\":5}},{\"id\":\"Q3rNApfAt2\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Department\",\"col\":5}},{\"id\":\"yWk_SDvoo7\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"User to Branch Assignment\",\"col\":5}}]",
+ "content": "[{\"id\":\"RLrxSEV-I6\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Admin Workspace<br></span>\",\"col\":12}},{\"id\":\"6hCHtJ9bP1\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Chef Opening Checklist Template\",\"col\":5}},{\"id\":\"Q9YcTZpmH7\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Chef Closing Checklist Template\",\"col\":5}},{\"id\":\"W9NVyW5Vx9\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Dm Opening Checklist Template\",\"col\":5}},{\"id\":\"aAQD85PYVG\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Dm Closing Checklist Template\",\"col\":5}},{\"id\":\"qkt_Ejzmxz\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Chef Production Template\",\"col\":5}},{\"id\":\"bPDWZyXAgB\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Cutlery Master\",\"col\":5}},{\"id\":\"B4VyawkvTi\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Branch\",\"col\":5}},{\"id\":\"hhm1qwk_fG\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Category\",\"col\":5}},{\"id\":\"F1AkFkLgc-\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Raw Material\",\"col\":5}},{\"id\":\"Q3rNApfAt2\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Department\",\"col\":5}},{\"id\":\"yWk_SDvoo7\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"User to Branch Assignment\",\"col\":5}},{\"id\":\"L9xL4sPBmE\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"User\",\"col\":5}},{\"id\":\"Q89i0WeDKF\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Role\",\"col\":5}},{\"id\":\"74GlWXRhdg\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Permission Manager\",\"col\":5}},{\"id\":\"Ly82qV72cU\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Role Permission for Page and Report\",\"col\":5}}]",
  "creation": "2024-07-20 08:22:34.182065",
  "custom_blocks": [],
  "docstatus": 0,
@@ -13,7 +13,7 @@
  "is_hidden": 0,
  "label": "Admin Workspace",
  "links": [],
- "modified": "2024-08-05 11:16:39.332064",
+ "modified": "2024-08-15 17:19:03.992974",
  "modified_by": "Administrator",
  "module": "Restaurant Ops Mgmt",
  "name": "Admin Workspace",
@@ -104,6 +104,22 @@
   {
    "color": "Grey",
    "doc_view": "List",
+   "label": "User",
+   "link_to": "User",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Role",
+   "link_to": "Role",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
    "label": "Chef Production Template",
    "link_to": "Chef Production Temp",
    "stats_filter": "[]",
@@ -115,6 +131,20 @@
    "label": "Branch",
    "link_to": "Branch",
    "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Permission Manager",
+   "link_to": "permission-manager",
+   "type": "Page"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Role Permission for Page and Report",
+   "link_to": "Role Permission for Page and Report",
    "type": "DocType"
   }
  ],

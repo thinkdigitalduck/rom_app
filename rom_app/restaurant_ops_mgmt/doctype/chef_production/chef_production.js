@@ -145,6 +145,30 @@ frappe.ui.form.on("Chef Prod Child Briyani", {
     }
 });
 
+frappe.ui.form.on("Chef Prod Child Briyani", {
+    product_qtykg:function(frm,cdt,cdn) {
+		var d = locals[cdt][cdn];
+
+		let product_qtykg_temp = 0;
+		let portion_temp = 0;
+		let portion_x_prod_qty_temp = 0;
+
+		if(parseInt(d.product_qtykg)>=0)
+			product_qtykg_temp = d.product_qtykg;
+
+		if(parseInt(d.portion)>=0)
+			portion_temp = d.portion;
+
+		portion_x_prod_qty_temp = product_qtykg_temp * portion_temp;
+
+		console.log('product_qtykg_temp->', product_qtykg_temp);
+		console.log('portion_temp->',portion_temp);
+		console.log('portion_x_prod_qty_temp->', portion_x_prod_qty_temp);
+
+		frappe.model.set_value(cdt, cdn, 'portion_x_prod_qty', portion_x_prod_qty_temp);
+    }
+});
+
 
 frappe.ui.form.on("Chef Prod Child Chicken", {
     wastage_pcs: function(frm,cdt,cdn) {
