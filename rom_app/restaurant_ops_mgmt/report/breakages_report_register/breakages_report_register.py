@@ -84,7 +84,7 @@ def get_columns():
         },
     ]
 
-@frappe.whitelist(allow_guest=True)
+@frappe.whitelist()
 def get_data(filters):
     conditions = get_conditions(filters)
     print("-------- get data ------------")
@@ -138,7 +138,7 @@ def get_conditions(filters):
     return conditions
 
 
-@frappe.whitelist(allow_guest=True)
+@frappe.whitelist()
 def get_data_by_group_by_date(filters):
     conditions = get_conditions(filters)
     print("--------  get_data_by_group_by_date ------------")

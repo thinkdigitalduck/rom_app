@@ -147,7 +147,7 @@ def get_conditions(filters):
     return conditions
 
 
-@frappe.whitelist(allow_guest=True)
+@frappe.whitelist()
 def get_data_by_count(filters):
     conditions = get_conditions(filters)
     print("-------- get data ------------")

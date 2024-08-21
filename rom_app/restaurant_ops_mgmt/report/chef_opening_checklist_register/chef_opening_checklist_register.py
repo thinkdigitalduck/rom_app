@@ -75,7 +75,7 @@ def get_columns():
     ]
 
 
-@frappe.whitelist(allow_guest=True)
+@frappe.whitelist()
 def get_data(filters):
     print('filters py-0')
     print(filters)

@@ -3,7 +3,7 @@ from datetime import datetime
 import json
 
 
-@frappe.whitelist(allow_guest=True)
+@frappe.whitelist()
 def get_chef_opening_checklist_child(branch_param):
     parent = frappe.qb.DocType("Chef Opening Checklist Template")
     child = frappe.qb.DocType("Chef Opening Checklist Template Child")
@@ -20,7 +20,7 @@ def get_chef_opening_checklist_child(branch_param):
     return result
 
 
-@frappe.whitelist(allow_guest=True)
+@frappe.whitelist()
 def get_dm_opening_checklist_child(branch_param):
     parent = frappe.qb.DocType("Dm Opening Checklist Template")
     child = frappe.qb.DocType("Dm Opening Checklist Template Child")
@@ -37,12 +37,12 @@ def get_dm_opening_checklist_child(branch_param):
     return result
 
 
-@frappe.whitelist(allow_guest=True)
+@frappe.whitelist()
 def testapi():
     return "test api returned"
 
 
-@frappe.whitelist(allow_guest=True)
+@frappe.whitelist()
 def testapi2():
     # result = frappe.db.get_list(
     #     "Chef Opening Checklist Template",
@@ -59,7 +59,7 @@ def testapi2():
     return result
 
 
-@frappe.whitelist(allow_guest=True)
+@frappe.whitelist()
 def get_chef_closing_checklist_child(branch_param):
     parent = frappe.qb.DocType("Chef Closing Checklist Template")
     child = frappe.qb.DocType("Chef Closing Checklist Template Child")
@@ -76,7 +76,7 @@ def get_chef_closing_checklist_child(branch_param):
     return result
 
 
-@frappe.whitelist(allow_guest=True)
+@frappe.whitelist()
 def get_dm_closing_checklist_child(branch_param):
     parent = frappe.qb.DocType("Dm Closing Checklist Template")
     child = frappe.qb.DocType("Dm Closing Checklist Template Child")
@@ -93,7 +93,7 @@ def get_dm_closing_checklist_child(branch_param):
     return result
 
 #
-# @frappe.whitelist(allow_guest=True)
+# @frappe.whitelist()
 # def return_T_if_Chef_Opening_entry_per_day_per_user_per_branch_exist(p_username,p_branch):
 #     p_username = 'chefuser1'
 #     p_branch = 1
@@ -114,7 +114,7 @@ def get_dm_closing_checklist_child(branch_param):
 #     return False
 
 
-@frappe.whitelist(allow_guest=True)
+@frappe.whitelist()
 def get_the_branch_name_for_the_user(emailid):
     branch_id = frappe.db.get_value(
         "User to Branch Assignment",
@@ -132,7 +132,7 @@ def get_the_branch_name_for_the_user(emailid):
     return result
 
 
-@frappe.whitelist(allow_guest=True)
+@frappe.whitelist()
 def get_the_branch_name_for_the_user2(emailid):
     branch_id = "1"
     branch_name = "name"
@@ -140,7 +140,7 @@ def get_the_branch_name_for_the_user2(emailid):
     return result
 
 
-@frappe.whitelist(allow_guest=True)
+@frappe.whitelist()
 def get_chef_production_checklist_child_briyani(branch_param):
     parent = frappe.qb.DocType("Chef Production Temp")
     child = frappe.qb.DocType("Chef Prod Child Briyani Temp")
@@ -157,7 +157,7 @@ def get_chef_production_checklist_child_briyani(branch_param):
     return result
 
 
-@frappe.whitelist(allow_guest=True)
+@frappe.whitelist()
 def get_chef_production_checklist_child_chicken(branch_param):
     parent = frappe.qb.DocType("Chef Production Temp")
     child = frappe.qb.DocType("Chef Prod Child Chicken Temp")
@@ -174,7 +174,7 @@ def get_chef_production_checklist_child_chicken(branch_param):
     return result
 
 
-# @frappe.whitelist(allow_guest=True)
+# @frappe.whitelist()
 # def get_cutlery_master_child(branch_param):
 #     parent = frappe.qb.DocType("Cutlery Master")
 #     child = frappe.qb.DocType("Cutlery Master Child")
@@ -191,7 +191,7 @@ def get_chef_production_checklist_child_chicken(branch_param):
 #     return result
 #
 
-@frappe.whitelist(allow_guest=True)
+@frappe.whitelist()
 def get_cutlery_master_child_category_text(branch_param):
     branch_param = 1
     parent = frappe.qb.DocType("Cutlery Master")
@@ -211,7 +211,7 @@ def get_cutlery_master_child_category_text(branch_param):
     result = query.run()
     return result
 
-@frappe.whitelist(allow_guest=True)
+@frappe.whitelist()
 def get_cutlery_master_child_based_on_branch_category(branch_param, category_param):
     # branch_param = 1
     # category_param = 1
@@ -233,7 +233,7 @@ def get_cutlery_master_child_based_on_branch_category(branch_param, category_par
     return result
 
 
-@frappe.whitelist(allow_guest=True)
+@frappe.whitelist()
 def get_cutlery_master_singltable_child_based_on_branch_category(branch_param, category_param):
     # branch_param = 1
     # category_param = 1
@@ -256,7 +256,7 @@ def get_cutlery_master_singltable_child_based_on_branch_category(branch_param, c
     return result
 
 
-@frappe.whitelist(allow_guest=True)
+@frappe.whitelist()
 def get_production_items():
     sql_briyani = " (SELECT  child1.briyani_category as item FROM `tabChef Prod Child Briyani Temp` child1) "
     sql_chicken = " (SELECT  child2.chicken_category as item FROM `tabChef Prod Child Chicken Temp` child2) "

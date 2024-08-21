@@ -112,7 +112,7 @@ def get_columns():
     ]
 
 
-@frappe.whitelist(allow_guest=True)
+@frappe.whitelist()
 def get_data(filters):
 
     conditions = get_conditions(filters)
@@ -228,7 +228,7 @@ def get_data_groupby_briyani(filters):
     return data
 
 
-@frappe.whitelist(allow_guest=True)
+@frappe.whitelist()
 def get_data_groupby_chicken(filters):
     conditions = get_conditions(filters)
     print("-------- get data ------------")
