@@ -118,6 +118,25 @@ frappe.ui.form.on("Chef Prod Child Briyani", {
 		console.log('cal_val->', cal_val);
 
 		frappe.model.set_value(cdt, cdn, 'wastage_amount', cal_val);
+
+		console.log('locals->', locals);
+		console.log('cdt->', cdt);
+		console.log('cdn->', cdn);
+		console.log('d->', d);
+
+		// briyani category wastage amount total
+		console.log('briyani category wastage amount total');
+		var waste_total = 0;
+		frm.doc.briyani_category_list.forEach(function(d) { waste_total += d.wastage_amount; });
+		console.log('waste_total', waste_total);
+		frm.set_value("briyani_category_wastage_amount", waste_total);
+		refresh_field("briyani_category_wastage_amount");
+
+
+
+
+
+
     }
 });
 
@@ -142,6 +161,9 @@ frappe.ui.form.on("Chef Prod Child Briyani", {
 		console.log('cal_val->', cal_val);
 
 		frappe.model.set_value(cdt, cdn, 'wastage_amount', cal_val);
+		console.log('cal_val->', cal_val);
+
+
     }
 });
 
@@ -191,6 +213,14 @@ frappe.ui.form.on("Chef Prod Child Chicken", {
 		console.log('cal_val->', cal_val);
 
 		frappe.model.set_value(cdt, cdn, 'wastage_amt', cal_val);
+		// chicken category wastage amount total
+
+		console.log('chicken category wastage amount total');
+		var waste_total = 0;
+		frm.doc.chicken_category_list.forEach(function(d) { waste_total += d.wastage_amt; });
+		console.log('waste_total', waste_total);
+		frm.set_value("chicken_category_wastage_amount", waste_total);
+		refresh_field("chicken_category_wastage_amount");
 
 
     }

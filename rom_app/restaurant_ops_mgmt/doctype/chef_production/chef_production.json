@@ -7,9 +7,11 @@
  "field_order": [
   "branch_name",
   "user_name",
+  "briyani_category_wastage_amount",
   "column_break_rpev",
   "date",
   "branch_id",
+  "chicken_category_wastage_amount",
   "section_break_chof",
   "briyani_category_list",
   "chicken_category_list"
@@ -65,11 +67,25 @@
    "fieldtype": "Table",
    "label": "Chicken Category",
    "options": "Chef Prod Child Chicken"
+  },
+  {
+   "fieldname": "briyani_category_wastage_amount",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Briyani Category Wastage Amount",
+   "read_only": 1
+  },
+  {
+   "fieldname": "chicken_category_wastage_amount",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Chicken Category Wastage Amount",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-07-25 10:26:08.782604",
+ "modified": "2024-08-22 11:33:48.615624",
  "modified_by": "Administrator",
  "module": "Restaurant Ops Mgmt",
  "name": "Chef Production",
