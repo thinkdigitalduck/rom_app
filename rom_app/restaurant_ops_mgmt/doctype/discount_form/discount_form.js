@@ -24,4 +24,36 @@ frappe.ui.form.on("Discount Form", {
 					});
 				}
 	},
+	discount_type: function(frm) {
+		calculate_discounted_price(frm);
+	},
+	bill_value: function(frm) {
+		calculate_discounted_price(frm);
+	},
 });
+function calculate_discounted_price(frm) {
+	let discount_type = frm.doc.discount_type;
+	if(discount_type){
+		console.log('discount_type=',discount_type);
+		let arrStr = discount_type.split(/[-%]/);
+		let withoutspace_discount = arrStr[1].replace(/\s/g, "");
+		frm.set_value('discount_percentage', withoutspace_discount);
+
+		let bill_value = frm.doc.bill_value;
+		let discounted_price = bill_value -( (withoutspace_discount/100 ) * bill_value);
+		frm.set_value('discounted_price', discounted_price);
+
+	}
+	// let	result = discount_type.split("-");
+	// let number_and_sign = result[1];
+	// let number = number_and_sign.split("%");
+	// number = number
+ //
+ //    document.write(result[0]);
+
+	// if(item_price && quantity){
+	// 	let total_cost = item_price * quantity;
+	// 	console.log('total_cost=',total_cost);
+	// 	frm.set_value('cost', total_cost);
+	// }
+}

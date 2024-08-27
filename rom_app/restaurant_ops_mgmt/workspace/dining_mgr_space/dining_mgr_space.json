@@ -1,22 +1,22 @@
 {
  "charts": [],
- "content": "[{\"id\":\"-WIeLytqkA\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Dining Manager Workspace</span>\",\"col\":12}},{\"id\":\"eoxm6t2gNN\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Dm Opening Checklist\",\"col\":5}},{\"id\":\"Ij1qVqGgs7\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Dm Closing Checklist\",\"col\":5}},{\"id\":\"rCoGcVr7XB\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Breakages Report\",\"col\":5}},{\"id\":\"AlEbJPbP_a\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"NC Report\",\"col\":5}},{\"id\":\"jQnWfCoyNx\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Cutlery Inventory Count\",\"col\":5}},{\"id\":\"19pVrV76kS\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Incident Form\",\"col\":5}}]",
+ "content": "[{\"id\":\"-WIeLytqkA\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Dining Manager Workspace</span>\",\"col\":12}},{\"id\":\"eoxm6t2gNN\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Dm Opening Checklist\",\"col\":5}},{\"id\":\"Ij1qVqGgs7\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Dm Closing Checklist\",\"col\":5}},{\"id\":\"rCoGcVr7XB\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Breakages Report\",\"col\":5}},{\"id\":\"AlEbJPbP_a\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Ticket Report\",\"col\":5}},{\"id\":\"jQnWfCoyNx\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Cutlery Inventory Count\",\"col\":5}},{\"id\":\"19pVrV76kS\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Incident Form\",\"col\":5}}]",
  "creation": "2024-07-20 08:21:34.614118",
  "custom_blocks": [],
  "docstatus": 0,
  "doctype": "Workspace",
  "for_user": "",
  "hide_custom": 0,
- "icon": "users",
+ "icon": "color-rank",
  "idx": 1,
  "indicator_color": "",
  "is_hidden": 0,
- "label": "Dining Mgr Workspace",
+ "label": "Dining Mgr Space",
  "links": [],
- "modified": "2024-08-05 11:16:20.886110",
+ "modified": "2024-08-26 22:01:36.624275",
  "modified_by": "Administrator",
  "module": "Restaurant Ops Mgmt",
- "name": "Dining Mgr Workspace",
+ "name": "Dining Mgr Space",
  "number_cards": [],
  "owner": "Administrator",
  "parent_page": "",
@@ -29,14 +29,6 @@
  ],
  "sequence_id": 2.0,
  "shortcuts": [
-  {
-   "color": "Grey",
-   "doc_view": "List",
-   "label": "NC Report",
-   "link_to": "NC Report",
-   "stats_filter": "[]",
-   "type": "DocType"
-  },
   {
    "color": "Grey",
    "doc_view": "List",
@@ -72,11 +64,19 @@
   {
    "color": "Grey",
    "doc_view": "List",
+   "label": "Ticket Report",
+   "link_to": "Ticket Report",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
    "label": "Dm Closing Checklist",
    "link_to": "Dm Closing Checklist",
    "stats_filter": "[]",
    "type": "DocType"
   }
  ],
- "title": "Dining Mgr Workspace"
+ "title": "Dining Mgr Space"
 }

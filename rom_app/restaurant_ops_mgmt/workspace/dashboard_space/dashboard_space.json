@@ -1,0 +1,238 @@
+{
+ "charts": [],
+ "content": "[{\"id\":\"Ddpyn2rQhB\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Dashboard Workspace<br></span>\",\"col\":12}},{\"id\":\"jNUc1OfQ5O\",\"type\":\"card\",\"data\":{\"card_name\":\"Dashboard\",\"col\":3}},{\"id\":\"zt1QEct5Pu\",\"type\":\"card\",\"data\":{\"card_name\":\"Chef Reports\",\"col\":3}},{\"id\":\"78WkuG1wHY\",\"type\":\"card\",\"data\":{\"card_name\":\"Dining Manager Reports\",\"col\":3}},{\"id\":\"wQFKQOqQ0p\",\"type\":\"card\",\"data\":{\"card_name\":\"Restaurant Manager Reports\",\"col\":4}},{\"id\":\"DozMf5zGse\",\"type\":\"card\",\"data\":{\"card_name\":\"Cashier Reports\",\"col\":3}},{\"id\":\"YN2ZnovPZR\",\"type\":\"card\",\"data\":{\"card_name\":\"Common Reports\",\"col\":3}}]",
+ "creation": "2024-08-01 19:03:12.196385",
+ "custom_blocks": [],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "icon": "solid-success",
+ "idx": 1,
+ "indicator_color": "",
+ "is_hidden": 0,
+ "label": "Dashboard Space",
+ "links": [
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Common Reports",
+   "link_count": 4,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Breakages",
+   "link_count": 0,
+   "link_to": "Breakages Report Register",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Ticket",
+   "link_count": 0,
+   "link_to": "Ticket Report Register",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Cutlery Inventory Count",
+   "link_count": 0,
+   "link_to": "Cutlery Inventory Count Register",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Incident",
+   "link_count": 0,
+   "link_to": "Incident Report Register",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Dining Manager Reports",
+   "link_count": 2,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Opening",
+   "link_count": 0,
+   "link_to": "Dm Opening Checklist Register",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Closing",
+   "link_count": 0,
+   "link_to": "Dm Closing Checklist Register",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Chef Reports",
+   "link_count": 4,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Opening",
+   "link_count": 0,
+   "link_to": "Chef Opening Checklist Register",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Closing",
+   "link_count": 0,
+   "link_to": "Chef Closing Checklist Register",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Production",
+   "link_count": 0,
+   "link_to": "Chef Production Register",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Indent",
+   "link_count": 0,
+   "link_to": "Chef Indent Register",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Restaurant Manager Reports",
+   "link_count": 2,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Discount Form",
+   "link_count": 0,
+   "link_to": "Discount Form Register",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "NC Report",
+   "link_count": 0,
+   "link_to": "NC Report Register",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Dashboard",
+   "link_count": 1,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Operations Chart",
+   "link_count": 0,
+   "link_to": "single-page-chart",
+   "link_type": "Page",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Cashier Reports",
+   "link_count": 2,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Sales",
+   "link_count": 0,
+   "link_to": "Sales Report Register",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Expense",
+   "link_count": 0,
+   "link_to": "Expense Report Register",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  }
+ ],
+ "modified": "2024-08-27 15:08:45.211664",
+ "modified_by": "Administrator",
+ "module": "Restaurant Ops Mgmt",
+ "name": "Dashboard Space",
+ "number_cards": [],
+ "owner": "Administrator",
+ "parent_page": "",
+ "public": 1,
+ "quick_lists": [],
+ "roles": [
+  {
+   "role": "Rom_Dashboard_Role"
+  }
+ ],
+ "sequence_id": 7.0,
+ "shortcuts": [],
+ "title": "Dashboard Space"
+}

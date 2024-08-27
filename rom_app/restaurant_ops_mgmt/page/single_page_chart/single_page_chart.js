@@ -91,6 +91,9 @@ frappe.pages['single-page-chart'].on_page_load = function(wrapper) {
 			cutlery_inventory_count_register_by_difference('on-submit');
 			discount_form_by_percentage('on-submit');
 
+			ticket_report_register_by_count('on-submit');
+			expense_report_register_by_amount('on-submit');
+
 		}
 	});
 
@@ -1269,29 +1272,29 @@ let discount_form_by_percentage_draw  = function(data){
 		let report_name = "Discount Form Register";
 		console.log(data);
 		let date = [];
-		let percentage = [];
+		let discounted_price = [];
 		let bill_value = [];
 
 
-		percentage.push("Percentage");
+		discounted_price.push("Discounted Price");
 		bill_value.push("Bill Value");
 
 		let message = data.message;
 		message.forEach((item) => {
 			console.log(item);
 			date.push(item.date);
-			percentage.push(item.percentage);
+			discounted_price.push(item.discounted_price);
 			bill_value.push(item.bill_value);
 
 		});
 
 		console.log('date', date);
-		console.log('percentage', percentage);
+		console.log('discounted_price', discounted_price);
 		console.log('bill_value', bill_value);
 
 
 		var chart = bb.generate({
-			title: {text: "Discount Form by Percentage"},
+			title: {text: "Discount Form by Discounted Price"},
 			data: {
 				type: "bar",
 				onclick: function(arg1){
@@ -1301,7 +1304,7 @@ let discount_form_by_percentage_draw  = function(data){
 					opening_new_tab_simple(report_name, filters, date_clicked);
 				},
 				columns: [
-					bill_value, percentage
+					bill_value, discounted_price
 				]
 			},
 		axis: {
@@ -1312,6 +1315,161 @@ let discount_form_by_percentage_draw  = function(data){
 	}
 
 	// ~~~~~~~~~~~~~~~~~~ discount_form_by_percentage end ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+
+
+	// ^^^^^^^^^^^^^^^^^ ticket_report_register- START  ^^^^^^^^^^^^^^^^^^^^^^
+let ticket_report_register_by_count  = function(time_of_invoke){
+		let filters = "";
+		if(time_of_invoke == 'on-load'){
+			console.log('on-load');
+		    filters = global_get_filters();
+		} else {
+			console.log('on-submit');
+			filters = global_get_filters_on_submit();
+		}
+
+		console.log('-----filters----- ticket_report_register_by_count ')
+		console.log(filters);
+		frappe.call({
+			method: "rom_app.restaurant_ops_mgmt.report.ticket_report_register.ticket_report_register.get_data_by_count",
+			args: {
+				'filters':filters
+			},
+			callback: function(data) {
+				console.log('data', data);
+				ticket_report_register_by_count_draw(data);
+			}
+		});
+	}
+
+	let ticket_report_register_by_count_draw  = function(data){
+		console.log("-------------- ticket_report_register_by_count_draw -------------- ");
+		let report_name = "Ticket Report Register";
+		console.log(data);
+		let date = [];
+		let count = [];
+		let completed = [];
+		count.push("Count");
+		completed.push("Completed");
+
+
+		let message = data.message;
+		message.forEach((item) => {
+			console.log(item);
+			date.push(item.date);
+			count.push(item.count);
+			completed.push(item.completed);
+		});
+
+		console.log('date', date);
+		console.log('count', count);
+		console.log('completed', completed);
+
+		var chart = bb.generate({
+			title: {text: "Ticket Report by Count "},
+			data: {
+				type: "bar",
+				onclick: function(arg1){
+					console.log(arg1);
+					let date_clicked = date[arg1.index];
+					console.log(date_clicked); // date
+					opening_new_tab_simple(report_name, filters, date_clicked);
+				},
+				columns: [
+					count, completed
+				]
+			},
+		axis: {
+			x: {type: "category",categories: date,},
+		},
+		bindto: "#ticket_report_register_by_count",
+		});
+	}
+
+
+
+	// ^^^^^^^^^^^^^^^^^ ticket_report_register- END  ^^^^^^^^^^^^^^^^^^^^^^
+
+
+
+
+
+	// ^^^^^^^^^^^^^^^^^ expense_report_register- START  ^^^^^^^^^^^^^^^^^^^^^^
+let expense_report_register_by_amount  = function(time_of_invoke){
+		let filters = "";
+		if(time_of_invoke == 'on-load'){
+			console.log('on-load');
+		    filters = global_get_filters();
+		} else {
+			console.log('on-submit');
+			filters = global_get_filters_on_submit();
+		}
+
+		console.log('-----filters----- expense_report_register_by_amount ')
+		console.log(filters);
+		frappe.call({
+			method: "rom_app.restaurant_ops_mgmt.report.expense_report_register.expense_report_register.get_data_by_count",
+			args: {
+				'filters':filters
+			},
+			callback: function(data) {
+				console.log('data', data);
+				expense_report_register_by_count_draw(data);
+			}
+		});
+	}
+
+	let expense_report_register_by_count_draw  = function(data){
+		console.log("-------------- expense_report_register_by_count_draw -------------- ");
+		let report_name = "Expense Report Register";
+		console.log(data);
+		let date = [];
+		let amount = [];
+		//let completed = [];
+		amount.push("Amount");
+		//completed.push("Completed");
+
+
+		let message = data.message;
+		message.forEach((item) => {
+			console.log(item);
+			date.push(item.date);
+			amount.push(item.amount);
+			//completed.push(item.completed);
+		});
+
+		console.log('date', date);
+		console.log('amount', amount);
+		//console.log('completed', completed);
+
+		var chart = bb.generate({
+			title: {text: "Expense Report By Amount"},
+			data: {
+				type: "bar",
+				onclick: function(arg1){
+					console.log(arg1);
+					let date_clicked = date[arg1.index];
+					console.log(date_clicked); // date
+					opening_new_tab_simple(report_name, filters, date_clicked);
+				},
+				columns: [
+					amount
+				]
+			},
+		axis: {
+			x: {type: "category",categories: date,},
+		},
+		bindto: "#expense_report_register_by_amount",
+		});
+	}
+
+
+
+	// ^^^^^^^^^^^^^^^^^ expense_report_register- END  ^^^^^^^^^^^^^^^^^^^^^^
+
+
 
 	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	$(frappe.render_template("single_page_chart", {})).appendTo(page.body);
@@ -1330,6 +1488,8 @@ let discount_form_by_percentage_draw  = function(data){
 
 	cutlery_inventory_count_register_by_difference('on-load');
 	discount_form_by_percentage('on-load');
+	ticket_report_register_by_count('on-load');
+	expense_report_register_by_amount('on-load');
 
  }
 

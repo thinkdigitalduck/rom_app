@@ -24,7 +24,7 @@
    "fieldtype": "Data",
    "in_list_view": 1,
    "label": "Question",
-   "reqd": 1
+   "read_only": 1
   },
   {
    "default": "0",
@@ -38,7 +38,7 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2024-07-22 18:55:17.795314",
+ "modified": "2024-08-26 11:13:47.323286",
  "modified_by": "Administrator",
  "module": "Restaurant Ops Mgmt",
  "name": "Dm Closing Checklist Child",

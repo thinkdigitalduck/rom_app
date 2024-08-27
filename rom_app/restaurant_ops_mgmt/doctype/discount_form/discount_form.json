@@ -9,11 +9,14 @@
   "user_name",
   "known_to",
   "customer_name",
+  "customer_phone",
   "branch_id",
   "column_break_slgp",
   "date",
   "bill_value",
-  "discount_percentage"
+  "discount_type",
+  "discount_percentage",
+  "discounted_price"
  ],
  "fields": [
   {
@@ -67,6 +70,7 @@
   {
    "fieldname": "bill_value",
    "fieldtype": "Currency",
+   "in_list_view": 1,
    "label": "Bill Value",
    "reqd": 1
   },
@@ -74,12 +78,33 @@
    "default": "0",
    "fieldname": "discount_percentage",
    "fieldtype": "Int",
-   "label": "Discount Percentage"
+   "label": "Discount Percentage",
+   "read_only": 1
+  },
+  {
+   "fieldname": "discount_type",
+   "fieldtype": "Select",
+   "in_standard_filter": 1,
+   "label": "Discount Type",
+   "options": "\nRequest - 3%\nLoyal Customers - 5%\nOfficials - 10%\nRelatives and Friends - 10%\nEmployees - 15%\nDirectors - 20%",
+   "reqd": 1
+  },
+  {
+   "fieldname": "discounted_price",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Discoun Price",
+   "read_only": 1
+  },
+  {
+   "fieldname": "customer_phone",
+   "fieldtype": "Data",
+   "label": "Customer Phone"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-08-01 09:54:49.017490",
+ "modified": "2024-08-27 18:31:10.334601",
  "modified_by": "Administrator",
  "module": "Restaurant Ops Mgmt",
  "name": "Discount Form",

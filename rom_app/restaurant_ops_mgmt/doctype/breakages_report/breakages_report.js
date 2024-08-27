@@ -66,4 +66,26 @@ frappe.ui.form.on("Breakages Report", {
 			});
 		}
     },
+
+	item: function(frm) {
+		console.log(' item selected ');
+		calculate_total_breakage_cost(frm);
+	},
+
+	quantity: function(frm) {
+		calculate_total_breakage_cost(frm);
+	},
+
 });
+
+function calculate_total_breakage_cost(frm) {
+	let item_price = frm.doc.item_price;
+	let quantity = frm.doc.quantity;
+	if(item_price && quantity){
+		let total_cost = item_price * quantity;
+		console.log('total_cost=',total_cost);
+		frm.set_value('cost', total_cost);
+	}
+}
+
+

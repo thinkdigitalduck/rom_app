@@ -1,0 +1,114 @@
+{
+ "actions": [],
+ "autoname": "autoincrement",
+ "creation": "2024-08-23 15:05:18.085710",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "branch_name",
+  "department",
+  "column_break_ydrh",
+  "date",
+  "user_name",
+  "branch_id",
+  "section_break_lywh",
+  "raw_materials",
+  "section_break_pauq",
+  "additional_items"
+ ],
+ "fields": [
+  {
+   "default": "Today",
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "department",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Department",
+   "options": "Department",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_ydrh",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_lywh",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "raw_materials",
+   "fieldtype": "Table",
+   "label": "Raw Materials",
+   "options": "Chef Indent By Dept Child"
+  },
+  {
+   "default": "user_fullname",
+   "fieldname": "user_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "User Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "branch_id",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Branch Id",
+   "read_only": 1
+  },
+  {
+   "fieldname": "branch_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Branch Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_pauq",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "additional_items",
+   "fieldtype": "Table",
+   "label": "Additional Items",
+   "options": "Chef Indent By Dept Child Additional"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-08-26 11:00:21.983989",
+ "modified_by": "Administrator",
+ "module": "Restaurant Ops Mgmt",
+ "name": "Chef Indent By Dept",
+ "naming_rule": "Autoincrement",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "show_title_field_in_link": 1,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "branch_name"
+}

@@ -8,6 +8,7 @@
   "branch_name",
   "user_name",
   "item",
+  "item_price",
   "quantity",
   "employee",
   "category_id",
@@ -59,7 +60,7 @@
    "fieldtype": "Currency",
    "in_list_view": 1,
    "label": "Cost",
-   "reqd": 1
+   "read_only": 1
   },
   {
    "fieldname": "remarks",
@@ -108,11 +109,19 @@
    "fieldtype": "Data",
    "hidden": 1,
    "label": "Category Id"
+  },
+  {
+   "fetch_from": "item.price",
+   "fieldname": "item_price",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Item Price",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-08-15 13:18:18.129001",
+ "modified": "2024-08-26 19:38:32.047697",
  "modified_by": "Administrator",
  "module": "Restaurant Ops Mgmt",
  "name": "Breakages Report",

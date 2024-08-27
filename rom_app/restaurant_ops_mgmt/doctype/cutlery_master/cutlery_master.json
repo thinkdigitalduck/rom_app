@@ -8,7 +8,8 @@
   "branch",
   "category",
   "item",
-  "standard_stock"
+  "standard_stock",
+  "price"
  ],
  "fields": [
   {
@@ -38,11 +39,17 @@
    "fieldtype": "Int",
    "in_list_view": 1,
    "label": "Standard Stock"
+  },
+  {
+   "fieldname": "price",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Price"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-08-05 19:12:18.760242",
+ "modified": "2024-08-26 18:22:17.703564",
  "modified_by": "Administrator",
  "module": "Restaurant Ops Mgmt",
  "name": "Cutlery Master",

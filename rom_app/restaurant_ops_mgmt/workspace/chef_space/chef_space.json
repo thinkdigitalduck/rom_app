@@ -1,0 +1,90 @@
+{
+ "charts": [],
+ "content": "[{\"id\":\"HUUqy_WGS7\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Chef Workspace</span>\",\"col\":12}},{\"id\":\"8VVuXjY0Ny\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Chef Opening Checklist List\",\"col\":8}},{\"id\":\"CjwtjwG6kT\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Ticket Report\",\"col\":8}},{\"id\":\"WkHpcclDpR\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Chef Production\",\"col\":8}},{\"id\":\"LI1fOtu3hP\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Chef Indent By Dept\",\"col\":8}},{\"id\":\"n-JRK9enjH\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Chef Closing Checklist List\",\"col\":8}},{\"id\":\"UC3-4_UlQz\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Breakages Report\",\"col\":8}},{\"id\":\"IZvi3GZT76\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Cutlery Inventory Count\",\"col\":8}}]",
+ "creation": "2024-07-20 08:21:09.729604",
+ "custom_blocks": [],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "icon": "upload-lg",
+ "idx": 0,
+ "indicator_color": "",
+ "is_hidden": 0,
+ "label": "Chef Space",
+ "links": [],
+ "modified": "2024-08-27 19:17:14.720915",
+ "modified_by": "Administrator",
+ "module": "Restaurant Ops Mgmt",
+ "name": "Chef Space",
+ "number_cards": [],
+ "owner": "Administrator",
+ "parent_page": "",
+ "public": 1,
+ "quick_lists": [],
+ "roles": [
+  {
+   "role": "Rom_Chef_Role"
+  }
+ ],
+ "sequence_id": 1.0,
+ "shortcuts": [
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Chef Indent By Dept",
+   "link_to": "Chef Indent By Dept",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Cutlery Inventory Count",
+   "link_to": "Cutlery Inventory Count",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Chef Production",
+   "link_to": "Chef Production",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Chef Opening Checklist List",
+   "link_to": "Chef Opening Checklist",
+   "stats_filter": "[[\"Chef Opening Checklist\",\"chef_open_date\",\"Timespan\",\"today\",false]]",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Breakages Report",
+   "link_to": "Breakages Report",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Ticket Report",
+   "link_to": "Ticket Report",
+   "stats_filter": "[[\"Ticket Report\",\"date\",\"Timespan\",\"today\",false]]",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Chef Closing Checklist List",
+   "link_to": "Chef Closing Checklist",
+   "stats_filter": "[]",
+   "type": "DocType"
+  }
+ ],
+ "title": "Chef Space"
+}

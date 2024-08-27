@@ -20,7 +20,8 @@ def execute(filters=None):
             'known_to': d.known_to,
             'customer_name': d.customer_name,
             'bill_value': d.bill_value,
-            'discount_percentage': d.discount_percentage
+            'discount_percentage': d.discount_percentage,
+            'discounted_price': d.discounted_price,
         })
         data.append(row)
 
@@ -69,6 +70,11 @@ def get_columns():
             'fieldname': 'discount_percentage',
             'label': 'Discount %',
             'fieldtype': 'Data',
+        },
+        {
+            'fieldname': 'discounted_price',
+            'label': 'Discount Price',
+            'fieldtype': 'Data',
         }
     ]
 
@@ -86,7 +92,8 @@ def get_data(filters):
         known_to,
         customer_name,
         bill_value,
-        discount_percentage
+        discount_percentage,
+        discounted_price
         FROM
         `tabDiscount Form`
         """
@@ -126,11 +133,11 @@ def get_data_by_percentage(filters):
         SELECT
         `date`,
         sum(bill_value) as bill_value,
-        sum(discount_percentage) as percentage
+        sum(discounted_price) as discounted_price
         FROM
         `tabDiscount Form`
         """
-    where_cond = f" WHERE date between '{conditions['from_date_filter']}' AND '{conditions['to_date_filter']}' "
+    where_cond = f" WHERE STR_TO_DATE(date, '%Y-%m-%d')  between '{conditions['from_date_filter']}' AND '{conditions['to_date_filter']}' "
 
     if "branch_filter" in conditions:
         where_cond = where_cond + f" AND branch_id = '{conditions['branch_filter']}' "

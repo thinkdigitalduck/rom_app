@@ -1,22 +1,22 @@
 {
  "charts": [],
- "content": "[{\"id\":\"ZqnuJ3oLig\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Restaurant Manager Workspace</span>\",\"col\":12}},{\"id\":\"bvY43cG9-y\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Chef Opening Checklist Audit\",\"col\":5}},{\"id\":\"iguA7FpZGQ\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Chef Closing Checklist Audit\",\"col\":5}},{\"id\":\"wwAD3yYMFJ\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Chef Production\",\"col\":5}},{\"id\":\"tWTxPI8xch\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Chef Indent Approval\",\"col\":5}},{\"id\":\"Y18_rKQUVf\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Dm Opening Checklist Audit\",\"col\":5}},{\"id\":\"1f-KhWTotN\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Dm Closing Checklist Audit\",\"col\":5}},{\"id\":\"th51n6vOyp\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Breakages Report\",\"col\":5}},{\"id\":\"u5apW1bBhS\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"NC Report\",\"col\":5}},{\"id\":\"auKQNj3f2f\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Cutlery Inventory Count\",\"col\":5}},{\"id\":\"PdVyevIrpr\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Incident Form\",\"col\":5}},{\"id\":\"62_kqXzIkE\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Sales Report\",\"col\":5}},{\"id\":\"gIM87TU5Jk\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Discount Form\",\"col\":5}}]",
+ "content": "[{\"id\":\"ZqnuJ3oLig\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Restaurant Manager Workspace</span>\",\"col\":12}},{\"id\":\"bvY43cG9-y\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Chef Opening Checklist Audit\",\"col\":5}},{\"id\":\"iguA7FpZGQ\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Chef Closing Checklist Audit\",\"col\":5}},{\"id\":\"wwAD3yYMFJ\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Chef Production\",\"col\":5}},{\"id\":\"tWTxPI8xch\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Chef Indent Approval\",\"col\":5}},{\"id\":\"Y18_rKQUVf\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Dm Opening Checklist Audit\",\"col\":5}},{\"id\":\"1f-KhWTotN\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Dm Closing Checklist Audit\",\"col\":5}},{\"id\":\"th51n6vOyp\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Breakages Report\",\"col\":5}},{\"id\":\"u5apW1bBhS\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"NC Report\",\"col\":5}},{\"id\":\"auKQNj3f2f\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Cutlery Inventory Count\",\"col\":5}},{\"id\":\"PdVyevIrpr\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Incident Form\",\"col\":5}},{\"id\":\"62_kqXzIkE\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Sales Report\",\"col\":5}},{\"id\":\"gIM87TU5Jk\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Discount Form\",\"col\":5}},{\"id\":\"VR3S1EO5KB\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Ticket Report\",\"col\":5}}]",
  "creation": "2024-07-20 08:21:53.613397",
  "custom_blocks": [],
  "docstatus": 0,
  "doctype": "Workspace",
  "for_user": "",
  "hide_custom": 0,
- "icon": "criticize",
- "idx": 0,
+ "icon": "color-monthly-rank",
+ "idx": 1,
  "indicator_color": "",
  "is_hidden": 0,
- "label": "Rest Mgr Workspace",
+ "label": "Restaurant Mgr Space",
  "links": [],
- "modified": "2024-08-05 11:16:29.909287",
+ "modified": "2024-08-26 20:58:42.502784",
  "modified_by": "Administrator",
  "module": "Restaurant Ops Mgmt",
- "name": "Rest Mgr Workspace",
+ "name": "Restaurant Mgr Space",
  "number_cards": [],
  "owner": "Administrator",
  "parent_page": "",
@@ -27,7 +27,7 @@
    "role": "Rom_RM_Role"
   }
  ],
- "sequence_id": 3.0,
+ "sequence_id": 5.0,
  "shortcuts": [
   {
    "color": "Grey",
@@ -80,6 +80,14 @@
   {
    "color": "Grey",
    "doc_view": "List",
+   "label": "Ticket Report",
+   "link_to": "Ticket Report",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
    "label": "Discount Form",
    "link_to": "Discount Form",
    "stats_filter": "[]",
@@ -126,5 +134,5 @@
    "type": "DocType"
   }
  ],
- "title": "Rest Mgr Workspace"
+ "title": "Restaurant Mgr Space"
 }

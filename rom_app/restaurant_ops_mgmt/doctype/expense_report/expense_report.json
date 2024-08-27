@@ -1,0 +1,109 @@
+{
+ "actions": [],
+ "autoname": "autoincrement",
+ "creation": "2024-08-27 14:34:45.425721",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "branch_name",
+  "expense_desc",
+  "expense_amount",
+  "responsible_person",
+  "column_break_mwme",
+  "user_name",
+  "date",
+  "remarks",
+  "branch_id"
+ ],
+ "fields": [
+  {
+   "default": "Today",
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Date",
+   "read_only": 1
+  },
+  {
+   "default": "user_fullname",
+   "fieldname": "user_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "User Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "expense_desc",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Expense Desc",
+   "reqd": 1
+  },
+  {
+   "fieldname": "expense_amount",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Expense Amount",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_mwme",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "branch_id",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Branch Id"
+  },
+  {
+   "fieldname": "branch_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Branch Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "remarks",
+   "fieldtype": "Data",
+   "label": "Remarks"
+  },
+  {
+   "fieldname": "responsible_person",
+   "fieldtype": "Data",
+   "label": "Responsible Person",
+   "reqd": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-08-27 16:08:48.984638",
+ "modified_by": "Administrator",
+ "module": "Restaurant Ops Mgmt",
+ "name": "Expense Report",
+ "naming_rule": "Autoincrement",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "show_title_field_in_link": 1,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "branch_name",
+ "track_changes": 1
+}
