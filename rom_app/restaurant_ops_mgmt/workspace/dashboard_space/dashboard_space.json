@@ -1,6 +1,6 @@
 {
  "charts": [],
- "content": "[{\"id\":\"Ddpyn2rQhB\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Dashboard Workspace<br></span>\",\"col\":12}},{\"id\":\"jNUc1OfQ5O\",\"type\":\"card\",\"data\":{\"card_name\":\"Dashboard\",\"col\":3}},{\"id\":\"zt1QEct5Pu\",\"type\":\"card\",\"data\":{\"card_name\":\"Chef Reports\",\"col\":3}},{\"id\":\"78WkuG1wHY\",\"type\":\"card\",\"data\":{\"card_name\":\"Dining Manager Reports\",\"col\":3}},{\"id\":\"wQFKQOqQ0p\",\"type\":\"card\",\"data\":{\"card_name\":\"Restaurant Manager Reports\",\"col\":4}},{\"id\":\"DozMf5zGse\",\"type\":\"card\",\"data\":{\"card_name\":\"Cashier Reports\",\"col\":3}},{\"id\":\"YN2ZnovPZR\",\"type\":\"card\",\"data\":{\"card_name\":\"Common Reports\",\"col\":3}}]",
+ "content": "[{\"id\":\"Ddpyn2rQhB\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Dashboard Workspace<br></span>\",\"col\":12}},{\"id\":\"jNUc1OfQ5O\",\"type\":\"card\",\"data\":{\"card_name\":\"Dashboard\",\"col\":3}},{\"id\":\"zt1QEct5Pu\",\"type\":\"card\",\"data\":{\"card_name\":\"Chef Reports\",\"col\":3}},{\"id\":\"78WkuG1wHY\",\"type\":\"card\",\"data\":{\"card_name\":\"Dining Manager Reports\",\"col\":3}},{\"id\":\"DozMf5zGse\",\"type\":\"card\",\"data\":{\"card_name\":\"Cashier Reports\",\"col\":3}},{\"id\":\"wQFKQOqQ0p\",\"type\":\"card\",\"data\":{\"card_name\":\"Restaurant Mgr Reports\",\"col\":3}},{\"id\":\"YN2ZnovPZR\",\"type\":\"card\",\"data\":{\"card_name\":\"Common Reports\",\"col\":3}}]",
  "creation": "2024-08-01 19:03:12.196385",
  "custom_blocks": [],
  "docstatus": 0,
@@ -143,35 +143,6 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Restaurant Manager Reports",
-   "link_count": 2,
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Card Break"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 1,
-   "label": "Discount Form",
-   "link_count": 0,
-   "link_to": "Discount Form Register",
-   "link_type": "Report",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 1,
-   "label": "NC Report",
-   "link_count": 0,
-   "link_to": "NC Report Register",
-   "link_type": "Report",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
    "label": "Dashboard",
    "link_count": 1,
    "link_type": "DocType",
@@ -216,9 +187,38 @@
    "link_type": "Report",
    "onboard": 0,
    "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Restaurant Mgr Reports",
+   "link_count": 2,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Discount Form",
+   "link_count": 0,
+   "link_to": "Discount Form Register",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "NC Report",
+   "link_count": 0,
+   "link_to": "NC Report Register",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
   }
  ],
- "modified": "2024-08-27 15:08:45.211664",
+ "modified": "2024-08-27 21:33:40.487442",
  "modified_by": "Administrator",
  "module": "Restaurant Ops Mgmt",
  "name": "Dashboard Space",

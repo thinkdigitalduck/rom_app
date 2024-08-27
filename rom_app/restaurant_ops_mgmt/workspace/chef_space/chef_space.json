@@ -13,7 +13,7 @@
  "is_hidden": 0,
  "label": "Chef Space",
  "links": [],
- "modified": "2024-08-27 19:17:14.720915",
+ "modified": "2024-08-27 20:31:46.257073",
  "modified_by": "Administrator",
  "module": "Restaurant Ops Mgmt",
  "name": "Chef Space",
@@ -30,59 +30,59 @@
  "sequence_id": 1.0,
  "shortcuts": [
   {
-   "color": "Grey",
-   "doc_view": "List",
-   "label": "Chef Indent By Dept",
-   "link_to": "Chef Indent By Dept",
-   "stats_filter": "[]",
-   "type": "DocType"
-  },
-  {
-   "color": "Grey",
-   "doc_view": "List",
-   "label": "Cutlery Inventory Count",
-   "link_to": "Cutlery Inventory Count",
-   "stats_filter": "[]",
-   "type": "DocType"
-  },
-  {
-   "color": "Grey",
-   "doc_view": "List",
-   "label": "Chef Production",
-   "link_to": "Chef Production",
-   "stats_filter": "[]",
-   "type": "DocType"
-  },
-  {
-   "color": "Grey",
+   "color": "Green",
    "doc_view": "List",
    "label": "Chef Opening Checklist List",
    "link_to": "Chef Opening Checklist",
-   "stats_filter": "[[\"Chef Opening Checklist\",\"chef_open_date\",\"Timespan\",\"today\",false]]",
+   "stats_filter": "[[\"Chef Opening Checklist\",\"creation\",\"Timespan\",\"today\",false]]",
    "type": "DocType"
   },
   {
-   "color": "Grey",
-   "doc_view": "List",
-   "label": "Breakages Report",
-   "link_to": "Breakages Report",
-   "stats_filter": "[]",
-   "type": "DocType"
-  },
-  {
-   "color": "Grey",
+   "color": "Green",
    "doc_view": "List",
    "label": "Ticket Report",
    "link_to": "Ticket Report",
-   "stats_filter": "[[\"Ticket Report\",\"date\",\"Timespan\",\"today\",false]]",
+   "stats_filter": "[[\"Ticket Report\",\"creation\",\"Timespan\",\"today\",false]]",
    "type": "DocType"
   },
   {
-   "color": "Grey",
+   "color": "Green",
+   "doc_view": "List",
+   "label": "Chef Production",
+   "link_to": "Chef Production",
+   "stats_filter": "[[\"Chef Production\",\"creation\",\"Timespan\",\"today\",false]]",
+   "type": "DocType"
+  },
+  {
+   "color": "Green",
+   "doc_view": "List",
+   "label": "Chef Indent By Dept",
+   "link_to": "Chef Indent By Dept",
+   "stats_filter": "[[\"Chef Indent By Dept\",\"creation\",\"Timespan\",\"today\",false]]",
+   "type": "DocType"
+  },
+  {
+   "color": "Green",
    "doc_view": "List",
    "label": "Chef Closing Checklist List",
    "link_to": "Chef Closing Checklist",
-   "stats_filter": "[]",
+   "stats_filter": "[[\"Chef Closing Checklist\",\"creation\",\"Timespan\",\"today\",false]]",
+   "type": "DocType"
+  },
+  {
+   "color": "Green",
+   "doc_view": "List",
+   "label": "Breakages Report",
+   "link_to": "Breakages Report",
+   "stats_filter": "[[\"Breakages Report\",\"creation\",\"Timespan\",\"today\",false]]",
+   "type": "DocType"
+  },
+  {
+   "color": "Green",
+   "doc_view": "List",
+   "label": "Cutlery Inventory Count",
+   "link_to": "Cutlery Inventory Count",
+   "stats_filter": "[[\"Cutlery Inventory Count\",\"creation\",\"Timespan\",\"today\",false]]",
    "type": "DocType"
   }
  ],

@@ -1,6 +1,6 @@
 {
  "charts": [],
- "content": "[{\"id\":\"-WIeLytqkA\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Dining Manager Workspace</span>\",\"col\":12}},{\"id\":\"eoxm6t2gNN\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Dm Opening Checklist\",\"col\":5}},{\"id\":\"Ij1qVqGgs7\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Dm Closing Checklist\",\"col\":5}},{\"id\":\"rCoGcVr7XB\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Breakages Report\",\"col\":5}},{\"id\":\"AlEbJPbP_a\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Ticket Report\",\"col\":5}},{\"id\":\"jQnWfCoyNx\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Cutlery Inventory Count\",\"col\":5}},{\"id\":\"19pVrV76kS\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Incident Form\",\"col\":5}}]",
+ "content": "[{\"id\":\"-WIeLytqkA\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Dining Manager Workspace</span>\",\"col\":12}},{\"id\":\"eoxm6t2gNN\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Dm Opening Checklist\",\"col\":8}},{\"id\":\"19pVrV76kS\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Incident Form\",\"col\":8}},{\"id\":\"AlEbJPbP_a\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Ticket Report\",\"col\":8}},{\"id\":\"rCoGcVr7XB\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Breakages Report\",\"col\":8}},{\"id\":\"Ij1qVqGgs7\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Dm Closing Checklist\",\"col\":8}},{\"id\":\"jQnWfCoyNx\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Cutlery Inventory Count\",\"col\":8}}]",
  "creation": "2024-07-20 08:21:34.614118",
  "custom_blocks": [],
  "docstatus": 0,
@@ -13,7 +13,7 @@
  "is_hidden": 0,
  "label": "Dining Mgr Space",
  "links": [],
- "modified": "2024-08-26 22:01:36.624275",
+ "modified": "2024-08-27 21:09:21.825111",
  "modified_by": "Administrator",
  "module": "Restaurant Ops Mgmt",
  "name": "Dining Mgr Space",
@@ -30,43 +30,11 @@
  "sequence_id": 2.0,
  "shortcuts": [
   {
-   "color": "Grey",
+   "color": "Green",
    "doc_view": "List",
    "label": "Dm Opening Checklist",
    "link_to": "Dm Opening Checklist",
-   "stats_filter": "[]",
-   "type": "DocType"
-  },
-  {
-   "color": "Grey",
-   "doc_view": "List",
-   "label": "Cutlery Inventory Count",
-   "link_to": "Cutlery Inventory Count",
-   "stats_filter": "[]",
-   "type": "DocType"
-  },
-  {
-   "color": "Grey",
-   "doc_view": "List",
-   "label": "Incident Form",
-   "link_to": "Incident Report",
-   "stats_filter": "[]",
-   "type": "DocType"
-  },
-  {
-   "color": "Grey",
-   "doc_view": "List",
-   "label": "Breakages Report",
-   "link_to": "Breakages Report",
-   "stats_filter": "[]",
-   "type": "DocType"
-  },
-  {
-   "color": "Grey",
-   "doc_view": "List",
-   "label": "Ticket Report",
-   "link_to": "Ticket Report",
-   "stats_filter": "[]",
+   "stats_filter": "[[\"Dm Opening Checklist\",\"creation\",\"Timespan\",\"today\",false]]",
    "type": "DocType"
   },
   {
@@ -75,6 +43,38 @@
    "label": "Dm Closing Checklist",
    "link_to": "Dm Closing Checklist",
    "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Green",
+   "doc_view": "List",
+   "label": "Incident Form",
+   "link_to": "Incident Report",
+   "stats_filter": "[[\"Incident Report\",\"creation\",\"Timespan\",\"today\",false]]",
+   "type": "DocType"
+  },
+  {
+   "color": "Green",
+   "doc_view": "List",
+   "label": "Ticket Report",
+   "link_to": "Ticket Report",
+   "stats_filter": "[[\"Ticket Report\",\"creation\",\"Timespan\",\"today\",false]]",
+   "type": "DocType"
+  },
+  {
+   "color": "Green",
+   "doc_view": "List",
+   "label": "Breakages Report",
+   "link_to": "Breakages Report",
+   "stats_filter": "[[\"Breakages Report\",\"creation\",\"Timespan\",\"today\",false]]",
+   "type": "DocType"
+  },
+  {
+   "color": "Green",
+   "doc_view": "List",
+   "label": "Cutlery Inventory Count",
+   "link_to": "Cutlery Inventory Count",
+   "stats_filter": "[[\"Cutlery Inventory Count\",\"creation\",\"Timespan\",\"today\",false]]",
    "type": "DocType"
   }
  ],
