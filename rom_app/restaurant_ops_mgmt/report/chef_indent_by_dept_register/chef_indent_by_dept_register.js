@@ -1,8 +1,5 @@
-// Copyright (c) 2024, Pubs and contributors
-// For license information, please see license.txt
-
-frappe.query_reports["Chef Indent Register"] = {
-"filters": [
+frappe.query_reports["Chef Indent By Dept Register"] = {
+	"filters": [
 		{
 			"fieldname": "from_date_filter",
 			"label": "From Date *",

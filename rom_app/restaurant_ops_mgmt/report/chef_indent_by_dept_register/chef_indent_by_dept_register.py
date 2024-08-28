@@ -37,7 +37,7 @@ def get_columns():
             'label': 'Id',
             'fieldtype': 'Link',
             'width': '80',
-            'options': 'Chef Indent',
+            'options': 'Chef Indent By Dept',
         },
         {
             'fieldname': 'date',

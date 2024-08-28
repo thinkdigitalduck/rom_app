@@ -1,32 +1,32 @@
 {
- "add_total_row": 1,
+ "add_total_row": 0,
  "columns": [],
- "creation": "2024-08-03 06:41:02.056866",
+ "creation": "2024-07-31 10:42:09.455761",
  "disabled": 1,
  "docstatus": 0,
  "doctype": "Report",
  "filters": [],
- "idx": 2,
+ "idx": 0,
  "is_standard": "Yes",
  "letterhead": null,
- "modified": "2024-08-28 15:58:35.105961",
+ "modified": "2024-08-28 15:59:43.902568",
  "modified_by": "Administrator",
  "module": "Restaurant Ops Mgmt",
- "name": "Chef Indent Report",
+ "name": "chef_script_report1",
  "owner": "Administrator",
  "prepared_report": 0,
- "ref_doctype": "Chef Indent",
- "report_name": "Chef Indent Report",
+ "ref_doctype": "Chef Opening Checklist",
+ "report_name": "chef_script_report1",
  "report_type": "Script Report",
  "roles": [
-  {
-   "role": "System Manager"
-  },
   {
    "role": "Rom_Chef_Role"
   },
   {
    "role": "Rom_RM_Role"
+  },
+  {
+   "role": "System Manager"
   }
  ]
 }

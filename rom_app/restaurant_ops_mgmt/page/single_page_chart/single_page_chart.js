@@ -1,7 +1,7 @@
 frappe.pages['single-page-chart'].on_page_load = function(wrapper) {
 	var page = frappe.ui.make_app_page({
 		parent: wrapper,
-		title: 'Chart View',
+		title: 'Operations Board',
 		single_column: true
 	});
 
@@ -93,6 +93,7 @@ frappe.pages['single-page-chart'].on_page_load = function(wrapper) {
 
 			ticket_report_register_by_count('on-submit');
 			expense_report_register_by_amount('on-submit');
+			chef_indent_by_quantity('on-submit');
 
 		}
 	});
@@ -181,8 +182,9 @@ let opening_new_tab_simple = function (report_name, filters, date_clicked){
 
 		let path_report_name = "/app/query-report/{report_name}?";
 		let path_cond ="from_date_filter={from_date_filter}&to_date_filter={to_date_filter}";
-		//"&{report_cond}={report_cond_result}";
 		let path_branch="&branch_filter={branch_filter}";
+
+
 
 		path_report_name = path_report_name.replace("{report_name}", report_name);
 
@@ -190,6 +192,12 @@ let opening_new_tab_simple = function (report_name, filters, date_clicked){
 		path_cond = path_cond.replace("{to_date_filter}", date_clicked);
 
 		let report_url = protocol_host + path_report_name + path_cond;
+
+		console.log('============');
+		console.log('path_report_name',path_report_name);
+		console.log('path_cond',path_cond);
+		console.log('report_url',report_url);
+
 
 		console.log('filters', filters);
 		if (filters.hasOwnProperty("branch_filter")) {
@@ -1464,10 +1472,84 @@ let expense_report_register_by_amount  = function(time_of_invoke){
 		bindto: "#expense_report_register_by_amount",
 		});
 	}
-
-
-
 	// ^^^^^^^^^^^^^^^^^ expense_report_register- END  ^^^^^^^^^^^^^^^^^^^^^^
+
+
+
+
+
+// ^^^^^^^^^^^^^^^^^ chef_indent_by_quantity- START  ^^^^^^^^^^^^^^^^^^^^^^
+let chef_indent_by_quantity  = function(time_of_invoke){
+		let filters = "";
+		if(time_of_invoke == 'on-load'){
+			console.log('on-load');
+		    filters = global_get_filters();
+		} else {
+			console.log('on-submit');
+			filters = global_get_filters_on_submit();
+		}
+
+		console.log('-----filters----- chef_indent_by_quantity ')
+		console.log(filters);
+		frappe.call({
+			method: "rom_app.restaurant_ops_mgmt.report.chef_indent_register.chef_indent_register.get_data_by_group_by_date",
+			args: {
+				'filters':filters
+			},
+			callback: function(data) {
+				console.log('data', data);
+				chef_indent_by_quantity_draw(data);
+			}
+		});
+	}
+
+	let chef_indent_by_quantity_draw  = function(data){
+		console.log("-------------- chef_indent_by_quantity_draw -------------- ");
+		let report_name = "Chef Indent By Dept Register";
+		console.log(data);
+		let date = [];
+		let req_qty = [];
+		let issued_qty = [];
+		req_qty.push("Req Qty");
+		issued_qty.push("Iss Qty");
+
+		let message = data.message;
+		message.forEach((item) => {
+			console.log(item);
+			date.push(item.date);
+			req_qty.push(item.req_qty);
+			issued_qty.push(item.issued_qty);
+		});
+
+		console.log('date', date);
+		console.log('req_qty', req_qty);
+		console.log('issued_qty', issued_qty);
+
+		var chart = bb.generate({
+			title: {text: "Chef Indent By Quantity"},
+			data: {
+				type: "bar",
+				onclick: function(arg1){
+					console.log(arg1);
+					let date_clicked = date[arg1.index];
+					console.log(date_clicked); // date
+					opening_new_tab_simple(report_name, filters, date_clicked);
+				},
+				columns: [
+					req_qty,issued_qty
+				]
+			},
+		axis: {
+			x: {type: "category",categories: date,},
+		},
+		bindto: "#chef_indent_by_quantity",
+		});
+	}
+
+
+
+	// ^^^^^^^^^^^^^^^^^ chef_indent_by_quantity- END  ^^^^^^^^^^^^^^^^^^^^^^
+
 
 
 
@@ -1490,6 +1572,8 @@ let expense_report_register_by_amount  = function(time_of_invoke){
 	discount_form_by_percentage('on-load');
 	ticket_report_register_by_count('on-load');
 	expense_report_register_by_amount('on-load');
+
+	chef_indent_by_quantity('on-load');
 
  }
 

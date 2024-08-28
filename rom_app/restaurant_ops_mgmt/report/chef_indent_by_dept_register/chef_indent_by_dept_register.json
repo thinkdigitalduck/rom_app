@@ -1,26 +1,30 @@
 {
  "add_total_row": 1,
  "columns": [],
- "creation": "2024-08-03 08:05:59.780208",
+ "creation": "2024-08-28 15:51:57.677843",
  "disabled": 0,
  "docstatus": 0,
  "doctype": "Report",
  "filters": [],
- "idx": 66,
+ "idx": 0,
  "is_standard": "Yes",
  "letterhead": null,
- "modified": "2024-08-28 15:10:50.677502",
+ "modified": "2024-08-28 16:26:50.116283",
  "modified_by": "Administrator",
  "module": "Restaurant Ops Mgmt",
- "name": "Chef Indent Register",
+ "name": "Chef Indent By Dept Register",
  "owner": "Administrator",
  "prepared_report": 0,
  "ref_doctype": "Chef Indent By Dept",
- "report_name": "Chef Indent Register",
+ "reference_report": "",
+ "report_name": "Chef Indent By Dept Register",
  "report_type": "Script Report",
  "roles": [
   {
    "role": "System Manager"
+  },
+  {
+   "role": "Rom_Chef_Role"
   },
   {
    "role": "Rom_Dashboard_Role"
@@ -29,10 +33,13 @@
    "role": "Rom_RM_Role"
   },
   {
-   "role": "Rom_Chef_Role"
+   "role": "Rom_Admin_Role"
   },
   {
-   "role": "Rom_DM_Role"
+   "role": "Administrator"
+  },
+  {
+   "role": "System Manager"
   }
  ]
 }

@@ -7,10 +7,11 @@
  "field_order": [
   "branch_name",
   "department",
+  "branch_id",
   "column_break_ydrh",
   "date",
   "user_name",
-  "branch_id",
+  "rm_approval",
   "section_break_lywh",
   "raw_materials",
   "section_break_pauq",
@@ -82,11 +83,18 @@
    "fieldtype": "Table",
    "label": "Additional Items",
    "options": "Chef Indent By Dept Child Additional"
+  },
+  {
+   "default": "0",
+   "fieldname": "rm_approval",
+   "fieldtype": "Check",
+   "label": "RM Approval",
+   "permlevel": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-08-26 11:00:21.983989",
+ "modified": "2024-08-28 18:27:54.239020",
  "modified_by": "Administrator",
  "module": "Restaurant Ops Mgmt",
  "name": "Chef Indent By Dept",

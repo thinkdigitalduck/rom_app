@@ -94,74 +94,6 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Chef Reports",
-   "link_count": 4,
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Card Break"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 1,
-   "label": "Opening",
-   "link_count": 0,
-   "link_to": "Chef Opening Checklist Register",
-   "link_type": "Report",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 1,
-   "label": "Closing",
-   "link_count": 0,
-   "link_to": "Chef Closing Checklist Register",
-   "link_type": "Report",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 1,
-   "label": "Production",
-   "link_count": 0,
-   "link_to": "Chef Production Register",
-   "link_type": "Report",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 1,
-   "label": "Indent",
-   "link_count": 0,
-   "link_to": "Chef Indent Register",
-   "link_type": "Report",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Dashboard",
-   "link_count": 1,
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Card Break"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Operations Chart",
-   "link_count": 0,
-   "link_to": "single-page-chart",
-   "link_type": "Page",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
    "label": "Cashier Reports",
    "link_count": 2,
    "link_type": "DocType",
@@ -216,9 +148,77 @@
    "link_type": "Report",
    "onboard": 0,
    "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Chef Reports",
+   "link_count": 4,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Opening",
+   "link_count": 0,
+   "link_to": "Chef Opening Checklist Register",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Closing",
+   "link_count": 0,
+   "link_to": "Chef Closing Checklist Register",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Production",
+   "link_count": 0,
+   "link_to": "Chef Production Register",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Indent",
+   "link_count": 0,
+   "link_to": "Chef Indent By Dept Register",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Dashboard",
+   "link_count": 1,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Operations Board",
+   "link_count": 0,
+   "link_to": "single-page-chart",
+   "link_type": "Page",
+   "onboard": 0,
+   "type": "Link"
   }
  ],
- "modified": "2024-08-27 21:33:40.487442",
+ "modified": "2024-08-28 17:25:35.477192",
  "modified_by": "Administrator",
  "module": "Restaurant Ops Mgmt",
  "name": "Dashboard Space",
@@ -232,7 +232,7 @@
    "role": "Rom_Dashboard_Role"
   }
  ],
- "sequence_id": 7.0,
+ "sequence_id": 6.0,
  "shortcuts": [],
  "title": "Dashboard Space"
 }

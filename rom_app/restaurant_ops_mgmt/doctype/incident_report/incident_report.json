@@ -11,17 +11,15 @@
   "table_no",
   "incident_date_time",
   "captain_name",
-  "amount",
   "branch_id",
   "column_break_slgp",
   "date",
-  "handled_by",
   "type_of_complaint",
   "action_for_complaint",
   "result_of_action",
   "responsible_department",
   "remarks",
-  "informed_to_authority"
+  "amount"
  ],
  "fields": [
   {
@@ -61,11 +59,6 @@
    "reqd": 1
   },
   {
-   "fieldname": "handled_by",
-   "fieldtype": "Data",
-   "label": "Handled by"
-  },
-  {
    "fieldname": "column_break_slgp",
    "fieldtype": "Column Break"
   },
@@ -89,14 +82,14 @@
    "fieldname": "action_for_complaint",
    "fieldtype": "Select",
    "label": "Action for Complaint",
-   "options": "\nApologized\nReplaced\nNo Response",
+   "options": "\nCancelled\nReplaced\nAccepted",
    "reqd": 1
   },
   {
    "fieldname": "result_of_action",
    "fieldtype": "Select",
    "label": "Result of Action",
-   "options": "\nHappy\nAccepted\nAngry\nRejected",
+   "options": "\nHappy\nAngry",
    "reqd": 1
   },
   {
@@ -118,11 +111,6 @@
    "label": "Amount"
   },
   {
-   "fieldname": "informed_to_authority",
-   "fieldtype": "Data",
-   "label": "Informed to Authority"
-  },
-  {
    "fieldname": "branch_id",
    "fieldtype": "Data",
    "hidden": 1,
@@ -139,7 +127,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-08-13 15:44:14.780444",
+ "modified": "2024-08-28 07:44:47.717762",
  "modified_by": "Administrator",
  "module": "Restaurant Ops Mgmt",
  "name": "Incident Report",
