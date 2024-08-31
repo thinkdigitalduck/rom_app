@@ -45,7 +45,7 @@
   {
    "default": "Today",
    "fieldname": "date",
-   "fieldtype": "Data",
+   "fieldtype": "Date",
    "in_list_view": 1,
    "in_standard_filter": 1,
    "label": "Date",
@@ -126,7 +126,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-08-15 13:22:00.747676",
+ "modified": "2024-08-29 19:41:48.108476",
  "modified_by": "Administrator",
  "module": "Restaurant Ops Mgmt",
  "name": "Sales Report",

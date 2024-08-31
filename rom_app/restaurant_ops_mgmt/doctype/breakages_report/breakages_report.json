@@ -45,7 +45,7 @@
    "in_list_view": 1,
    "in_standard_filter": 1,
    "label": "Item",
-   "options": "Cutlery Master",
+   "options": "Asset Master",
    "reqd": 1
   },
   {
@@ -70,7 +70,7 @@
   {
    "default": "Today",
    "fieldname": "date",
-   "fieldtype": "Data",
+   "fieldtype": "Date",
    "in_list_view": 1,
    "in_standard_filter": 1,
    "label": "Date",
@@ -121,7 +121,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-08-26 19:38:32.047697",
+ "modified": "2024-08-29 19:38:21.331257",
  "modified_by": "Administrator",
  "module": "Restaurant Ops Mgmt",
  "name": "Breakages Report",

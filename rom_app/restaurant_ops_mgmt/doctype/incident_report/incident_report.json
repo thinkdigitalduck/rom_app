@@ -10,16 +10,17 @@
   "customer_name",
   "table_no",
   "incident_date_time",
-  "captain_name",
-  "branch_id",
+  "menu_item",
+  "menu_item_price",
   "column_break_slgp",
   "date",
+  "captain_name",
   "type_of_complaint",
   "action_for_complaint",
   "result_of_action",
   "responsible_department",
   "remarks",
-  "amount"
+  "branch_id"
  ],
  "fields": [
   {
@@ -105,12 +106,6 @@
    "label": "Remarks"
   },
   {
-   "fieldname": "amount",
-   "fieldtype": "Currency",
-   "in_list_view": 1,
-   "label": "Amount"
-  },
-  {
    "fieldname": "branch_id",
    "fieldtype": "Data",
    "hidden": 1,
@@ -123,11 +118,25 @@
    "in_standard_filter": 1,
    "label": "Branch Name",
    "read_only": 1
+  },
+  {
+   "fieldname": "menu_item",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Menu Item",
+   "options": "Menu"
+  },
+  {
+   "fetch_from": "menu_item.price",
+   "fieldname": "menu_item_price",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Menu Item Price"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-08-28 07:44:47.717762",
+ "modified": "2024-08-31 21:13:27.886448",
  "modified_by": "Administrator",
  "module": "Restaurant Ops Mgmt",
  "name": "Incident Report",

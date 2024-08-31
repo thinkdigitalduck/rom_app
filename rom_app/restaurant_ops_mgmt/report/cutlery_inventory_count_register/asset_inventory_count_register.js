@@ -1,5 +1,5 @@
-frappe.query_reports["Breakages Report Register"] = {
-"filters": [
+frappe.query_reports["Asset Inventory Count Register"] = {
+	"filters": [
 		{
 			"fieldname": "from_date_filter",
 			"label": "From Date *",
@@ -14,22 +14,22 @@ frappe.query_reports["Breakages Report Register"] = {
 			"default": frappe.datetime.now_date(),
 			"mandatory": 1,
 		},
-		{
+			{
 			"fieldname": "branch_filter",
 			"label": "Branch",
 			"fieldtype": "Link",
 			"options": "Branch",
 		},
 		{
-			"fieldname": "asset_master__filter",
-			"label": "Item",
+			"fieldname": "category_filter",
+			"label": "Category",
 			"fieldtype": "Link",
-			"options": "Asset Master",
+			"options": "Category",
 		},
 		{
-			"fieldname": "employee_filter",
-			"label": "Employee",
-			"fieldtype": "Data"
-		}
+			"fieldname": "item_filter",
+			"label": "Item",
+			"fieldtype": "Data",
+		},
 	]
 };

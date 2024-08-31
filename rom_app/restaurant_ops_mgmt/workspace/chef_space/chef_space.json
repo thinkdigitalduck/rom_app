@@ -1,6 +1,6 @@
 {
  "charts": [],
- "content": "[{\"id\":\"HUUqy_WGS7\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Chef Workspace</span>\",\"col\":12}},{\"id\":\"8VVuXjY0Ny\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Chef Opening Checklist List\",\"col\":8}},{\"id\":\"CjwtjwG6kT\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Ticket Report\",\"col\":8}},{\"id\":\"WkHpcclDpR\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Chef Production\",\"col\":8}},{\"id\":\"LI1fOtu3hP\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Chef Indent By Dept\",\"col\":8}},{\"id\":\"n-JRK9enjH\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Chef Closing Checklist List\",\"col\":8}},{\"id\":\"UC3-4_UlQz\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Breakages Report\",\"col\":8}},{\"id\":\"IZvi3GZT76\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Cutlery Inventory Count\",\"col\":8}}]",
+ "content": "[{\"id\":\"HUUqy_WGS7\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Chef Space</span>\",\"col\":12}},{\"id\":\"8VVuXjY0Ny\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Chef Opening Checklist\",\"col\":8}},{\"id\":\"CjwtjwG6kT\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Ticket Report\",\"col\":8}},{\"id\":\"WkHpcclDpR\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Chef Production\",\"col\":8}},{\"id\":\"LI1fOtu3hP\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Chef Indent By Dept\",\"col\":8}},{\"id\":\"n-JRK9enjH\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Chef Closing Checklist\",\"col\":8}},{\"id\":\"UC3-4_UlQz\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Breakages Report\",\"col\":8}},{\"id\":\"IZvi3GZT76\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Asset Inventory Count\",\"col\":8}}]",
  "creation": "2024-07-20 08:21:09.729604",
  "custom_blocks": [],
  "docstatus": 0,
@@ -13,7 +13,7 @@
  "is_hidden": 0,
  "label": "Chef Space",
  "links": [],
- "modified": "2024-08-28 11:13:11.010212",
+ "modified": "2024-08-31 16:21:36.943690",
  "modified_by": "Administrator",
  "module": "Restaurant Ops Mgmt",
  "name": "Chef Space",
@@ -32,9 +32,9 @@
   {
    "color": "Green",
    "doc_view": "List",
-   "label": "Chef Opening Checklist List",
-   "link_to": "Chef Opening Checklist",
-   "stats_filter": "[[\"Chef Opening Checklist\",\"creation\",\"Timespan\",\"today\",false]]",
+   "label": "Asset Inventory Count",
+   "link_to": "Asset Inventory Count",
+   "stats_filter": "[[\"Asset Inventory Count\",\"creation\",\"Timespan\",\"today\",false]]",
    "type": "DocType"
   },
   {
@@ -48,9 +48,25 @@
   {
    "color": "Green",
    "doc_view": "List",
+   "label": "Chef Opening Checklist",
+   "link_to": "Chef Opening Checklist",
+   "stats_filter": "[[\"Chef Opening Checklist\",\"creation\",\"Timespan\",\"today\",false]]",
+   "type": "DocType"
+  },
+  {
+   "color": "Green",
+   "doc_view": "List",
    "label": "Chef Production",
    "link_to": "Chef Production",
    "stats_filter": "[[\"Chef Production\",\"creation\",\"Timespan\",\"today\",false]]",
+   "type": "DocType"
+  },
+  {
+   "color": "Green",
+   "doc_view": "List",
+   "label": "Chef Closing Checklist",
+   "link_to": "Chef Closing Checklist",
+   "stats_filter": "[[\"Chef Closing Checklist\",\"creation\",\"Timespan\",\"today\",false]]",
    "type": "DocType"
   },
   {
@@ -64,25 +80,9 @@
   {
    "color": "Green",
    "doc_view": "List",
-   "label": "Chef Closing Checklist List",
-   "link_to": "Chef Closing Checklist",
-   "stats_filter": "[[\"Chef Closing Checklist\",\"creation\",\"Timespan\",\"today\",false]]",
-   "type": "DocType"
-  },
-  {
-   "color": "Green",
-   "doc_view": "List",
    "label": "Breakages Report",
    "link_to": "Breakages Report",
    "stats_filter": "[[\"Breakages Report\",\"creation\",\"Timespan\",\"today\",false]]",
-   "type": "DocType"
-  },
-  {
-   "color": "Green",
-   "doc_view": "List",
-   "label": "Cutlery Inventory Count",
-   "link_to": "Cutlery Inventory Count",
-   "stats_filter": "[[\"Cutlery Inventory Count\",\"creation\",\"Timespan\",\"today\",false]]",
    "type": "DocType"
   }
  ],

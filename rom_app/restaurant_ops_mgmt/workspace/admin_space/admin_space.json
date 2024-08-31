@@ -1,6 +1,6 @@
 {
  "charts": [],
- "content": "[{\"id\":\"RLrxSEV-I6\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Admin Workspace<i><br></i></span>\",\"col\":12}},{\"id\":\"6uJiUkj0IW\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Chef</b></span><i><span class=\\\"h4\\\"><b><br></b></span></i>\",\"col\":12}},{\"id\":\"6hCHtJ9bP1\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Opening Checklist Template\",\"col\":3}},{\"id\":\"Q9YcTZpmH7\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Closing Checklist Template\",\"col\":3}},{\"id\":\"qkt_Ejzmxz\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Production Template\",\"col\":4}},{\"id\":\"-I6tHnqAF2\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Raw Material Only\",\"col\":3}},{\"id\":\"kgzN7rpvYO\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Raw Material For Indent\",\"col\":3}},{\"id\":\"hB1GFm1cFH\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Dining Manager</b></span><i><span class=\\\"h4\\\"><b><br></b></span></i>\",\"col\":12}},{\"id\":\"W9NVyW5Vx9\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Opening Checklist Template\",\"col\":3}},{\"id\":\"aAQD85PYVG\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Closing Checklist Template\",\"col\":3}},{\"id\":\"bPDWZyXAgB\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Cutlery Master\",\"col\":3}},{\"id\":\"hr9vQaA_ER\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Common Data </b></span><i><span class=\\\"h4\\\"><b><br></b></span></i>\",\"col\":12}},{\"id\":\"B4VyawkvTi\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Branch\",\"col\":3}},{\"id\":\"hhm1qwk_fG\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Category\",\"col\":3}},{\"id\":\"Q3rNApfAt2\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Department\",\"col\":4}},{\"id\":\"3CYfsfQPel\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>User Config</b></span><i><span class=\\\"h4\\\"><b><br></b></span></i>\",\"col\":12}},{\"id\":\"L9xL4sPBmE\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"User\",\"col\":3}},{\"id\":\"yWk_SDvoo7\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"User to Branch Assignment\",\"col\":3}}]",
+ "content": "[{\"id\":\"RLrxSEV-I6\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Admin Workspace<i><br></i></span>\",\"col\":12}},{\"id\":\"6uJiUkj0IW\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Chef</b></span><i><span class=\\\"h4\\\"><b><br></b></span></i>\",\"col\":12}},{\"id\":\"W9NVyW5Vx9\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Opening Checklist Template\",\"col\":3}},{\"id\":\"Q9YcTZpmH7\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Closing Checklist Template\",\"col\":3}},{\"id\":\"qkt_Ejzmxz\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Production Template\",\"col\":4}},{\"id\":\"-I6tHnqAF2\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Raw Material Only\",\"col\":3}},{\"id\":\"kgzN7rpvYO\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Raw Material For Indent\",\"col\":3}},{\"id\":\"hB1GFm1cFH\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Dining Manager</b></span><i><span class=\\\"h4\\\"><b><br></b></span></i>\",\"col\":12}},{\"id\":\"6hCHtJ9bP1\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Opening Checklist Template\",\"col\":3}},{\"id\":\"aAQD85PYVG\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Closing Checklist Template\",\"col\":3}},{\"id\":\"bIhLTW_gDm\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Restaurant Manager <br></b></span>\",\"col\":12}},{\"id\":\"2htmQ-8yGi\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Menu\",\"col\":3}},{\"id\":\"iDaJRClEjY\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Master Data <br></b></span>\",\"col\":12}},{\"id\":\"B4VyawkvTi\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Branch\",\"col\":3}},{\"id\":\"Q3rNApfAt2\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Department\",\"col\":3}},{\"id\":\"HVNO-wdez8\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Asset Master\",\"col\":3}},{\"id\":\"hhm1qwk_fG\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Category\",\"col\":3}},{\"id\":\"3CYfsfQPel\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>User Config</b></span><i><span class=\\\"h4\\\"><b><br></b></span></i>\",\"col\":12}},{\"id\":\"L9xL4sPBmE\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"User\",\"col\":3}},{\"id\":\"yWk_SDvoo7\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"User to Branch Assignment\",\"col\":3}}]",
  "creation": "2024-07-20 08:22:34.182065",
  "custom_blocks": [],
  "docstatus": 0,
@@ -13,7 +13,7 @@
  "is_hidden": 0,
  "label": "Admin Space",
  "links": [],
- "modified": "2024-08-28 11:13:38.260313",
+ "modified": "2024-08-31 19:02:10.973517",
  "modified_by": "Administrator",
  "module": "Restaurant Ops Mgmt",
  "name": "Admin Space",
@@ -25,6 +25,9 @@
  "roles": [
   {
    "role": "Rom_Admin_Role"
+  },
+  {
+   "role": "Administrator"
   }
  ],
  "sequence_id": 7.0,
@@ -40,17 +43,17 @@
   {
    "color": "Green",
    "doc_view": "List",
-   "label": "Production Template",
-   "link_to": "Chef Production Temp",
+   "label": "Opening Checklist Template",
+   "link_to": "Dm Opening Checklist Template",
    "stats_filter": "[]",
    "type": "DocType"
   },
   {
    "color": "Green",
    "doc_view": "List",
-   "label": "Opening Checklist Template",
-   "link_to": "Dm Opening Checklist Template",
-   "stats_filter": "[]",
+   "label": "Menu",
+   "link_to": "Menu",
+   "stats_filter": "[[\"Menu\",\"creation\",\"Timespan\",\"today\",false]]",
    "type": "DocType"
   },
   {
@@ -64,8 +67,16 @@
   {
    "color": "Green",
    "doc_view": "List",
-   "label": "Cutlery Master",
-   "link_to": "Cutlery Master",
+   "label": "Asset Master",
+   "link_to": "Asset Master",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Green",
+   "doc_view": "List",
+   "label": "Production Template",
+   "link_to": "Chef Production Temp",
    "stats_filter": "[]",
    "type": "DocType"
   },

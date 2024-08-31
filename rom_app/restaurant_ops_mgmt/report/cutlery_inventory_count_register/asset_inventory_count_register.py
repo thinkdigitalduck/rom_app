@@ -19,10 +19,9 @@ def execute(filters=None):
             'branch_name': d.branch_name,
             'category_name': d.category_name,
             'item': d.item,
-            'quantity': d.quantity,
-            'employee': d.employee,
-            'cost': d.cost,
-            'remarks': d.remarks,
+            'standard_stock': d.standard_stock,
+            'current_stock': d.current_stock,
+            'difference':  d.difference,
         })
         data.append(row)
 
@@ -35,17 +34,17 @@ def get_columns():
             'fieldname': 'name',
             'label': 'Id',
             'fieldtype': 'Link',
-            'options': 'Breakages Report',
+            'options': 'Asset Inventory Count',
         },
         {
             'fieldname': 'date',
             'label': 'Date',
-            'fieldtype': 'Data',
+            'fieldtype': 'Date',
         },
         {
             'fieldname': 'user_name',
             'label': 'User Name',
-            'fieldtype': 'Data',
+            'fieldtype': 'Date',
         },
         {
             'fieldname': 'branch_name',
@@ -61,65 +60,54 @@ def get_columns():
             'fieldname': 'item',
             'label': 'Item',
             'fieldtype': 'Data',
+            'width': '160',
         },
         {
-            'fieldname': 'quantity',
-            'label': 'Quantity',
-            'fieldtype': 'Data',
+            'fieldname': 'standard_stock',
+            'label': 'Std. Stock',
+            'fieldtype': 'Int',
         },
         {
-            'fieldname': 'employee',
-            'label': 'Employee',
-            'fieldtype': 'Data',
+            'fieldname': 'current_stock',
+            'label': 'Curr. Stock',
+            'fieldtype': 'Int',
         },
         {
-            'fieldname': 'cost',
-            'label': 'Cost',
-            'fieldtype': 'Data',
-        },
-        {
-            'fieldname': 'remarks',
-            'label': 'Remarks',
-            'fieldtype': 'Data',
+            'fieldname': 'difference',
+            'label': 'Difference',
+            'fieldtype': 'Int',
         },
     ]
 
-@frappe.whitelist()
+
 def get_data(filters):
     conditions = get_conditions(filters)
     print("-------- get data ------------")
     print(conditions)
     build_sql = """
     SELECT
-    br.name,
-    br.`date`,
-    br.user_name,
-    br.branch_name,
-    br.date_time,
-    br.branch_id,
-    cm.item ,
-    br.quantity,
-    br.employee,
-    br.cost,
-    br.remarks,
-    br.category_name,
-    br.category_id
+    ic.name,
+    ic.date,
+    ic.user_name,
+    ic.branch_name,
+    ic.category_name,
+    icc.item,
+    icc.standard_stock,
+    icc.current_stock,
+    icc.difference
     FROM
-    `tabBreakages Report` br
+    `tabAsset Inventory Count` ic
     INNER JOIN
-    `tabAsset Master` cm
-    ON
-    br.item = cm.name
+    `tabAsset Inventory Count Child2` icc
+    ON ic.name = icc.parent
         """
-    where_cond = f" WHERE br.date between '{conditions['from_date_filter']}' AND '{conditions['to_date_filter']}' "
-
+    where_cond = f" WHERE ic.`date` between '{conditions['from_date_filter']}' AND  '{conditions['to_date_filter']}' "
     if "branch_filter" in conditions:
-        where_cond = where_cond + f" AND br.branch_id = '{conditions['branch_filter']}' "
-    if "asset_master__filter" in conditions:
-        where_cond = where_cond + f" AND cm.name = '{conditions['asset_master__filter']}' "
-    if "employee_filter" in conditions:
-        where_cond = where_cond + f" AND br.employee LIKE '%{conditions['employee_filter']}%' "
-
+        where_cond = where_cond + f" AND ic.branch_id = '{conditions['branch_filter']}' "
+    if "category_filter" in conditions:
+        where_cond = where_cond + f" AND ic.category_id = '{conditions['category_filter']}' "
+    if "item_filter" in conditions:
+        where_cond = where_cond + f" AND icc.item LIKE '%{conditions['item_filter']}%' "
 
     build_sql = f"{build_sql}  {where_cond}"
     print("-------- full sql ------------")
@@ -132,6 +120,7 @@ def get_conditions(filters):
     conditions = {}
     if (type(filters) is str):
         filters = json.loads(filters)
+
     for key, value in filters.items():
         if filters.get(key):
             conditions[key] = value
@@ -139,31 +128,31 @@ def get_conditions(filters):
 
 
 @frappe.whitelist()
-def get_data_by_group_by_date(filters):
+def get_data_by_difference(filters):
     conditions = get_conditions(filters)
-    print("--------  get_data_by_group_by_date ------------")
+    print("--------  get_data_by_difference ------------")
     print(conditions)
     build_sql = """
     SELECT
-    br.`date` as date,
-   sum(br.cost) as cost
+    ic.date,
+    sum(icc.difference) as difference
     FROM
-    `tabBreakages Report` br
+    `tabAsset Inventory Count` ic
     INNER JOIN
-    `tabAsset Master` cm
-    ON
-    br.item = cm.name
+    `tabAsset Inventory Count Child2` icc
+    ON ic.name = icc.parent
         """
-    where_cond = f" WHERE br.date between '{conditions['from_date_filter']}' AND '{conditions['to_date_filter']}' "
+    where_cond = f" WHERE ic.`date` between '{conditions['from_date_filter']}' AND  '{conditions['to_date_filter']}' "
     if "branch_filter" in conditions:
-        where_cond = where_cond + f" AND br.branch_id = '{conditions['branch_filter']}' "
+        where_cond = where_cond + f" AND ic.branch_id = '{conditions['branch_filter']}' "
 
-    group_by = " GROUP By date "
-    order_by = " ORDER BY date DESC "
+    group_by = " GROUP By ic.date "
+    order_by = " ORDER BY ic.date DESC "
+
     build_sql = f"{build_sql}  {where_cond} {group_by} {order_by}"
-
     print("-------- full sql ------------")
     print(build_sql)
     data = frappe.db.sql(build_sql, as_dict=True)
-    print(data)
     return data
+
+

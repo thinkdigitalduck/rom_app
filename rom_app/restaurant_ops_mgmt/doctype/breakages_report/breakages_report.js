@@ -56,8 +56,8 @@ frappe.ui.form.on("Breakages Report", {
 					frm.set_query("item", function(){
 						return {
 							"filters": [
-								["Cutlery Master", "branch", "=", branch__id],
-								["Cutlery Master", "category", "=",category_param]
+								["Asset Master", "branch", "=", branch__id],
+								["Asset Master", "category", "=",category_param]
 							]
 						}
 				    });

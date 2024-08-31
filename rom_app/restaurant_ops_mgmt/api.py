@@ -175,9 +175,9 @@ def get_chef_production_checklist_child_chicken(branch_param):
 
 
 # @frappe.whitelist()
-# def get_cutlery_master_child(branch_param):
-#     parent = frappe.qb.DocType("Cutlery Master")
-#     child = frappe.qb.DocType("Cutlery Master Child")
+# def get_asset_master_child(branch_param):
+#     parent = frappe.qb.DocType("Asset Master")
+#     child = frappe.qb.DocType("Asset Master Child")
 #
 #     query = (
 #         frappe.qb.from_(parent)
@@ -191,32 +191,32 @@ def get_chef_production_checklist_child_chicken(branch_param):
 #     return result
 #
 
+# @frappe.whitelist()
+# def get_asset_master_child_category_text(branch_param):
+#     branch_param = 1
+#     parent = frappe.qb.DocType("Asset Master")
+#     child = frappe.qb.DocType("Asset Master Child")
+#     superchild = frappe.qb.DocType("Category")
+#
+#     query = (
+#         frappe.qb.from_(parent)
+#         .inner_join(child)
+#         .on(parent.name == child.parent)
+#         .inner_join(superchild)
+#         .on(child.category == superchild.name)
+#         .select(parent.name, parent.branch, child.category, child.item, child.standard_stock, superchild.category_name)
+#         .where(parent.branch == branch_param)
+#     )
+#
+#     result = query.run()
+#     return result
+
 @frappe.whitelist()
-def get_cutlery_master_child_category_text(branch_param):
-    branch_param = 1
-    parent = frappe.qb.DocType("Cutlery Master")
-    child = frappe.qb.DocType("Cutlery Master Child")
-    superchild = frappe.qb.DocType("Category")
-
-    query = (
-        frappe.qb.from_(parent)
-        .inner_join(child)
-        .on(parent.name == child.parent)
-        .inner_join(superchild)
-        .on(child.category == superchild.name)
-        .select(parent.name, parent.branch, child.category, child.item, child.standard_stock, superchild.category_name)
-        .where(parent.branch == branch_param)
-    )
-
-    result = query.run()
-    return result
-
-@frappe.whitelist()
-def get_cutlery_master_child_based_on_branch_category(branch_param, category_param):
+def get_asset_master_child_based_on_branch_category(branch_param, category_param):
     # branch_param = 1
     # category_param = 1
-    parent = frappe.qb.DocType("Cutlery Master")
-    child = frappe.qb.DocType("Cutlery Master Child")
+    parent = frappe.qb.DocType("Asset Master")
+    child = frappe.qb.DocType("Asset Master Child")
 
     query = (
         frappe.qb.from_(parent)
@@ -234,14 +234,14 @@ def get_cutlery_master_child_based_on_branch_category(branch_param, category_par
 
 
 @frappe.whitelist()
-def get_cutlery_master_singltable_child_based_on_branch_category(branch_param, category_param):
+def get_asset_master_singltable_child_based_on_branch_category(branch_param, category_param):
     # branch_param = 1
     # category_param = 1
-    parent = frappe.qb.DocType("Cutlery Master")
+    parent = frappe.qb.DocType("Asset Master")
     print("branch_param")
     print(branch_param)
     print(category_param)
-    # child = frappe.qb.DocType("Cutlery Master Child")
+    # child = frappe.qb.DocType("Asset Master Child")
 
     query = (
         frappe.qb.from_(parent)
@@ -265,3 +265,25 @@ def get_production_items():
     item_data = frappe.db.sql(sql_full, as_dict=0)
     return item_data
     print(item_data)
+
+
+@frappe.whitelist()
+def get_production_item_query_briyani(doctype, txt, searchfield, start, page_len, filters):
+    print("python")
+    sql = """
+    select briyani_category, name from `tabChef Prod Child Briyani Temp`
+    """
+    result = frappe.db.sql(sql)
+    print(result)
+    return result
+
+
+@frappe.whitelist()
+def get_production_item_query_chicken(doctype, txt, searchfield, start, page_len, filters):
+    print("python")
+    sql = """
+    select chicken_category, name from `tabChef Prod Child Chicken Temp`
+    """
+    result = frappe.db.sql(sql)
+    print(result)
+    return result

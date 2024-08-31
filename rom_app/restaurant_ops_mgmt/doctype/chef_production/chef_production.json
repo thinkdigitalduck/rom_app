@@ -7,10 +7,10 @@
  "field_order": [
   "branch_name",
   "user_name",
-  "briyani_category_wastage_amount",
+  "branch_id",
   "column_break_rpev",
   "date",
-  "branch_id",
+  "briyani_category_wastage_amount",
   "chicken_category_wastage_amount",
   "section_break_chof",
   "briyani_category_list",
@@ -40,15 +40,6 @@
    "read_only": 1
   },
   {
-   "default": "Today",
-   "fieldname": "date",
-   "fieldtype": "Data",
-   "in_list_view": 1,
-   "in_standard_filter": 1,
-   "label": "Date",
-   "read_only": 1
-  },
-  {
    "fieldname": "column_break_rpev",
    "fieldtype": "Column Break"
   },
@@ -70,22 +61,31 @@
   },
   {
    "fieldname": "briyani_category_wastage_amount",
-   "fieldtype": "Data",
+   "fieldtype": "Currency",
    "in_list_view": 1,
    "label": "Briyani Category Wastage Amount",
    "read_only": 1
   },
   {
    "fieldname": "chicken_category_wastage_amount",
-   "fieldtype": "Data",
+   "fieldtype": "Currency",
    "in_list_view": 1,
    "label": "Chicken Category Wastage Amount",
+   "read_only": 1
+  },
+  {
+   "default": "Today",
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Date",
    "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-08-22 11:33:48.615624",
+ "modified": "2024-08-29 21:53:51.259813",
  "modified_by": "Administrator",
  "module": "Restaurant Ops Mgmt",
  "name": "Chef Production",

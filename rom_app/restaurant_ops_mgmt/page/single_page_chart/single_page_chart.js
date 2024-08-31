@@ -14,18 +14,30 @@ frappe.pages['single-page-chart'].on_page_load = function(wrapper) {
 	var global_get_to_date = function (){
 		var from_date_temp = frappe.datetime.now_date();
 		return from_date_temp;
-	};
+	}
 
 	var global_get_from_date = function (){
 		var from_date_temp = global_get_to_date();
 		var from_date_minus_one = new Date(frappe.datetime.str_to_obj(from_date_temp));
 		from_date_minus_one.setDate(from_date_minus_one.getDate() - 1);
 
-		var from_date_minus_one_opt = from_date_minus_one.getFullYear() + "-" +
-									(from_date_minus_one.getMonth()+1)+ "-" +
-									from_date_minus_one.getDate();
+		let date_only = from_date_minus_one.getDate();
+		let month_only = from_date_minus_one.getMonth() + 1;
+		if (month_only.toString().length == 1) {
+            month_only = "0" + month_only;
+        }
+		let year_only = from_date_minus_one.getFullYear();
+
+		var from_date_minus_one_opt = year_only + "-" + month_only + "-" + date_only;
+
+		console.log("^^^^^^^^^^^^^^^^^^^^^^^");
+		console.log(" date_only=",date_only);
+		console.log(" month_only=",month_only);
+		console.log(" year_only=",year_only);
+
+		console.log("from_date_minus_one_opt", from_date_minus_one_opt);
 		return from_date_minus_one_opt;
-	};
+	}
 
 	var global_get_filters = function (){
 		from_date = global_get_from_date();
@@ -77,23 +89,23 @@ frappe.pages['single-page-chart'].on_page_load = function(wrapper) {
 		fieldtype: 'Button',
 		fieldname: 'submit_button',
 		click: function ()  {
-			chef_opening_checklist_audit('on-submit');
-			chef_closing_checklist_audit('on-submit');
-			dm_opening_checklist_audit('on-submit');
-			dm_closing_checklist_audit('on-submit');
+//			chef_opening_checklist_audit('on-submit');
+//			chef_closing_checklist_audit('on-submit');
+//			dm_opening_checklist_audit('on-submit');
+//			dm_closing_checklist_audit('on-submit');
 			chef_production_register('on-submit');
-			sales_report_register('on-submit');
-			sales_by_payment_mode('on-submit');
-			breakages_report_register('on-submit');
-
-			nc_report_register_by_count('on-submit');
-			incident_report_register_by_count('on-submit');
-			cutlery_inventory_count_register_by_difference('on-submit');
-			discount_form_by_percentage('on-submit');
-
-			ticket_report_register_by_count('on-submit');
-			expense_report_register_by_amount('on-submit');
-			chef_indent_by_quantity('on-submit');
+//			sales_report_register('on-submit');
+//			sales_by_payment_mode('on-submit');
+//			breakages_report_register('on-submit');
+//
+//			nc_report_register_by_count('on-submit');
+//			incident_report_register_by_count('on-submit');
+//			asset_inventory_count_register_by_difference('on-submit');
+//			discount_form_by_percentage('on-submit');
+//
+//			ticket_report_register_by_count('on-submit');
+//			expense_report_register_by_amount('on-submit');
+//			chef_indent_by_quantity('on-submit');
 
 		}
 	});
@@ -123,6 +135,9 @@ frappe.pages['single-page-chart'].on_page_load = function(wrapper) {
 		let from_date = filters.from_date_filter;
 		let to_date = filters.to_date_filter;
 
+		console.log("*****************************");
+		console.log("from_date-",from_date);
+		console.log("to_date-",to_date);
 
 		let path_report_name = "/app/query-report/{report_name}?";
 		let path_cond ="from_date_filter={from_date_filter}&to_date_filter={to_date_filter}"+
@@ -1183,9 +1198,9 @@ let incident_report_register_by_count  = function(time_of_invoke){
 
 
 
-	// ~~~~~~~~~~~~~~~~~~ Cutlery Inventory Count Register ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	// ~~~~~~~~~~~~~~~~~~ Asset Inventory Count Register ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-let cutlery_inventory_count_register_by_difference  = function(time_of_invoke){
+let asset_inventory_count_register_by_difference  = function(time_of_invoke){
 		let filters = "";
 		if(time_of_invoke == 'on-load'){
 			console.log('on-load');
@@ -1195,24 +1210,24 @@ let cutlery_inventory_count_register_by_difference  = function(time_of_invoke){
 			filters = global_get_filters_on_submit();
 		}
 
-		console.log('-----filters----- cutlery_inventory_count_register_by_difference')
+		console.log('-----filters----- asset_inventory_count_register_by_difference')
 		console.log(filters);
 		frappe.call({
-			method: "rom_app.restaurant_ops_mgmt.report.cutlery_inventory_count_register.cutlery_inventory_count_register.get_data_by_difference",
+			method: "rom_app.restaurant_ops_mgmt.report.asset_inventory_count_register.asset_inventory_count_register.get_data_by_difference",
 			args: {
 				'filters':filters
 			},
 			callback: function(data) {
 				console.log('data', data);
-				cutlery_inventory_count_register_by_difference_draw(data);
+				asset_inventory_count_register_by_difference_draw(data);
 			}
 		});
 	}
 
 
-	let cutlery_inventory_count_register_by_difference_draw  = function(data){
-		console.log("-------------- cutlery_inventory_count_register_by_difference_draw -------------- ");
-		let report_name = "Cutlery Inventory Count Register";
+	let asset_inventory_count_register_by_difference_draw  = function(data){
+		console.log("-------------- asset_inventory_count_register_by_difference_draw -------------- ");
+		let report_name = "Asset Inventory Count Register";
 		console.log(data);
 		let date = [];
 		let difference = [];
@@ -1229,7 +1244,7 @@ let cutlery_inventory_count_register_by_difference  = function(time_of_invoke){
 		console.log('difference', difference);
 
 		var chart = bb.generate({
-			title: {text: "Cutlery Inventory Count by Difference "},
+			title: {text: "Asset Inventory Count by Difference "},
 			data: {
 				type: "bar",
 				onclick: function(arg1){
@@ -1245,7 +1260,7 @@ let cutlery_inventory_count_register_by_difference  = function(time_of_invoke){
 		axis: {
 			x: {type: "category",categories: date,},
 		},
-		bindto: "#cutlery_inventory_count_register_by_difference",
+		bindto: "#asset_inventory_count_register_by_difference",
 		});
 	}
 
@@ -1555,25 +1570,25 @@ let chef_indent_by_quantity  = function(time_of_invoke){
 
 	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	$(frappe.render_template("single_page_chart", {})).appendTo(page.body);
-	chef_opening_checklist_audit('on-load');
-	chef_closing_checklist_audit('on-load');
-	dm_opening_checklist_audit('on-load');
-	dm_closing_checklist_audit('on-load');
+//	chef_opening_checklist_audit('on-load');
+//	chef_closing_checklist_audit('on-load');
+//	dm_opening_checklist_audit('on-load');
+//	dm_closing_checklist_audit('on-load');
 
 	chef_production_register('on-load');
-	sales_report_register('on-load');
-	sales_by_payment_mode('on-load');
-	breakages_report_register('on-load');
-
-	nc_report_register_by_count('on-load');
-	incident_report_register_by_count('on-load');
-
-	cutlery_inventory_count_register_by_difference('on-load');
-	discount_form_by_percentage('on-load');
-	ticket_report_register_by_count('on-load');
-	expense_report_register_by_amount('on-load');
-
-	chef_indent_by_quantity('on-load');
+//	sales_report_register('on-load');
+//	sales_by_payment_mode('on-load');
+//	breakages_report_register('on-load');
+//
+//	nc_report_register_by_count('on-load');
+//	incident_report_register_by_count('on-load');
+//
+//	asset_inventory_count_register_by_difference('on-load');
+//	discount_form_by_percentage('on-load');
+//	ticket_report_register_by_count('on-load');
+//	expense_report_register_by_amount('on-load');
+//
+//	chef_indent_by_quantity('on-load');
 
  }
 

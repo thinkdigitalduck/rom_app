@@ -1,6 +1,6 @@
 {
  "charts": [],
- "content": "[{\"id\":\"ZqnuJ3oLig\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Restaurant Manager Workspace</span>\",\"col\":12}},{\"id\":\"75XiR7l_5h\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Chef <br></b></span>\",\"col\":12}},{\"id\":\"bvY43cG9-y\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Opening Checklist\",\"col\":3}},{\"id\":\"iguA7FpZGQ\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Closing Checklist\",\"col\":3}},{\"id\":\"wwAD3yYMFJ\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Production\",\"col\":4}},{\"id\":\"tWTxPI8xch\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Indent\",\"col\":3}},{\"id\":\"bZvAlWBLDJ\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Dining Manager<br></b></span>\",\"col\":12}},{\"id\":\"Y18_rKQUVf\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Opening Checklist\",\"col\":3}},{\"id\":\"1f-KhWTotN\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Closing Checklist\",\"col\":3}},{\"id\":\"iFLxD_cElz\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Cashier <br></b></span>\",\"col\":12}},{\"id\":\"62_kqXzIkE\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Sales Report\",\"col\":3}},{\"id\":\"3GHPre2fJJ\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Expense Report\",\"col\":3}},{\"id\":\"wQ6GNJduL8\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Restaurant Manager <br></b></span>\",\"col\":12}},{\"id\":\"gIM87TU5Jk\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Discount Form\",\"col\":3}},{\"id\":\"mMafXYNQSl\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Common Reports <br></b></span>\",\"col\":12}},{\"id\":\"VR3S1EO5KB\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Ticket Report\",\"col\":3}},{\"id\":\"th51n6vOyp\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Breakages Report\",\"col\":3}},{\"id\":\"u5apW1bBhS\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"NC Report\",\"col\":4}},{\"id\":\"auKQNj3f2f\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Cutlery Inventory Count\",\"col\":3}},{\"id\":\"PdVyevIrpr\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Incident Form\",\"col\":3}}]",
+ "content": "[{\"id\":\"ZqnuJ3oLig\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Restaurant Manager Space</span>\",\"col\":12}},{\"id\":\"75XiR7l_5h\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Chef <br></b></span>\",\"col\":12}},{\"id\":\"bvY43cG9-y\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Opening Checklist\",\"col\":3}},{\"id\":\"iguA7FpZGQ\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Closing Checklist\",\"col\":3}},{\"id\":\"wwAD3yYMFJ\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Production\",\"col\":3}},{\"id\":\"tWTxPI8xch\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Indent\",\"col\":3}},{\"id\":\"bZvAlWBLDJ\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Dining Manager<br></b></span>\",\"col\":12}},{\"id\":\"Y18_rKQUVf\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Opening Checklist\",\"col\":3}},{\"id\":\"1f-KhWTotN\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Closing Checklist\",\"col\":3}},{\"id\":\"iFLxD_cElz\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Cashier <br></b></span>\",\"col\":12}},{\"id\":\"62_kqXzIkE\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Sales Report\",\"col\":3}},{\"id\":\"3GHPre2fJJ\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Expense Report\",\"col\":3}},{\"id\":\"qcl-M554Do\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Store Manager <br></b></span>\",\"col\":12}},{\"id\":\"FesQQktJFX\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Purchase Order\",\"col\":3}},{\"id\":\"wQ6GNJduL8\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Restaurant Manager <br></b></span>\",\"col\":12}},{\"id\":\"gIM87TU5Jk\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Discount Form\",\"col\":3}},{\"id\":\"mMafXYNQSl\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Common Forms<br></b></span>\",\"col\":12}},{\"id\":\"VR3S1EO5KB\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Ticket Report\",\"col\":3}},{\"id\":\"th51n6vOyp\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Breakages Report\",\"col\":3}},{\"id\":\"u5apW1bBhS\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"NC Report\",\"col\":3}},{\"id\":\"auKQNj3f2f\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Asset Inventory Count\",\"col\":3}},{\"id\":\"PdVyevIrpr\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Incident Form\",\"col\":3}}]",
  "creation": "2024-07-20 08:21:53.613397",
  "custom_blocks": [],
  "docstatus": 0,
@@ -13,7 +13,7 @@
  "is_hidden": 0,
  "label": "Restaurant Mgr Space",
  "links": [],
- "modified": "2024-08-28 17:24:00.439484",
+ "modified": "2024-08-29 20:10:36.082006",
  "modified_by": "Administrator",
  "module": "Restaurant Ops Mgmt",
  "name": "Restaurant Mgr Space",
@@ -29,6 +29,22 @@
  ],
  "sequence_id": 5.0,
  "shortcuts": [
+  {
+   "color": "Green",
+   "doc_view": "List",
+   "label": "Purchase Order",
+   "link_to": "Purchase Order",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Green",
+   "doc_view": "List",
+   "label": "Asset Inventory Count",
+   "link_to": "Asset Inventory Count",
+   "stats_filter": "[[\"Asset Inventory Count\",\"creation\",\"Timespan\",\"today\",false]]",
+   "type": "DocType"
+  },
   {
    "color": "Green",
    "doc_view": "List",
@@ -107,14 +123,6 @@
    "label": "Closing Checklist",
    "link_to": "Dm Closing Checklist",
    "stats_filter": "[[\"Dm Closing Checklist\",\"creation\",\"Timespan\",\"today\",false]]",
-   "type": "DocType"
-  },
-  {
-   "color": "Green",
-   "doc_view": "List",
-   "label": "Cutlery Inventory Count",
-   "link_to": "Cutlery Inventory Count",
-   "stats_filter": "[[\"Cutlery Inventory Count\",\"creation\",\"Timespan\",\"today\",false]]",
    "type": "DocType"
   },
   {
