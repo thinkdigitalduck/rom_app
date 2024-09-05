@@ -5,5 +5,5 @@
 from frappe.model.document import Document
 
 
-class IncidentReportLinkItem(Document):
+class Inventory(Document):
 	pass

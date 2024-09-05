@@ -287,3 +287,17 @@ def get_production_item_query_chicken(doctype, txt, searchfield, start, page_len
     result = frappe.db.sql(sql)
     print(result)
     return result
+
+
+@frappe.whitelist()
+def update_database_usage():
+    current_time = datetime.today()
+    print('================>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>')
+    print(current_time)
+    doc = frappe.get_doc({
+        'doctype': 'Task',
+        'title': current_time
+    })
+    doc.insert()
+    frappe.db.commit()
+

@@ -89,23 +89,23 @@ frappe.pages['single-page-chart'].on_page_load = function(wrapper) {
 		fieldtype: 'Button',
 		fieldname: 'submit_button',
 		click: function ()  {
-//			chef_opening_checklist_audit('on-submit');
-//			chef_closing_checklist_audit('on-submit');
-//			dm_opening_checklist_audit('on-submit');
-//			dm_closing_checklist_audit('on-submit');
+			chef_opening_checklist_audit('on-submit');
+			chef_closing_checklist_audit('on-submit');
+			dm_opening_checklist_audit('on-submit');
+			dm_closing_checklist_audit('on-submit');
 			chef_production_register('on-submit');
-//			sales_report_register('on-submit');
-//			sales_by_payment_mode('on-submit');
-//			breakages_report_register('on-submit');
-//
-//			nc_report_register_by_count('on-submit');
-//			incident_report_register_by_count('on-submit');
-//			asset_inventory_count_register_by_difference('on-submit');
-//			discount_form_by_percentage('on-submit');
-//
-//			ticket_report_register_by_count('on-submit');
-//			expense_report_register_by_amount('on-submit');
-//			chef_indent_by_quantity('on-submit');
+			sales_report_register('on-submit');
+			sales_by_payment_mode('on-submit');
+			breakages_report_register('on-submit');
+
+			nc_report_register_by_count('on-submit');
+			incident_report_register_by_count('on-submit');
+			asset_inventory_count_register_by_difference('on-submit');
+			discount_form_by_percentage('on-submit');
+
+			ticket_report_register_by_count('on-submit');
+			expense_report_register_by_amount('on-submit');
+			chef_indent_by_quantity('on-submit');
 
 		}
 	});
@@ -1570,25 +1570,25 @@ let chef_indent_by_quantity  = function(time_of_invoke){
 
 	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	$(frappe.render_template("single_page_chart", {})).appendTo(page.body);
-//	chef_opening_checklist_audit('on-load');
-//	chef_closing_checklist_audit('on-load');
-//	dm_opening_checklist_audit('on-load');
-//	dm_closing_checklist_audit('on-load');
+	chef_opening_checklist_audit('on-load');
+	chef_closing_checklist_audit('on-load');
+	dm_opening_checklist_audit('on-load');
+	dm_closing_checklist_audit('on-load');
 
 	chef_production_register('on-load');
-//	sales_report_register('on-load');
-//	sales_by_payment_mode('on-load');
-//	breakages_report_register('on-load');
-//
-//	nc_report_register_by_count('on-load');
-//	incident_report_register_by_count('on-load');
-//
-//	asset_inventory_count_register_by_difference('on-load');
-//	discount_form_by_percentage('on-load');
-//	ticket_report_register_by_count('on-load');
-//	expense_report_register_by_amount('on-load');
-//
-//	chef_indent_by_quantity('on-load');
+	sales_report_register('on-load');
+	sales_by_payment_mode('on-load');
+	breakages_report_register('on-load');
+
+	nc_report_register_by_count('on-load');
+	incident_report_register_by_count('on-load');
+
+	asset_inventory_count_register_by_difference('on-load');
+	discount_form_by_percentage('on-load');
+	ticket_report_register_by_count('on-load');
+	expense_report_register_by_amount('on-load');
+
+	chef_indent_by_quantity('on-load');
 
  }
 

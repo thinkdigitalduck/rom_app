@@ -1,31 +1,38 @@
 {
  "actions": [],
  "autoname": "autoincrement",
- "creation": "2024-08-30 10:08:24.687385",
+ "creation": "2024-09-02 15:50:08.984541",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
-  "item_name",
-  "item_price"
+  "branch",
+  "po_template_name"
  ],
  "fields": [
   {
-   "fieldname": "item_name",
+   "fieldname": "po_template_name",
    "fieldtype": "Data",
-   "label": "Item Name"
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "PO Template Name",
+   "reqd": 1
   },
   {
-   "fieldname": "item_price",
-   "fieldtype": "Currency",
-   "label": "Item Price"
+   "fieldname": "branch",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Branch",
+   "options": "Branch",
+   "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-08-30 10:15:46.857887",
+ "modified": "2024-09-02 16:17:42.747391",
  "modified_by": "Administrator",
  "module": "Restaurant Ops Mgmt",
- "name": "Incident Report Link Item",
+ "name": "Purchase Order Template Type",
  "naming_rule": "Autoincrement",
  "owner": "Administrator",
  "permissions": [
@@ -46,5 +53,5 @@
  "sort_field": "creation",
  "sort_order": "DESC",
  "states": [],
- "title_field": "item_name"
+ "title_field": "po_template_name"
 }

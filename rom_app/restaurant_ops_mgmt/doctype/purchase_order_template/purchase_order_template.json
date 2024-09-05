@@ -1,7 +1,7 @@
 {
  "actions": [],
  "autoname": "autoincrement",
- "creation": "2024-08-29 16:02:43.552066",
+ "creation": "2024-09-02 11:18:51.337826",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
@@ -12,23 +12,12 @@
   "user_name",
   "branch_id",
   "section_break_wqyo",
-  "raw_material_from_template"
+  "raw_material_list"
  ],
  "fields": [
   {
-   "fieldname": "branch_name",
-   "fieldtype": "Data",
-   "in_list_view": 1,
-   "in_standard_filter": 1,
-   "label": "Branch Name",
-   "read_only": 1
-  },
-  {
-   "fieldname": "branch_id",
-   "fieldtype": "Data",
-   "hidden": 1,
-   "label": "Branch Id",
-   "read_only": 1
+   "fieldname": "column_break_oiog",
+   "fieldtype": "Column Break"
   },
   {
    "default": "Today",
@@ -40,15 +29,10 @@
    "read_only": 1
   },
   {
-   "fieldname": "column_break_oiog",
-   "fieldtype": "Column Break"
-  },
-  {
    "default": "user_fullname",
    "fieldname": "user_name",
    "fieldtype": "Data",
    "in_list_view": 1,
-   "in_standard_filter": 1,
    "label": "User Name",
    "read_only": 1
   },
@@ -57,25 +41,40 @@
    "fieldtype": "Section Break"
   },
   {
+   "fieldname": "raw_material_list",
+   "fieldtype": "Table",
+   "label": "Raw Material List",
+   "options": "Purchase Order Template Child"
+  },
+  {
+   "fieldname": "branch_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Branch Name"
+  },
+  {
+   "fieldname": "branch_id",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Branch Id",
+   "read_only": 1
+  },
+  {
    "fieldname": "po_template",
    "fieldtype": "Link",
    "in_list_view": 1,
    "label": "PO Template",
-   "options": "Purchase Order Template Type"
-  },
-  {
-   "fieldname": "raw_material_from_template",
-   "fieldtype": "Table",
-   "label": "Raw Material From Template",
-   "options": "Purchase Order Child2"
+   "options": "Purchase Order Template Type",
+   "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-09-05 12:03:31.243701",
+ "modified": "2024-09-05 11:43:55.252974",
  "modified_by": "Administrator",
  "module": "Restaurant Ops Mgmt",
- "name": "Purchase Order",
+ "name": "Purchase Order Template",
  "naming_rule": "Autoincrement",
  "owner": "Administrator",
  "permissions": [
@@ -96,5 +95,5 @@
  "sort_field": "creation",
  "sort_order": "DESC",
  "states": [],
- "title_field": "branch_name"
+ "title_field": "po_template"
 }

@@ -8,7 +8,9 @@
   "fees",
   "data3",
   "column_break_txta",
-  "posting_date"
+  "posting_date",
+  "section_break_ntlm",
+  "table_gvht"
  ],
  "fields": [
   {
@@ -31,11 +33,20 @@
    "fieldname": "fees",
    "fieldtype": "Currency",
    "label": "Fees"
+  },
+  {
+   "fieldname": "section_break_ntlm",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "table_gvht",
+   "fieldtype": "Table",
+   "options": "Purchase Order Child"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-08-08 12:34:04.446061",
+ "modified": "2024-09-03 08:30:02.973368",
  "modified_by": "Administrator",
  "module": "Restaurant Ops Mgmt",
  "name": "teststandard",

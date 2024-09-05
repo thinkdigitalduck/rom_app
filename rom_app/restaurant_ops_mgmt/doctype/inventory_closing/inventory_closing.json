@@ -1,0 +1,91 @@
+{
+ "actions": [],
+ "autoname": "autoincrement",
+ "creation": "2024-09-03 17:04:07.768410",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "branch_id",
+  "raw_material",
+  "price",
+  "unit",
+  "column_break_fatx",
+  "date",
+  "user_name",
+  "closing_quantity"
+ ],
+ "fields": [
+  {
+   "fieldname": "branch_id",
+   "fieldtype": "Int",
+   "hidden": 1,
+   "label": "Branch Id"
+  },
+  {
+   "default": "user_fullname",
+   "fieldname": "user_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "User Name"
+  },
+  {
+   "default": "Today",
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Date"
+  },
+  {
+   "fieldname": "column_break_fatx",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "raw_material",
+   "fieldtype": "Data",
+   "label": "Raw Material"
+  },
+  {
+   "fieldname": "closing_quantity",
+   "fieldtype": "Int",
+   "label": "Closing Quantity"
+  },
+  {
+   "fieldname": "price",
+   "fieldtype": "Currency",
+   "label": "Price"
+  },
+  {
+   "fieldname": "unit",
+   "fieldtype": "Select",
+   "label": "Unit",
+   "options": "Kg\nLtr\nBox\nPkt\nPcs\nBtl\nTry"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-09-05 19:19:36.193954",
+ "modified_by": "Administrator",
+ "module": "Restaurant Ops Mgmt",
+ "name": "Inventory Closing",
+ "naming_rule": "Autoincrement",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}

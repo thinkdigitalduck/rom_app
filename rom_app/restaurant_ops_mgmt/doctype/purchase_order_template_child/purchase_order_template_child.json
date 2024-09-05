@@ -1,41 +1,57 @@
 {
  "actions": [],
  "autoname": "autoincrement",
- "creation": "2024-08-24 15:23:34.645133",
+ "creation": "2024-09-02 11:19:53.104254",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
   "raw_material",
-  "indent_unit"
+  "unit",
+  "price",
+  "opening_stock"
  ],
  "fields": [
   {
    "fieldname": "raw_material",
    "fieldtype": "Link",
    "in_list_view": 1,
-   "in_standard_filter": 1,
    "label": "Raw Material",
    "options": "Raw Material Only"
   },
   {
    "fetch_from": "raw_material.unit",
-   "fieldname": "indent_unit",
+   "fieldname": "unit",
    "fieldtype": "Select",
    "in_list_view": 1,
-   "in_standard_filter": 1,
-   "label": "Indent Unit",
+   "label": "Unit",
    "options": "Kg\nLtr\nBox\nPkt\nPcs\nBtl\nTry",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "raw_material.price",
+   "fieldname": "price",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Price",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "raw_material.opening_stock",
+   "fieldname": "opening_stock",
+   "fieldtype": "Float",
+   "label": "Opening Stock",
    "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2024-09-05 11:17:39.133674",
+ "modified": "2024-09-05 11:49:47.072798",
  "modified_by": "Administrator",
  "module": "Restaurant Ops Mgmt",
- "name": "Raw Material For Indent Child",
+ "name": "Purchase Order Template Child",
  "naming_rule": "Autoincrement",
  "owner": "Administrator",
  "permissions": [],

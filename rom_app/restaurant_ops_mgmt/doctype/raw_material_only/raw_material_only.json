@@ -5,20 +5,58 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
-  "item"
+  "branch",
+  "item",
+  "unit",
+  "price",
+  "opening_stock"
  ],
  "fields": [
   {
+   "columns": 2,
    "fieldname": "item",
    "fieldtype": "Data",
    "in_list_view": 1,
    "in_standard_filter": 1,
-   "label": "Item"
+   "label": "Item",
+   "reqd": 1
+  },
+  {
+   "fieldname": "unit",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Unit",
+   "options": "Kg\nLtr\nBox\nPkt\nPcs\nBtl\nTry",
+   "reqd": 1
+  },
+  {
+   "columns": 1,
+   "fieldname": "branch",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Branch",
+   "options": "Branch",
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "opening_stock",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Opening Stock"
+  },
+  {
+   "fieldname": "price",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Price"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-08-24 15:11:22.319054",
+ "modified": "2024-09-05 11:15:00.486400",
  "modified_by": "Administrator",
  "module": "Restaurant Ops Mgmt",
  "name": "Raw Material Only",
