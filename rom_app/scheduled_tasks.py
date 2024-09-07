@@ -12,20 +12,56 @@ def inventory_summary():
     df_indnets = pd.DataFrame.from_records(get_indents())
     df_inventory = create_inventory_summary_empty_data_frame()
 
+    pd.set_option('display.max_columns', None)
     print('raw materials \n', df_raw_materials)
     print('purchase orders  \n', df_pur_orders)
     print('indents  \n', df_indnets)
     print('inventory  \n', df_inventory)
 
-    print("---------- process purchase order -------------")
-    df_inventory = process_purchase_orders(df_inventory,
-                                           df_raw_materials, df_pur_orders)
-    print("inventory after purchase order input  \n", df_inventory)
+    print("-------- transfer raw_materials to inventory_summary -----------")
+    df_inventory = transfer_raw_materials_to_inventory_summary(
+        df_inventory, df_raw_materials)
 
+    print('inventory after raw_mat transformation +++[] \n', df_inventory)
+
+    print("---------- process purchase order -------------")
+    df_inventory = process_purchase_orders(
+        df_inventory, df_pur_orders)
+    print("inventory after purchase order input ===[]  \n  ", df_inventory)
+
+    # print("---------------- process indent ---------------")
+    # df_inventory = process_indents(df_inventory,
+    #                                df_raw_materials, df_indnets)
+    # print("inventory after indents input  \n", df_inventory)
     print("================ inventory_summary END >>>>>>>>>>>>>>>>>")
 
 
-def process_purchase_orders(df_inventory, df_raw_materials, df_pur_orders):
+def transfer_raw_materials_to_inventory_summary(
+        df_inventory, df_raw_materials):
+    # df_raw_materials => name, branch, `date`, item,
+    # unit, price, opening_stock
+    # df_inventory => branch_id, date, raw_material, quantity,
+    # closing_quantity, price, unit
+    for i in range(0, len(df_raw_materials)):
+        print("-------- for loop ---------")
+        branch_id = df_raw_materials.iloc[i]['branch_id']
+        date = df_raw_materials.iloc[i]['date']
+        raw_material = df_raw_materials.iloc[i]['raw_material']
+        item = df_raw_materials.iloc[i]['item']
+        unit = df_raw_materials.iloc[i]['unit']
+        price = df_raw_materials.iloc[i]['price']
+        opening_stock = df_raw_materials.iloc[i]['opening_stock']
+        print(item, ' -- ',  branch_id, ' -- ', date, ' -- ',
+              raw_material, ' -- ', unit, ' -- ', price, ' -- ', opening_stock)
+
+        df_inventory.loc[len(df_inventory.index)] = [branch_id, date,
+                                                     raw_material,
+                                                     0, 0,
+                                                     price, unit, item]
+    return df_inventory
+
+
+def process_purchase_orders(df_inventory, df_pur_orders):
     # branch_id, date, raw_material, quantity, closing_quantity, price, unit
     for i in range(0, len(df_pur_orders)):
         # print("-------- for loop ---------")
@@ -40,36 +76,24 @@ def process_purchase_orders(df_inventory, df_raw_materials, df_pur_orders):
 
         print(par_name, chi_name, branch_id, ' -- ', raw_material, ' -- ',
               unit, ' -- ', price, ' -- ', ord_qty, '-- ', date)
-
-        if i == 0:
-            df_inventory = append_raw_material(df_inventory,
-                                               branch_id, date,
-                                               raw_material, unit,
-                                               price, ord_qty)
-        else:
-            df_available = check_if_raw_material_exists_in_inventory_summary(
-                df_inventory, branch_id, raw_material)
-            if df_available.empty:
-                print('df_available.empty')
-                df_inventory = append_raw_material(df_inventory,
-                                                   branch_id, date,
-                                                   raw_material, unit,
-                                                   price, ord_qty)
-            else:
-                print('df_available.empty - else')
-                print(df_available)
-                df_inventory = update_inventory_summary(df_inventory,
-                                                        branch_id,
-                                                        raw_material, ord_qty,
-                                                        df_available)
+        print('~~~~~~~~~~~~~~~~~~', i)
+        df_inventory = update_inventory_summary(df_inventory,
+                                                branch_id,
+                                                raw_material, ord_qty)
 
     print('=============== final ==========')
     print(df_inventory)
     return df_inventory
 
 
+def process_indents(df_inventory, df_raw_materials, df_indnets):
+    print("inventory after indents input  \n", df_inventory)
+    return df_inventory
+
+
 def check_if_raw_material_exists_in_inventory_summary(df_inventory,
                                                       branch_id, raw_material):
+
     df = df_inventory.loc[(df_inventory['branch_id'] == branch_id)
                           & (df_inventory['raw_material'] == raw_material)]
     print('^^^^^^^^ inside check ^^^^^^^')
@@ -91,32 +115,36 @@ def append_raw_material(df_inventory,
 
 
 def update_inventory_summary(df_inventory, branch_id,
-                             raw_material, ord_qty,
-                             df_available):
+                             raw_material, ord_qty):
+    print("update_inventory_summary")
+    print("branch_id ", branch_id)
+    print("raw_material", raw_material)
+    print("ord_qty", ord_qty)
 
-    index_val = df_available.index[0]
-    print('index_val =====> ', index_val)
-    quantity = df_available.loc[index_val, 'quantity']
+    df_filter = df_inventory.loc[(df_inventory['branch_id'] == branch_id)
+                                 & (df_inventory['raw_material'] ==
+                                    int(raw_material))]
+
+    print('df_filter', df_filter)
+    index_val = df_filter.index[0]
+    print('index_val', index_val)
+    quantity = df_filter.loc[index_val, 'quantity']
+    print('quantity', quantity)
     total_quantity = quantity + ord_qty
-
     df_inventory.loc[index_val, 'quantity'] = total_quantity
-    # df_inventory.loc[(df_inventory['branch_id'] == branch_id)
-    #                  & (df_inventory['raw_material'] == raw_material),
-    #                  'quantity'] = total_quantity
-
     return df_inventory
 
 
-def process_indents(df_inventory, df_raw_materials, df_indnets):
-    for row in df_indnets:
-        print(row)
+# def process_indents(df_inventory, df_raw_materials, df_indnets):
+#     for row in df_indnets:
+#         print(row)
 
 
 def get_raw_materials():
     sql = """
-    SELECT name, branch, `date`, item, unit, price, opening_stock
+    SELECT name as raw_material, branch as branch_id, date, item, unit, price, opening_stock
     FROM `tabRaw Material Only`
-    ORDER BY branch, item
+    ORDER BY branch, raw_material
     """
     table = select_db_data(sql)
     return table
@@ -169,7 +197,7 @@ def create_inventory_summary_empty_data_frame():
     df = pd.DataFrame()
     columns_add = ['branch_id', 'date',
                    'raw_material', 'quantity', 'closing_quantity',
-                   'price', 'unit']
+                   'price', 'unit', 'item']
     for col in columns_add:
         df[col] = None
     return df
