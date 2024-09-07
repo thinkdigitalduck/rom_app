@@ -25,7 +25,7 @@ refresh(frm) {
 				console.log('branch_id-', branch__id, '=== branch_name-', branch__name);
 
 
-					frm.set_query("po_template", function() {
+				frm.set_query("po_template", function() {
 					return {
 						"filters": {
 							"branch": branch__id
@@ -91,15 +91,26 @@ refresh(frm) {
 								console.log(raw_material_number);
 								//entry.raw_material =  e[0];
 								entry.raw_material =  raw_material_number;
+								console.log(entry);
 								entry.unit = e[1];
 								entry.price = e[2];
 								console.log('after',entry);
+								frm.refresh_field("raw_material");
+
+
+								//frappe.model.set_value(v.doctype, v.name, "name1", r.message.full_name)
 							});
+
+
 							//frm.refresh_field("raw_material_from_template");
 							frm.refresh_field("raw_material_from_template");
-							frm.save();
-							frm.refresh();
 
+
+							let ct = frm.doc.raw_material_from_template;
+							let mm = "";
+							//frm.save();
+							//frappe.db.commit();
+							//frm.refresh();
 						}
 
 					}
@@ -116,7 +127,39 @@ refresh(frm) {
 
 });
 
+//  frappe.ui.form.on("Purchase Order Child2", "article_name", function(frm, cdt, cdn) {
+//     let item = locals[cdt][cdn];
+//     let articleId = Math.round(+new Date()/1000);
+//     item.article_id = articleId;
+//     frm.refresh_field('my_article');
+// });
+
+ frappe.ui.form.on('Purchase Order Child2', {
+    form_render: function(frm,cdt,cdn) {
+		console.log(' child row added event form_render');
+        //let item = locals[cdt][cdn];
+       // let articleId = Math.round(+new Date()/1000);
+       // item.article_id = articleId;
+		//console.log('item',item);
+
+       //item.refresh_field('raw_material');
+    },
+});
+
+
+
+
 function disable_drag_drop(frm) {
 		frm.page.body.find('[data-fieldname="raw_material_list"] [data-idx] .data-row  .sortable-handle').removeClass('sortable-handle');
 	}
 
+function filterChildFields(frm, tableName, fieldTrigger, fieldName, fieldFiltered) {
+    frm.fields_dict[tableName].grid.get_field(fieldFiltered).get_query = function(doc, cdt, cdn) {
+        var child = locals[cdt][cdn];
+        return {
+            filters:[
+                [fieldName, '=', child[fieldTrigger]]
+            ]
+        }
+    }
+}
