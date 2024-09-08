@@ -1,9 +1,11 @@
-# Copyright (c) 2024, Pubs and contributors
-# For license information, please see license.txt
-
-# import frappe
+import frappe
 from frappe.model.document import Document
+from datetime import datetime
 
 
 class InventoryAdjustment(Document):
-	pass
+    def on_update(self):
+        current_date = datetime.today().date()
+        doc_save_date = datetime.strptime(self.date, '%Y-%m-%d').date()
+        if (current_date > doc_save_date):
+            frappe.throw("Editing records from the past is not permitted")

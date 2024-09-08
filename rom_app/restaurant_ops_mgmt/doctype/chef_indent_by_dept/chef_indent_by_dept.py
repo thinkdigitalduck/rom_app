@@ -28,7 +28,7 @@ class ChefIndentByDept(Document):
     def get_raw_material(self, branch, department):
         print("inside python")
         sql = """
-        SELECT rawmat.item, child.indent_unit
+        SELECT rawmat.item, child.indent_unit, rawmat.name
         FROM `tabRaw Material For Indent` parent
         JOIN `tabRaw Material For Indent Child` child
         ON	parent.name = child.parent
@@ -44,6 +44,26 @@ class ChefIndentByDept(Document):
         print(res_length)
         print(item_data)
         return item_data
+
+    @frappe.whitelist()
+    def get_raw_material_with_id(self, branch, department):
+        print("inside python")
+        sql = """
+        SELECT child.name, child.indent_unit
+        FROM `tabRaw Material For Indent` parent
+        JOIN `tabRaw Material For Indent Child` child
+        ON	parent.name = child.parent
+        WHERE parent.branch = {}
+        AND parent.department = {};
+        """
+        sql = sql.format(branch, department)
+        print(sql)
+        item_data = frappe.db.sql(sql, as_dict=0)
+        res_length = len(item_data)
+        print(res_length)
+        print(item_data)
+        return item_data
+
 
     @frappe.whitelist()
     def test(self):

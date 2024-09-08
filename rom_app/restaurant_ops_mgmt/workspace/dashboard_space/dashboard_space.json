@@ -1,6 +1,6 @@
 {
  "charts": [],
- "content": "[{\"id\":\"Ddpyn2rQhB\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Dashboard Space<br></span>\",\"col\":12}},{\"id\":\"jNUc1OfQ5O\",\"type\":\"card\",\"data\":{\"card_name\":\"Dashboard\",\"col\":3}},{\"id\":\"zt1QEct5Pu\",\"type\":\"card\",\"data\":{\"card_name\":\"Chef Reports\",\"col\":3}},{\"id\":\"78WkuG1wHY\",\"type\":\"card\",\"data\":{\"card_name\":\"Dining Manager Reports\",\"col\":3}},{\"id\":\"DozMf5zGse\",\"type\":\"card\",\"data\":{\"card_name\":\"Cashier Reports\",\"col\":3}},{\"id\":\"wQFKQOqQ0p\",\"type\":\"card\",\"data\":{\"card_name\":\"Restaurant Mgr Reports\",\"col\":3}},{\"id\":\"YN2ZnovPZR\",\"type\":\"card\",\"data\":{\"card_name\":\"Common Reports\",\"col\":3}}]",
+ "content": "[{\"id\":\"Ddpyn2rQhB\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Dashboard Space<br></span>\",\"col\":12}},{\"id\":\"jNUc1OfQ5O\",\"type\":\"card\",\"data\":{\"card_name\":\"Dashboard\",\"col\":3}},{\"id\":\"zt1QEct5Pu\",\"type\":\"card\",\"data\":{\"card_name\":\"Chef Reports\",\"col\":3}},{\"id\":\"78WkuG1wHY\",\"type\":\"card\",\"data\":{\"card_name\":\"Dining Mgr Reports\",\"col\":3}},{\"id\":\"DozMf5zGse\",\"type\":\"card\",\"data\":{\"card_name\":\"Cashier Reports\",\"col\":3}},{\"id\":\"GiNLd_sqfq\",\"type\":\"card\",\"data\":{\"card_name\":\"Store Mgr Reports\",\"col\":3}},{\"id\":\"wQFKQOqQ0p\",\"type\":\"card\",\"data\":{\"card_name\":\"Restaurant Mgr Reports\",\"col\":3}},{\"id\":\"YN2ZnovPZR\",\"type\":\"card\",\"data\":{\"card_name\":\"Common Reports\",\"col\":3}}]",
  "creation": "2024-08-01 19:03:12.196385",
  "custom_blocks": [],
  "docstatus": 0,
@@ -142,7 +142,46 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Dining Manager Reports",
+   "label": "Common Reports",
+   "link_count": 3,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Breakages",
+   "link_count": 0,
+   "link_to": "Breakages Report Register",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Ticket",
+   "link_count": 0,
+   "link_to": "Ticket Report Register",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Asset Inventory Count",
+   "link_count": 0,
+   "link_to": "Asset Inventory Count Register",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Dining Mgr Reports",
    "link_count": 3,
    "link_type": "DocType",
    "onboard": 0,
@@ -181,8 +220,8 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Common Reports",
-   "link_count": 3,
+   "label": "Store Mgr Reports",
+   "link_count": 2,
    "link_type": "DocType",
    "onboard": 0,
    "type": "Card Break"
@@ -190,9 +229,9 @@
   {
    "hidden": 0,
    "is_query_report": 1,
-   "label": "Breakages",
+   "label": "Purchase Order",
    "link_count": 0,
-   "link_to": "Breakages Report Register",
+   "link_to": "Purchase Order Register",
    "link_type": "Report",
    "onboard": 0,
    "type": "Link"
@@ -200,25 +239,15 @@
   {
    "hidden": 0,
    "is_query_report": 1,
-   "label": "Ticket",
+   "label": "Inventory Summary",
    "link_count": 0,
-   "link_to": "Ticket Report Register",
-   "link_type": "Report",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 1,
-   "label": "Asset Inventory Count",
-   "link_count": 0,
-   "link_to": "Asset Inventory Count Register",
+   "link_to": "Inventory Summary Register",
    "link_type": "Report",
    "onboard": 0,
    "type": "Link"
   }
  ],
- "modified": "2024-08-31 21:25:49.962473",
+ "modified": "2024-09-08 19:36:30.446598",
  "modified_by": "Administrator",
  "module": "Restaurant Ops Mgmt",
  "name": "Dashboard Space",

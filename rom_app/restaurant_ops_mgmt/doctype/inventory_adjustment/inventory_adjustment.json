@@ -1,6 +1,6 @@
 {
  "actions": [],
- "allow_rename": 1,
+ "autoname": "autoincrement",
  "creation": "2024-09-06 17:49:04.066469",
  "doctype": "DocType",
  "engine": "InnoDB",
@@ -8,14 +8,20 @@
   "branch_name",
   "adjustment_type",
   "column_break_fryd",
-  "branch_id"
+  "date",
+  "user_name",
+  "branch_id",
+  "section_break_lbcn",
+  "items"
  ],
  "fields": [
   {
    "fieldname": "adjustment_type",
    "fieldtype": "Select",
+   "in_list_view": 1,
    "label": "Adjustment Type",
-   "options": "\nInventory Counting\nWastage"
+   "options": "\nWastage\nInventory Counting",
+   "reqd": 1
   },
   {
    "fieldname": "branch_name",
@@ -29,15 +35,43 @@
   {
    "fieldname": "branch_id",
    "fieldtype": "Int",
+   "hidden": 1,
    "label": "Branch Id"
+  },
+  {
+   "fieldname": "section_break_lbcn",
+   "fieldtype": "Section Break"
+  },
+  {
+   "default": "user_fullname",
+   "fieldname": "user_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "User Name",
+   "read_only": 1
+  },
+  {
+   "default": "Today",
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "items",
+   "fieldtype": "Table",
+   "label": "Items",
+   "options": "Inventory Adjustment Child"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-09-06 18:00:12.732347",
+ "modified": "2024-09-08 19:02:59.631205",
  "modified_by": "Administrator",
  "module": "Restaurant Ops Mgmt",
  "name": "Inventory Adjustment",
+ "naming_rule": "Autoincrement",
  "owner": "Administrator",
  "permissions": [
   {

@@ -53,7 +53,7 @@ frappe.ui.form.on("Chef Indent By Dept", {
 
 			frm.call({
 				doc: frm.doc,
-				method: 'get_raw_material',
+				method: 'get_raw_material_with_id',
 				args: {
 					branch: branch_selected,
 					department: dept_selected

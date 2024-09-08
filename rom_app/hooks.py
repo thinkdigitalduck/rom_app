@@ -174,12 +174,12 @@ app_include_js = ["/assets/rom_app/js/d3.v6.min.js", "/assets/rom_app/js/billboa
 # Scheduled Tasks
 # ---------------
 
-scheduler_events = {
-    "cron": {
-        "*/5 * * * *":
-            ["rom_app.scheduled_tasks.inventory_closing"]
-    }
-    }
+# scheduler_events = {
+#     "cron": {
+#         "*/5 * * * *":
+#             ["rom_app.scheduled_tasks.inventory_summary"]
+#     }
+#     }
 
 # Testing
 # -------

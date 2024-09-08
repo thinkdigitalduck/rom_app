@@ -5,31 +5,22 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
-  "branch_name",
+  "branch_id",
   "raw_material",
   "quantity",
-  "unit",
   "column_break_fatx",
   "date",
-  "user_name",
   "price",
-  "closing_quantity",
-  "branch_id"
+  "unit",
+  "closing_quantity"
  ],
  "fields": [
   {
    "fieldname": "branch_id",
    "fieldtype": "Int",
-   "hidden": 1,
-   "label": "Branch Id"
-  },
-  {
-   "default": "user_fullname",
-   "fieldname": "user_name",
-   "fieldtype": "Data",
    "in_list_view": 1,
    "in_standard_filter": 1,
-   "label": "User Name"
+   "label": "Branch Id"
   },
   {
    "default": "Today",
@@ -47,40 +38,40 @@
   {
    "fieldname": "raw_material",
    "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Raw Material",
    "options": "Raw Material Only"
   },
   {
    "fieldname": "closing_quantity",
    "fieldtype": "Float",
+   "in_list_view": 1,
    "label": "Closing Quantity"
   },
   {
    "fieldname": "price",
    "fieldtype": "Currency",
+   "in_list_view": 1,
    "label": "Price"
   },
   {
    "fieldname": "unit",
    "fieldtype": "Select",
+   "in_list_view": 1,
    "label": "Unit",
    "options": "Kg\nLtr\nBox\nPkt\nPcs\nBtl\nTry"
   },
   {
-   "fieldname": "branch_name",
-   "fieldtype": "Data",
-   "label": "Branch Name",
-   "read_only": 1
-  },
-  {
    "fieldname": "quantity",
    "fieldtype": "Float",
+   "in_list_view": 1,
    "label": "Quantity"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-09-07 15:48:19.573886",
+ "modified": "2024-09-08 16:47:10.046868",
  "modified_by": "Administrator",
  "module": "Restaurant Ops Mgmt",
  "name": "Inventory Summary",
