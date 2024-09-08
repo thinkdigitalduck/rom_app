@@ -31,8 +31,7 @@
    "in_list_view": 1,
    "label": "Unit",
    "options": "Kg\nLtr\nBox\nPkt\nPcs\nBtl\nTry",
-   "read_only": 1,
-   "reqd": 1
+   "read_only": 1
   },
   {
    "columns": 1,
@@ -66,10 +65,10 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2024-09-08 19:00:17.334455",
+ "modified": "2024-09-08 22:59:16.411162",
  "modified_by": "Administrator",
  "module": "Restaurant Ops Mgmt",
- "name": "Inventory Adjustment Child",
+ "name": "Inventory Counting Child",
  "naming_rule": "Autoincrement",
  "owner": "Administrator",
  "permissions": [],

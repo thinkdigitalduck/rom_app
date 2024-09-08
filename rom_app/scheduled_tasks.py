@@ -42,7 +42,43 @@ def inventory_summary():
 
 # =============== process inventory adjustments ==========
 def process_inv_adjustment(df_inventory, df_inv_adjustments):
+    # par_name,chi_name,branch_id,date,raw_material,quantity,unit,price
     print('process_inv_adjustment')
+    for i in range(0, len(df_inv_adjustments)):
+        # print("-------- for loop ---------")
+        branch_id = df_inv_adjustments.iloc[i]['branch_id']
+        raw_material = df_inv_adjustments.iloc[i]['raw_material']
+        unit = df_inv_adjustments.iloc[i]['unit']
+        req_qty = df_inv_adjustments.iloc[i]['req_qty']
+        issued_qty = df_inv_adjustments.iloc[i]['issued_qty']
+        date = df_inv_adjustments.iloc[i]['date']
+        print('****************', i)
+        print(branch_id, '-', raw_material, '-', req_qty, '-',
+              issued_qty, '-', date, '-', unit)
+        df_inventory = update_inventory_summary_for_inv_adjustments(
+            df_inventory, branch_id, raw_material, issued_qty)
+    return df_inventory
+
+
+# =============== update inventory summary for inventory adjustments ==========
+def update_inventory_summary_for_inv_adjustments(
+        df_inventory, branch_id, raw_material, issued_qty):
+    print("update_inventory_summary")
+    print("branch_id ", branch_id)
+    print("raw_material", raw_material)
+    print("issued_qty", issued_qty)
+
+    df_filter = df_inventory.loc[(df_inventory['branch_id'] == branch_id)
+                                 & (df_inventory['raw_material'] ==
+                                    int(raw_material))]
+    print('df_filter', df_filter)
+    index_val = df_filter.index[0]
+    print('index_val', index_val)
+    quantity = df_filter.loc[index_val, 'quantity']
+    print('quantity', quantity)
+    total_quantity = quantity - issued_qty
+    df_inventory.loc[index_val, 'quantity'] = total_quantity
+    return df_inventory
 
 
 def bulk_insert_inventory_summary(df_inventory):
@@ -79,7 +115,6 @@ def bulk_insert_inventory_summary(df_inventory):
             'unit': unit
         })
         doc.insert()
-        # frappe.db.commit()
 
 
 # =============== process indents ==========

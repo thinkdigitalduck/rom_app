@@ -3,7 +3,7 @@ from frappe.model.document import Document
 from datetime import datetime
 
 
-class InventoryAdjustment(Document):
+class InventoryWastage(Document):
     def on_update(self):
         current_date = datetime.today().date()
         doc_save_date = datetime.strptime(self.date, '%Y-%m-%d').date()

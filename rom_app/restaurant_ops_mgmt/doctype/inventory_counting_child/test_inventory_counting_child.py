@@ -5,5 +5,5 @@
 from frappe.tests.utils import FrappeTestCase
 
 
-class TestInventoryAdjustment(FrappeTestCase):
+class TestInventoryCountingChild(FrappeTestCase):
 	pass

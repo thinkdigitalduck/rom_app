@@ -5,5 +5,5 @@
 from frappe.tests.utils import FrappeTestCase
 
 
-class TestInventoryAdjustmentChild(FrappeTestCase):
+class TestInventoryWastage(FrappeTestCase):
 	pass

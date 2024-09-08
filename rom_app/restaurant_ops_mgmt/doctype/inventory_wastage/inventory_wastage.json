@@ -1,54 +1,29 @@
 {
  "actions": [],
  "autoname": "autoincrement",
- "creation": "2024-09-06 17:49:04.066469",
+ "creation": "2024-09-08 21:35:08.398277",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
   "branch_name",
-  "adjustment_type",
-  "column_break_fryd",
-  "date",
   "user_name",
+  "column_break_uiuf",
+  "date",
   "branch_id",
-  "section_break_lbcn",
+  "section_break_gyaf",
   "items"
  ],
  "fields": [
   {
-   "fieldname": "adjustment_type",
-   "fieldtype": "Select",
-   "in_list_view": 1,
-   "label": "Adjustment Type",
-   "options": "\nWastage\nInventory Counting",
-   "reqd": 1
-  },
-  {
    "fieldname": "branch_name",
    "fieldtype": "Data",
-   "label": "Branch Name"
-  },
-  {
-   "fieldname": "column_break_fryd",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "branch_id",
-   "fieldtype": "Int",
-   "hidden": 1,
-   "label": "Branch Id"
-  },
-  {
-   "fieldname": "section_break_lbcn",
-   "fieldtype": "Section Break"
-  },
-  {
-   "default": "user_fullname",
-   "fieldname": "user_name",
-   "fieldtype": "Data",
    "in_list_view": 1,
-   "label": "User Name",
+   "label": "Branch Name",
    "read_only": 1
+  },
+  {
+   "fieldname": "column_break_uiuf",
+   "fieldtype": "Column Break"
   },
   {
    "default": "Today",
@@ -59,18 +34,36 @@
    "read_only": 1
   },
   {
+   "default": "user_fullname",
+   "fieldname": "user_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "User Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "branch_id",
+   "fieldtype": "Int",
+   "hidden": 1,
+   "label": "Branch Id"
+  },
+  {
+   "fieldname": "section_break_gyaf",
+   "fieldtype": "Section Break"
+  },
+  {
    "fieldname": "items",
    "fieldtype": "Table",
    "label": "Items",
-   "options": "Inventory Adjustment Child"
+   "options": "Inventory Wastage Child"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-09-08 19:02:59.631205",
+ "modified": "2024-09-08 22:13:08.919334",
  "modified_by": "Administrator",
  "module": "Restaurant Ops Mgmt",
- "name": "Inventory Adjustment",
+ "name": "Inventory Wastage",
  "naming_rule": "Autoincrement",
  "owner": "Administrator",
  "permissions": [

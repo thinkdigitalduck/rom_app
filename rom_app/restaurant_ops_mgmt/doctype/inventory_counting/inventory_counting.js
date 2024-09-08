@@ -1,4 +1,4 @@
-frappe.ui.form.on("Inventory Adjustment", {
+frappe.ui.form.on("Inventory Counting", {
 	refresh(frm) {
 
 	},

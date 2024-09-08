@@ -5,5 +5,5 @@
 from frappe.model.document import Document
 
 
-class InventoryAdjustmentChild(Document):
+class InventoryWastageChild(Document):
 	pass
