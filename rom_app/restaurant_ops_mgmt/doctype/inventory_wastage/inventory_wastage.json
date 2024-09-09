@@ -15,6 +15,7 @@
  ],
  "fields": [
   {
+   "columns": 1,
    "fieldname": "branch_name",
    "fieldtype": "Data",
    "in_list_view": 1,
@@ -26,6 +27,7 @@
    "fieldtype": "Column Break"
   },
   {
+   "columns": 1,
    "default": "Today",
    "fieldname": "date",
    "fieldtype": "Date",
@@ -34,10 +36,12 @@
    "read_only": 1
   },
   {
+   "columns": 1,
    "default": "user_fullname",
    "fieldname": "user_name",
    "fieldtype": "Data",
    "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "User Name",
    "read_only": 1
   },
@@ -60,7 +64,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-09-08 22:13:08.919334",
+ "modified": "2024-09-09 10:53:35.042781",
  "modified_by": "Administrator",
  "module": "Restaurant Ops Mgmt",
  "name": "Inventory Wastage",

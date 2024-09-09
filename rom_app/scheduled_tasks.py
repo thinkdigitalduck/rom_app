@@ -10,13 +10,20 @@ def inventory_summary():
     df_raw_materials = pd.DataFrame.from_records(get_raw_materials())
     df_pur_orders = pd.DataFrame.from_records(get_purchase_orders())
     df_indnets = pd.DataFrame.from_records(get_indents())
-    df_inv_adjustments = pd.DataFrame.from_records(get_inv_adjustments())
+    df_wastages = pd.DataFrame.from_records(get_wastages())
+    df_inv_counting = pd.DataFrame.from_records(get_inv_counting())
     df_inventory = create_inventory_summary_empty_data_frame()
+    print("**********************************")
+    print(df_inventory.dtypes)
+    df_inventory = df_inventory.astype({"branch_id": int, "raw_material": int})
+    print(df_inventory.dtypes)
 
     pd.set_option('display.max_columns', None)
     print('raw materials \n', df_raw_materials)
     print('purchase orders  \n', df_pur_orders)
     print('indents  \n', df_indnets)
+    print('wastages  \n', df_wastages)
+    print('df_inv_counting  \n', df_inv_counting)
     print('inventory  \n', df_inventory)
 
     print("-------- transfer raw_materials to inventory_summary -----------")
@@ -31,54 +38,121 @@ def inventory_summary():
     df_inventory = process_indents(df_inventory, df_indnets)
     print("inventory after indents input  \n", df_inventory)
 
-    print("---------------- inventory adjustment ---------------")
-    df_inventory = process_inv_adjustment(df_inventory, df_inv_adjustments)
-    print("inventory after inv adjustmnets input  \n", df_inventory)
+    print("---------------- process wastage ---------------")
+    df_inventory = process_wastages(df_inventory, df_wastages)
+    print("inventory after wastages  \n", df_inventory)
+
+    print("---------------- inventory counting ---------------")
+    df_inventory = process_inv_counting(df_inventory, df_inv_counting)
+    print("inventory after inv counting input  \n", df_inventory)
 
     print("---------------- bulk insert ---------------")
+    delete_inventory_summary_of_today_data()
     bulk_insert_inventory_summary(df_inventory)
     print("================ inventory_summary END >>>>>>>>>>>>>>>>>")
 
 
-# =============== process inventory adjustments ==========
-def process_inv_adjustment(df_inventory, df_inv_adjustments):
-    # par_name,chi_name,branch_id,date,raw_material,quantity,unit,price
-    print('process_inv_adjustment')
-    for i in range(0, len(df_inv_adjustments)):
+# =============== process wastages START ==========
+def process_wastages(df_inventory, df_wastages):
+    # branch_id	date	raw_material	unit	price	wastage_qty
+    for i in range(0, len(df_wastages)):
         # print("-------- for loop ---------")
-        branch_id = df_inv_adjustments.iloc[i]['branch_id']
-        raw_material = df_inv_adjustments.iloc[i]['raw_material']
-        unit = df_inv_adjustments.iloc[i]['unit']
-        req_qty = df_inv_adjustments.iloc[i]['req_qty']
-        issued_qty = df_inv_adjustments.iloc[i]['issued_qty']
-        date = df_inv_adjustments.iloc[i]['date']
+        branch_id = df_wastages.iloc[i]['branch_id']
+        date = df_wastages.iloc[i]['date']
+        raw_material = df_wastages.iloc[i]['raw_material']
+        unit = df_wastages.iloc[i]['unit']
+        price = df_wastages.iloc[i]['price']
+        wastage_qty = df_wastages.iloc[i]['wastage_qty']
+
         print('****************', i)
-        print(branch_id, '-', raw_material, '-', req_qty, '-',
-              issued_qty, '-', date, '-', unit)
-        df_inventory = update_inventory_summary_for_inv_adjustments(
-            df_inventory, branch_id, raw_material, issued_qty)
+        print(branch_id, '-', raw_material, '-', price, '-',
+              wastage_qty, '-', date, '-', unit)
+        df_inventory = update_inventory_summary_for_wastages(
+            df_inventory, branch_id, raw_material, wastage_qty)
+
     return df_inventory
 
 
-# =============== update inventory summary for inventory adjustments ==========
-def update_inventory_summary_for_inv_adjustments(
-        df_inventory, branch_id, raw_material, issued_qty):
+def update_inventory_summary_for_wastages(df_inventory, branch_id, raw_material, wastage_qty):
+    print("update_inventory_summary_for_wastages")
+    print("branch_id ", branch_id)
+    print("raw_material", raw_material)
+    print("wastage_qty", wastage_qty)
+    print("df_inventory ==== == ++ === ")
+    print(df_inventory)
+    print("**********************************")
+    print(df_inventory.dtypes)
+    df_inventory = df_inventory.astype({"branch_id": int, "raw_material": int})
+    print("**********************************")
+    print(df_inventory.dtypes)
+    print("**********************************")
+    df_filter = df_inventory.loc[
+                                 (df_inventory['branch_id'] == int(branch_id))
+                                 &
+                                 (df_inventory['raw_material'] == int(raw_material))
+                                 ]
+    print('df_filter', df_filter)
+    index_val = df_filter.index[0]
+    print('index_val', index_val)
+    quantity = df_filter.loc[index_val, 'quantity']
+    print('inv-quantity', quantity)
+    total_quantity = quantity - wastage_qty
+    df_inventory.loc[index_val, 'quantity'] = total_quantity
+    return df_inventory
+# =============== process wastages E N D  ==========
+
+
+# =============== process inventory counting  START ==========
+def process_inv_counting(df_inventory, df_inv_counting):
+    # branch_id	 date	raw_material	unit	price	quantity
+    print('process_inv_counting')
+
+    for i in range(0, len(df_inv_counting)):
+        # print("-------- for loop ---------")
+        branch_id = df_inv_counting.iloc[i]['branch_id']
+        date = df_inv_counting.iloc[i]['date']
+        raw_material = df_inv_counting.iloc[i]['raw_material']
+        counted_quantity = df_inv_counting.iloc[i]['quantity']
+        unit = df_inv_counting.iloc[i]['unit']
+        price = df_inv_counting.iloc[i]['price']
+        print('****************', i)
+        print(branch_id, '-', raw_material, '-', counted_quantity, '-',
+              counted_quantity, '-', date, '-', unit, '-', price)
+        df_inventory = update_inventory_summary_for_inv_counting(
+            df_inventory, branch_id, raw_material, counted_quantity)
+
+    return df_inventory
+
+
+def update_inventory_summary_for_inv_counting(
+        df_inventory, branch_id, raw_material, counted_quantity):
     print("update_inventory_summary")
     print("branch_id ", branch_id)
     print("raw_material", raw_material)
-    print("issued_qty", issued_qty)
-
+    print("quantity", counted_quantity)
+    print("**********************************")
+    print(df_inventory.dtypes)
+    df_inventory = df_inventory.astype({"branch_id": int, "raw_material": int})
+    print("**********************************")
+    print(df_inventory.dtypes)
+    print("**********************************")
     df_filter = df_inventory.loc[(df_inventory['branch_id'] == branch_id)
                                  & (df_inventory['raw_material'] ==
                                     int(raw_material))]
     print('df_filter', df_filter)
     index_val = df_filter.index[0]
-    print('index_val', index_val)
-    quantity = df_filter.loc[index_val, 'quantity']
-    print('quantity', quantity)
-    total_quantity = quantity - issued_qty
-    df_inventory.loc[index_val, 'quantity'] = total_quantity
+
+    df_inventory.loc[index_val, 'quantity'] = counted_quantity
     return df_inventory
+# =============== process inventory counting  E N D ==========
+
+
+def delete_inventory_summary_of_today_data():
+    sql = """
+    DELETE FROM `tabInventory Summary` WHERE date = DATE(NOW())
+    """
+    table = select_db_data(sql)
+    return table
 
 
 def bulk_insert_inventory_summary(df_inventory):
@@ -136,16 +210,15 @@ def process_indents(df_inventory, df_indnets):
     return df_inventory
 
 
-def update_inventory_summary_for_indents(
-        df_inventory, branch_id, raw_material, issued_qty):
+def update_inventory_summary_for_indents(df_inventory, branch_id, raw_material, issued_qty):
     print("update_inventory_summary")
     print("branch_id ", branch_id)
     print("raw_material", raw_material)
     print("issued_qty", issued_qty)
 
-    df_filter = df_inventory.loc[(df_inventory['branch_id'] == branch_id)
-                                 & (df_inventory['raw_material'] ==
-                                    int(raw_material))]
+    df_filter = df_inventory.loc[
+        (int(df_inventory['branch_id']) == int(branch_id))
+        & (df_inventory['raw_material'] == int(raw_material))]
     print('df_filter', df_filter)
     index_val = df_filter.index[0]
     print('index_val', index_val)
@@ -196,12 +269,12 @@ def get_indents():
     return table
 
 
-def get_inv_adjustments():
+def get_wastages():
     sql = """
-    SELECT par.name AS par_name, chi.name AS chi_name, par.branch_id, par.date,
-    chi.raw_material, chi.quantity, chi.unit, chi.price
-    FROM `tabInventory Adjustment` par
-    INNER JOIN `tabInventory Adjustment Child` chi
+    SELECT par.branch_id, par.date, chi.raw_material,
+    chi.unit, chi.price,  chi.wastage_qty
+    FROM `tabInventory Wastage` par
+    INNER JOIN `tabInventory Wastage Child` chi
     ON par.name = chi.parent
     WHERE date = DATE(NOW())
     ORDER BY par.branch_id, par.name, chi.name
@@ -210,14 +283,28 @@ def get_inv_adjustments():
     return table
 
 
-def get_inventory_summary_table_schema():
+def get_inv_counting():
     sql = """
-    SELECT branch_id, `date`, raw_material, closing_quantity, price, unit
-    FROM `tabInventory Summary`
-    WHERE 1!=1
+    SELECT par.branch_id, par.date, chi.raw_material,
+    chi.unit, chi.price,  chi.quantity
+    FROM `tabInventory Counting` par
+    INNER JOIN `tabInventory Counting Child` chi
+    ON par.name = chi.parent
+    WHERE date = DATE(NOW())
+    ORDER BY par.branch_id, par.name, chi.name
     """
     table = select_db_data(sql)
     return table
+
+
+# def get_inventory_summary_table_schema():
+#     sql = """
+#     SELECT branch_id, `date`, raw_material, closing_quantity, price, unit
+#     FROM `tabInventory Summary`
+#     WHERE 1!=1
+#     """
+#     table = select_db_data(sql)
+#     return table
 
 
 def select_db_data(sql):
