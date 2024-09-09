@@ -16,13 +16,16 @@
  ],
  "fields": [
   {
+   "columns": 1,
    "fieldname": "branch_id",
-   "fieldtype": "Int",
+   "fieldtype": "Link",
    "in_list_view": 1,
    "in_standard_filter": 1,
-   "label": "Branch Id"
+   "label": "Branch Id",
+   "options": "Branch"
   },
   {
+   "columns": 1,
    "default": "Today",
    "fieldname": "date",
    "fieldtype": "Date",
@@ -36,6 +39,7 @@
    "fieldtype": "Column Break"
   },
   {
+   "columns": 3,
    "fieldname": "raw_material",
    "fieldtype": "Link",
    "in_list_view": 1,
@@ -44,18 +48,21 @@
    "options": "Raw Material Only"
   },
   {
+   "columns": 1,
    "fieldname": "closing_quantity",
    "fieldtype": "Float",
    "in_list_view": 1,
-   "label": "Closing Quantity"
+   "label": "Inv Qty"
   },
   {
+   "columns": 1,
    "fieldname": "price",
    "fieldtype": "Currency",
    "in_list_view": 1,
    "label": "Price"
   },
   {
+   "columns": 1,
    "fieldname": "unit",
    "fieldtype": "Select",
    "in_list_view": 1,
@@ -63,6 +70,7 @@
    "options": "Kg\nLtr\nBox\nPkt\nPcs\nBtl\nTry"
   },
   {
+   "columns": 1,
    "fieldname": "quantity",
    "fieldtype": "Float",
    "in_list_view": 1,
@@ -71,7 +79,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-09-08 16:47:10.046868",
+ "modified": "2024-09-09 23:43:53.456018",
  "modified_by": "Administrator",
  "module": "Restaurant Ops Mgmt",
  "name": "Inventory Summary",
@@ -91,7 +99,9 @@
    "write": 1
   }
  ],
+ "show_title_field_in_link": 1,
  "sort_field": "creation",
  "sort_order": "DESC",
- "states": []
+ "states": [],
+ "title_field": "branch_id"
 }

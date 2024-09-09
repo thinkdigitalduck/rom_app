@@ -1,6 +1,7 @@
 from datetime import datetime
 import frappe
 import pandas as pd
+from datetime import timedelta
 
 
 @frappe.whitelist()
@@ -13,6 +14,9 @@ def inventory_summary():
     df_wastages = pd.DataFrame.from_records(get_wastages())
     df_inv_counting = pd.DataFrame.from_records(get_inv_counting())
     df_inventory = create_inventory_summary_empty_data_frame()
+    yesterday_date = get_yesterday_date()
+    df_inv_by_date = pd.DataFrame.from_records(
+        get_inventory_summary_for_specific_date(yesterday_date))
     print("**********************************")
     print(df_inventory.dtypes)
     df_inventory = df_inventory.astype({"branch_id": int, "raw_material": int})
@@ -25,33 +29,91 @@ def inventory_summary():
     print('wastages  \n', df_wastages)
     print('df_inv_counting  \n', df_inv_counting)
     print('inventory  \n', df_inventory)
+    print('df_inv_by_date  \n', df_inv_by_date)
 
-    print("-------- transfer raw_materials to inventory_summary -----------")
+    print("----- transfer raw_materials to inventory_summary -------")
     df_inventory = transfer_raw_materials_to_inventory_summary(df_inventory, df_raw_materials)
     print('inventory after raw_mat transformation +++[] \n', df_inventory)
 
-    print("---------- process purchase order -------------")
+    print("---------- process purchase order --------------")
     df_inventory = process_purchase_orders(df_inventory, df_pur_orders)
     print("inventory after purchase order input ===[]  \n  ", df_inventory)
 
-    print("---------------- process indent ---------------")
+    print("---------------- process indent ----------------")
     df_inventory = process_indents(df_inventory, df_indnets)
     print("inventory after indents input  \n", df_inventory)
 
-    print("---------------- process wastage ---------------")
+    print("---------------- process wastage ----------------")
     df_inventory = process_wastages(df_inventory, df_wastages)
     print("inventory after wastages  \n", df_inventory)
 
-    print("---------------- inventory counting ---------------")
+    print("------------- inventory counting ---------------")
     df_inventory = process_inv_counting(df_inventory, df_inv_counting)
     print("inventory after inv counting input  \n", df_inventory)
 
-    print("---------------- bulk insert ---------------")
-    res = delete_inventory_summary_of_today_data()
-    print('after deleting')
-    print(res)
+    print("----------- delete today records ---------------")
+    delete_inventory_summary_of_today_data()
+
+    print("------ process cumulative data in inv summary ---")
+    df_inventory = process_cumulative_data(
+        df_inventory, df_inv_by_date, df_raw_materials)
+    print('  process cumulative data in inv summary RESULT ++++ \n',df_inventory)
+
+    print("---------------- bulk insert --------------------")
     bulk_insert_inventory_summary(df_inventory)
-    print("================ inventory_summary END >>>>>>>>>>>>>>>>>")
+    print(df_inventory)
+    print("================ inventory_summary END >>>>>>>>>>>")
+
+
+# ------------- process cumulative data in inv summary -------------
+def process_cumulative_data(df_inventory, df_inv_by_date, df_raw_materials):
+    print('df_inv_by_date  \n', df_inv_by_date)
+    print('df_raw_materials \n', df_raw_materials)
+    for i in range(0, len(df_inventory)):
+
+        branch_id = df_inventory.iloc[i]['branch_id']
+        raw_material = df_inventory.iloc[i]['raw_material']
+        quantity = df_inventory.iloc[i]['quantity']
+        print('branch_id', branch_id, 'raw_material', raw_material, 'quantity', quantity)
+        closing_quantity = 0
+        total_quantity = 0
+        index_val = 0
+
+        if not df_inv_by_date.empty:
+            df_inv_by_date = df_inv_by_date.astype({"branch_id": int, "raw_material": int})
+            df_filter = df_inv_by_date.loc[
+                                 (df_inv_by_date['branch_id'] == int(branch_id))
+                                 &
+                                 (df_inv_by_date['raw_material'] == int(raw_material))
+                                 ]
+            if not df_filter.empty:
+                index_val = df_filter.index[0]
+                closing_quantity = df_filter.loc[index_val, 'closing_quantity']
+                print('df_filter', df_filter)
+                print('index_val', index_val)
+                print('closing_quantity', closing_quantity)
+                if closing_quantity > 0:
+                    print("closing_quantity > 0")
+                    total_quantity = quantity + closing_quantity
+                    df_inventory.loc[i, 'closing_quantity'] = total_quantity
+
+        if closing_quantity == 0:
+            print("closing_quantity == 0")
+            df_raw_materials = df_raw_materials.astype({"branch_id": int, "raw_material": int})
+            df_filter_raw = df_raw_materials.loc[
+                                 (df_raw_materials['branch_id'] == int(branch_id))
+                                 &
+                                 (df_raw_materials['raw_material'] == int(raw_material))
+                                 ]
+            index_val_raw = df_filter_raw.index[0]
+            print('index_val_raw -> ', index_val_raw)
+            opening_stock = df_filter_raw.loc[index_val_raw, 'opening_stock']
+            print('opening_stock -> ', opening_stock)
+            total_quantity = quantity + opening_stock
+            print('total_quantity -> ', total_quantity)
+            df_inventory.loc[i, 'closing_quantity'] = total_quantity
+
+    return df_inventory
 
 
 # =============== process wastages START ==========
@@ -306,14 +368,15 @@ def get_inv_counting():
     return table
 
 
-# def get_inventory_summary_table_schema():
-#     sql = """
-#     SELECT branch_id, `date`, raw_material, closing_quantity, price, unit
-#     FROM `tabInventory Summary`
-#     WHERE 1!=1
-#     """
-#     table = select_db_data(sql)
-#     return table
+def get_inventory_summary_for_specific_date(specific_date):
+    sql = """
+    SELECT branch_id, `date`, raw_material, closing_quantity, price, unit
+    FROM `tabInventory Summary`
+    WHERE date = {}
+    """
+    sql = sql.format(specific_date)
+    table = select_db_data(sql)
+    return table
 
 
 def select_db_data(sql):
@@ -331,8 +394,7 @@ def create_inventory_summary_empty_data_frame():
     return df
 
 
-def check_if_raw_material_exists_in_inventory_summary(df_inventory,
-                                                      branch_id, raw_material):
+def check_if_raw_material_exists_in_inventory_summary(df_inventory, branch_id, raw_material):
 
     df = df_inventory.loc[(df_inventory['branch_id'] == branch_id)
                           & (df_inventory['raw_material'] == raw_material)]
@@ -354,8 +416,7 @@ def append_raw_material(df_inventory,
     return df_inventory
 
 
-def update_inventory_summary_for_po(
-        df_inventory, branch_id, raw_material, ord_qty):
+def update_inventory_summary_for_po(df_inventory, branch_id, raw_material, ord_qty):
     print("update_inventory_summary")
     print("branch_id ", branch_id)
     print("raw_material", raw_material)
@@ -375,6 +436,17 @@ def update_inventory_summary_for_po(
     return df_inventory
 
 
+def get_today_date():
+    current_date = datetime.today().date()
+    return current_date
+
+
+def get_yesterday_date():
+    today = get_today_date()
+    yesterday = today - timedelta(days=1)
+    return yesterday
+
+
 def transfer_raw_materials_to_inventory_summary(
         df_inventory, df_raw_materials):
     # df_raw_materials => name, branch, `date`, item,
@@ -384,9 +456,7 @@ def transfer_raw_materials_to_inventory_summary(
     for i in range(0, len(df_raw_materials)):
         print("-------- for loop ---------")
         branch_id = df_raw_materials.iloc[i]['branch_id']
-        current_date = datetime.today().date()
-        # date = df_raw_materials.iloc[i]['date']
-        date = current_date
+        date = get_today_date()
         raw_material = df_raw_materials.iloc[i]['raw_material']
         item = df_raw_materials.iloc[i]['item']
         unit = df_raw_materials.iloc[i]['unit']
