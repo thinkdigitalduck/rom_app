@@ -1,4 +1,4 @@
-import datetime
+from datetime import datetime
 import frappe
 import pandas as pd
 
@@ -47,7 +47,9 @@ def inventory_summary():
     print("inventory after inv counting input  \n", df_inventory)
 
     print("---------------- bulk insert ---------------")
-    delete_inventory_summary_of_today_data()
+    res = delete_inventory_summary_of_today_data()
+    print('after deleting')
+    print(res)
     bulk_insert_inventory_summary(df_inventory)
     print("================ inventory_summary END >>>>>>>>>>>>>>>>>")
 
@@ -194,6 +196,7 @@ def bulk_insert_inventory_summary(df_inventory):
 # =============== process indents ==========
 def process_indents(df_inventory, df_indnets):
     # name  branch_id  raw_material  req_qty  issued_qty  date
+
     for i in range(0, len(df_indnets)):
         # print("-------- for loop ---------")
         branch_id = df_indnets.iloc[i]['branch_id']
@@ -211,13 +214,19 @@ def process_indents(df_inventory, df_indnets):
 
 
 def update_inventory_summary_for_indents(df_inventory, branch_id, raw_material, issued_qty):
-    print("update_inventory_summary")
+    print("update_inventory_summary_for_indents")
     print("branch_id ", branch_id)
     print("raw_material", raw_material)
     print("issued_qty", issued_qty)
 
+    print("**********************************")
+    print(df_inventory.dtypes)
+    df_inventory = df_inventory.astype({"branch_id": int, "raw_material": int})
+    print(df_inventory.dtypes)
+    print("**********************************")
+
     df_filter = df_inventory.loc[
-        (int(df_inventory['branch_id']) == int(branch_id))
+        (df_inventory['branch_id'] == int(branch_id))
         & (df_inventory['raw_material'] == int(raw_material))]
     print('df_filter', df_filter)
     index_val = df_filter.index[0]
@@ -375,7 +384,9 @@ def transfer_raw_materials_to_inventory_summary(
     for i in range(0, len(df_raw_materials)):
         print("-------- for loop ---------")
         branch_id = df_raw_materials.iloc[i]['branch_id']
-        date = df_raw_materials.iloc[i]['date']
+        current_date = datetime.today().date()
+        # date = df_raw_materials.iloc[i]['date']
+        date = current_date
         raw_material = df_raw_materials.iloc[i]['raw_material']
         item = df_raw_materials.iloc[i]['item']
         unit = df_raw_materials.iloc[i]['unit']
