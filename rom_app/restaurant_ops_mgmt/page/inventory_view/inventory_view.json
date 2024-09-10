@@ -1,0 +1,29 @@
+{
+ "content": null,
+ "creation": "2024-09-10 19:26:16.709763",
+ "docstatus": 0,
+ "doctype": "Page",
+ "idx": 0,
+ "modified": "2024-09-10 19:26:16.709763",
+ "modified_by": "Administrator",
+ "module": "Restaurant Ops Mgmt",
+ "name": "inventory-view",
+ "owner": "Administrator",
+ "page_name": "inventory-view",
+ "roles": [
+  {
+   "role": "Administrator"
+  },
+  {
+   "role": "System Manager"
+  },
+  {
+   "role": "Dashboard Manager"
+  }
+ ],
+ "script": null,
+ "standard": "Yes",
+ "style": null,
+ "system_page": 0,
+ "title": "Inventory Board"
+}
