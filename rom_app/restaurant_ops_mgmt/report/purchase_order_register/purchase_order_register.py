@@ -50,6 +50,11 @@ def get_columns():
             'fieldtype': 'Data',
         },
         {
+            'fieldname': 'user_name',
+            'label': 'User Name',
+            'fieldtype': 'Data',
+        },
+        {
             'fieldname': 'raw_material',
             'label': 'Raw Material',
             'fieldtype': 'Data',
