@@ -6,8 +6,8 @@ from datetime import timedelta
 
 @frappe.whitelist()
 def inventory_summary():
+    pd.set_option('display.max_columns', None)
     print("================ inventory_summary START >>>>>>>>>>>>>>>>>")
-
     df_raw_materials = pd.DataFrame.from_records(get_raw_materials())
     df_pur_orders = pd.DataFrame.from_records(get_purchase_orders())
     df_indnets = pd.DataFrame.from_records(get_indents())
@@ -15,14 +15,18 @@ def inventory_summary():
     df_inv_counting = pd.DataFrame.from_records(get_inv_counting())
     df_inventory = create_inventory_summary_empty_data_frame()
     yesterday_date = get_yesterday_date()
-    df_inv_by_date = pd.DataFrame.from_records(
-        get_inventory_summary_for_specific_date(yesterday_date))
+    # print('yesterday_date')
+    print(yesterday_date)
+    dict_inv_by_date = get_inventory_summary_for_specific_date(yesterday_date)
+    # print('dict_inv_by_date')
+    print(dict_inv_by_date)
+    df_inv_by_date = pd.DataFrame.from_records(dict_inv_by_date)
+    # print('df_inv_by_date')
+    print(df_inv_by_date)
     print("**********************************")
     print(df_inventory.dtypes)
     df_inventory = df_inventory.astype({"branch_id": int, "raw_material": int})
     print(df_inventory.dtypes)
-
-    pd.set_option('display.max_columns', None)
     print('raw materials \n', df_raw_materials)
     print('purchase orders  \n', df_pur_orders)
     print('indents  \n', df_indnets)
@@ -30,39 +34,59 @@ def inventory_summary():
     print('df_inv_counting  \n', df_inv_counting)
     print('inventory  \n', df_inventory)
     print('df_inv_by_date  \n', df_inv_by_date)
-
     print("----- transfer raw_materials to inventory_summary -------")
     df_inventory = transfer_raw_materials_to_inventory_summary(df_inventory, df_raw_materials)
     print('inventory after raw_mat transformation +++[] \n', df_inventory)
-
     print("---------- process purchase order --------------")
     df_inventory = process_purchase_orders(df_inventory, df_pur_orders)
     print("inventory after purchase order input ===[]  \n  ", df_inventory)
-
     print("---------------- process indent ----------------")
     df_inventory = process_indents(df_inventory, df_indnets)
     print("inventory after indents input  \n", df_inventory)
-
     print("---------------- process wastage ----------------")
     df_inventory = process_wastages(df_inventory, df_wastages)
     print("inventory after wastages  \n", df_inventory)
-
     print("------------- inventory counting ---------------")
     df_inventory = process_inv_counting(df_inventory, df_inv_counting)
     print("inventory after inv counting input  \n", df_inventory)
-
     print("----------- delete today records ---------------")
     delete_inventory_summary_of_today_data()
-
     print("------ process cumulative data in inv summary ---")
     df_inventory = process_cumulative_data(
         df_inventory, df_inv_by_date, df_raw_materials)
     print('  process cumulative data in inv summary RESULT ++++ \n',df_inventory)
-
     print("---------------- bulk insert --------------------")
     bulk_insert_inventory_summary(df_inventory)
     print(df_inventory)
+
+    print("------------- update raw material table ----------")
+    update_raw_material_table_closing_stock(df_inventory)
+
     print("================ inventory_summary END >>>>>>>>>>>")
+
+
+# ------------- update raw material table closing stock -------------
+def update_raw_material_table_closing_stock(df_inventory):
+    print('update raw material table closing stock')
+    for i in range(0, len(df_inventory)):
+        # print("-------- for loop ---------")
+        branch_id = df_inventory.iloc[i]['branch_id']
+        date = df_inventory.iloc[i]['date']
+        raw_material = df_inventory.iloc[i]['raw_material']
+        quantity = df_inventory.iloc[i]['quantity']
+        closing_quantity = df_inventory.iloc[i]['closing_quantity']
+        price = df_inventory.iloc[i]['price']
+        unit = df_inventory.iloc[i]['unit']
+        print('#####################', i)
+        print('  branch_id -', branch_id)
+        print('  date -', date)
+        print('  raw_material -', raw_material)
+        print('  quantity -', quantity)
+        print('  closing_quantity -', closing_quantity)
+        print('  price -', price)
+        print('  unit-', unit)
+        frappe.db.set_value('Raw Material Only', int(raw_material),
+                            'closing_stock', closing_quantity)
 
 
 # ------------- process cumulative data in inv summary -------------
@@ -80,6 +104,7 @@ def process_cumulative_data(df_inventory, df_inv_by_date, df_raw_materials):
         index_val = 0
 
         if not df_inv_by_date.empty:
+            print('df_inv_by_date NOT EMPTY')
             df_inv_by_date = df_inv_by_date.astype({"branch_id": int, "raw_material": int})
             df_filter = df_inv_by_date.loc[
                                  (df_inv_by_date['branch_id'] == int(branch_id))
@@ -89,9 +114,9 @@ def process_cumulative_data(df_inventory, df_inv_by_date, df_raw_materials):
             if not df_filter.empty:
                 index_val = df_filter.index[0]
                 closing_quantity = df_filter.loc[index_val, 'closing_quantity']
-                print('df_filter', df_filter)
-                print('index_val', index_val)
-                print('closing_quantity', closing_quantity)
+                # print('df_filter', df_filter)
+                # print('index_val', index_val)
+                # print('closing_quantity', closing_quantity)
                 if closing_quantity > 0:
                     print("closing_quantity > 0")
                     total_quantity = quantity + closing_quantity
@@ -106,11 +131,11 @@ def process_cumulative_data(df_inventory, df_inv_by_date, df_raw_materials):
                                  (df_raw_materials['raw_material'] == int(raw_material))
                                  ]
             index_val_raw = df_filter_raw.index[0]
-            print('index_val_raw -> ', index_val_raw)
             opening_stock = df_filter_raw.loc[index_val_raw, 'opening_stock']
-            print('opening_stock -> ', opening_stock)
             total_quantity = quantity + opening_stock
-            print('total_quantity -> ', total_quantity)
+            # print('index_val_raw -> ', index_val_raw)
+            # print('opening_stock -> ', opening_stock)
+            # print('total_quantity -> ', total_quantity)
             df_inventory.loc[i, 'closing_quantity'] = total_quantity
 
     return df_inventory
@@ -139,9 +164,9 @@ def process_wastages(df_inventory, df_wastages):
 
 def update_inventory_summary_for_wastages(df_inventory, branch_id, raw_material, wastage_qty):
     print("update_inventory_summary_for_wastages")
-    print("branch_id ", branch_id)
-    print("raw_material", raw_material)
-    print("wastage_qty", wastage_qty)
+    # print("branch_id ", branch_id)
+    # print("raw_material", raw_material)
+    # print("wastage_qty", wastage_qty)
     print("df_inventory ==== == ++ === ")
     print(df_inventory)
     print("**********************************")
@@ -155,11 +180,11 @@ def update_inventory_summary_for_wastages(df_inventory, branch_id, raw_material,
                                  &
                                  (df_inventory['raw_material'] == int(raw_material))
                                  ]
-    print('df_filter', df_filter)
     index_val = df_filter.index[0]
-    print('index_val', index_val)
     quantity = df_filter.loc[index_val, 'quantity']
-    print('inv-quantity', quantity)
+    # print('df_filter', df_filter)
+    # print('index_val', index_val)
+    # print('inv-quantity', quantity)
     total_quantity = quantity - wastage_qty
     df_inventory.loc[index_val, 'quantity'] = total_quantity
     return df_inventory
@@ -190,10 +215,10 @@ def process_inv_counting(df_inventory, df_inv_counting):
 
 def update_inventory_summary_for_inv_counting(
         df_inventory, branch_id, raw_material, counted_quantity):
-    print("update_inventory_summary")
-    print("branch_id ", branch_id)
-    print("raw_material", raw_material)
-    print("quantity", counted_quantity)
+    # print("update_inventory_summary")
+    # print("branch_id ", branch_id)
+    # print("raw_material", raw_material)
+    # print("quantity", counted_quantity)
     print("**********************************")
     print(df_inventory.dtypes)
     df_inventory = df_inventory.astype({"branch_id": int, "raw_material": int})
@@ -215,6 +240,7 @@ def delete_inventory_summary_of_today_data():
     sql = """
     DELETE FROM `tabInventory Summary` WHERE date = DATE(NOW())
     """
+    print(sql)
     table = select_db_data(sql)
     return table
 
@@ -233,14 +259,14 @@ def bulk_insert_inventory_summary(df_inventory):
         price = df_inventory.iloc[i]['price']
         unit = df_inventory.iloc[i]['unit']
 
-        print('#####################', i)
-        print('  branch_id -', branch_id)
-        print('  date -', date)
-        print('  raw_material -', raw_material)
-        print('  quantity -', quantity)
-        print('  closing_quantity -', closing_quantity)
-        print('  price -', price)
-        print('  unit-', unit)
+        # print('#####################', i)
+        # print('  branch_id -', branch_id)
+        # print('  date -', date)
+        # print('  raw_material -', raw_material)
+        # print('  quantity -', quantity)
+        # print('  closing_quantity -', closing_quantity)
+        # print('  price -', price)
+        # print('  unit-', unit)
 
         doc = frappe.get_doc({
             'doctype': 'Inventory Summary',
@@ -372,9 +398,10 @@ def get_inventory_summary_for_specific_date(specific_date):
     sql = """
     SELECT branch_id, `date`, raw_material, closing_quantity, price, unit
     FROM `tabInventory Summary`
-    WHERE date = {}
+    WHERE date = '{}'
     """
     sql = sql.format(specific_date)
+    print(sql)
     table = select_db_data(sql)
     return table
 

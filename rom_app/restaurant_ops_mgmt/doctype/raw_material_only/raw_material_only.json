@@ -11,7 +11,8 @@
   "column_break_vwfd",
   "date",
   "price",
-  "opening_stock"
+  "opening_stock",
+  "closing_stock"
  ],
  "fields": [
   {
@@ -24,6 +25,7 @@
    "reqd": 1
   },
   {
+   "columns": 1,
    "fieldname": "unit",
    "fieldtype": "Select",
    "in_list_view": 1,
@@ -43,19 +45,22 @@
    "reqd": 1
   },
   {
+   "columns": 1,
    "default": "0",
    "fieldname": "opening_stock",
    "fieldtype": "Float",
    "in_list_view": 1,
-   "label": "Opening Stock"
+   "label": "Open. Stock"
   },
   {
+   "columns": 1,
    "fieldname": "price",
    "fieldtype": "Currency",
    "in_list_view": 1,
    "label": "Price"
   },
   {
+   "columns": 1,
    "default": "Today",
    "fieldname": "date",
    "fieldtype": "Date",
@@ -66,11 +71,18 @@
   {
    "fieldname": "column_break_vwfd",
    "fieldtype": "Column Break"
+  },
+  {
+   "columns": 1,
+   "fieldname": "closing_stock",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Clos. Stock"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-09-07 10:28:00.357442",
+ "modified": "2024-09-10 10:57:51.478111",
  "modified_by": "Administrator",
  "module": "Restaurant Ops Mgmt",
  "name": "Raw Material Only",

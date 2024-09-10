@@ -8,9 +8,9 @@
  "field_order": [
   "raw_material",
   "unit",
-  "column_break_uijp",
-  "price",
   "wastage_qty",
+  "price",
+  "clos_stock",
   "remarks"
  ],
  "fields": [
@@ -43,28 +43,33 @@
    "read_only": 1
   },
   {
-   "columns": 2,
+   "columns": 1,
    "fieldname": "remarks",
    "fieldtype": "Data",
    "in_list_view": 1,
    "label": "Remarks"
   },
   {
-   "fieldname": "column_break_uijp",
-   "fieldtype": "Column Break"
-  },
-  {
    "columns": 1,
    "fieldname": "wastage_qty",
    "fieldtype": "Float",
    "in_list_view": 1,
-   "label": "Wastage Qty"
+   "label": "Waste Qty"
+  },
+  {
+   "columns": 1,
+   "fetch_from": "raw_material.closing_stock",
+   "fieldname": "clos_stock",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Clos Stock",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2024-09-08 22:13:18.114910",
+ "modified": "2024-09-10 12:11:36.625816",
  "modified_by": "Administrator",
  "module": "Restaurant Ops Mgmt",
  "name": "Inventory Wastage Child",

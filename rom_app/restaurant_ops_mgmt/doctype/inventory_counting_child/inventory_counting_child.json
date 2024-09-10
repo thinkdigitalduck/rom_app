@@ -8,9 +8,9 @@
  "field_order": [
   "raw_material",
   "unit",
-  "price",
-  "column_break_kbsm",
   "quantity",
+  "price",
+  "clos_stock",
   "remarks"
  ],
  "fields": [
@@ -42,15 +42,11 @@
    "reqd": 1
   },
   {
-   "columns": 2,
+   "columns": 1,
    "fieldname": "remarks",
    "fieldtype": "Data",
    "in_list_view": 1,
    "label": "Remarks"
-  },
-  {
-   "fieldname": "column_break_kbsm",
-   "fieldtype": "Column Break"
   },
   {
    "columns": 1,
@@ -60,12 +56,21 @@
    "in_list_view": 1,
    "label": "Price",
    "read_only": 1
+  },
+  {
+   "columns": 1,
+   "fetch_from": "raw_material.closing_stock",
+   "fieldname": "clos_stock",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Clos Stock",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2024-09-09 15:48:56.494638",
+ "modified": "2024-09-10 12:13:34.401396",
  "modified_by": "Administrator",
  "module": "Restaurant Ops Mgmt",
  "name": "Inventory Counting Child",

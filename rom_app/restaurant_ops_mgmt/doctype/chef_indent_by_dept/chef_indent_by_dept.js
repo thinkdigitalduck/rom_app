@@ -1,8 +1,8 @@
 frappe.ui.form.on("Chef Indent By Dept", {
 	refresh(frm) {
-		frm.set_df_property('raw_materials', 'cannot_add_rows', true);
-        frm.set_df_property('raw_materials', 'cannot_delete_rows', true);
-        frm.set_df_property('raw_materials', 'cannot_delete_all_rows', true);
+		// frm.set_df_property('raw_materials', 'cannot_add_rows', true);
+  //       frm.set_df_property('raw_materials', 'cannot_delete_rows', true);
+  //       frm.set_df_property('raw_materials', 'cannot_delete_all_rows', true);
 		disable_drag_drop(frm);
 
 		// if(frm.doc.department){
