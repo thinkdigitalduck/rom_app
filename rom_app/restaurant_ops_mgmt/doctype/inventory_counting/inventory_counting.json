@@ -10,6 +10,7 @@
   "column_break_fryd",
   "date",
   "branch_id",
+  "total_amount",
   "section_break_lbcn",
   "items"
  ],
@@ -56,11 +57,17 @@
    "fieldtype": "Table",
    "label": "Items",
    "options": "Inventory Counting Child"
+  },
+  {
+   "fieldname": "total_amount",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Total Amount"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-09-09 15:48:38.534700",
+ "modified": "2024-09-11 22:19:39.170218",
  "modified_by": "Administrator",
  "module": "Restaurant Ops Mgmt",
  "name": "Inventory Counting",
@@ -80,7 +87,9 @@
    "write": 1
   }
  ],
+ "show_title_field_in_link": 1,
  "sort_field": "creation",
  "sort_order": "DESC",
- "states": []
+ "states": [],
+ "title_field": "branch_name"
 }

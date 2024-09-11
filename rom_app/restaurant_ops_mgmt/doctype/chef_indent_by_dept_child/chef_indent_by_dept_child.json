@@ -10,8 +10,9 @@
   "unit",
   "req_qty",
   "issued_qty",
-  "closing_qty",
   "price",
+  "amount",
+  "closing_qty",
   "remarks"
  ],
  "fields": [
@@ -28,20 +29,21 @@
    "fieldname": "req_qty",
    "fieldtype": "Float",
    "in_list_view": 1,
-   "label": "Req Qty"
+   "label": "Req Qty",
+   "precision": "2"
   },
   {
    "columns": 1,
    "fieldname": "issued_qty",
    "fieldtype": "Float",
    "in_list_view": 1,
-   "label": "Issu Qty"
+   "label": "Issu Qty",
+   "precision": "2"
   },
   {
    "columns": 1,
    "fieldname": "remarks",
    "fieldtype": "Data",
-   "in_list_view": 1,
    "label": "Remarks"
   },
   {
@@ -68,14 +70,23 @@
    "fieldname": "price",
    "fieldtype": "Currency",
    "in_list_view": 1,
-   "label": "Price",
+   "label": "Item Price",
+   "precision": "2",
    "read_only": 1
+  },
+  {
+   "columns": 1,
+   "fieldname": "amount",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Amount",
+   "precision": "2"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2024-09-10 11:49:46.863824",
+ "modified": "2024-09-11 20:45:02.078300",
  "modified_by": "Administrator",
  "module": "Restaurant Ops Mgmt",
  "name": "Chef Indent By Dept Child",

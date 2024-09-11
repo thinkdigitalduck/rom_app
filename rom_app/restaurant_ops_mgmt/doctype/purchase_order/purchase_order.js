@@ -137,12 +137,40 @@ refresh(frm) {
  frappe.ui.form.on('Purchase Order Child2', {
     form_render: function(frm,cdt,cdn) {
 		console.log(' child row added event form_render');
-        //let item = locals[cdt][cdn];
-       // let articleId = Math.round(+new Date()/1000);
-       // item.article_id = articleId;
-		//console.log('item',item);
+    },
+	ord_qty: function(frm,cdt,cdn) {
+		// ord_qty_temp   unit_price_temp  amount_temp    total_price_temp
+        var d = locals[cdt][cdn];
+		let ord_qty_temp = 0;
+		let unit_price_temp = 0;
+		let cal_val = 0;
 
-       //item.refresh_field('raw_material');
+		if(parseInt(d.ord_qty)>=0)
+			ord_qty_temp = d.ord_qty;
+
+		if(parseInt(d.unit_price)>=0)
+			unit_price_temp = d.unit_price;
+
+		cal_val = ord_qty_temp * unit_price_temp;
+
+		console.log('balance_portion_temp->', ord_qty_temp);
+		console.log('rateportion_temp->',unit_price_temp);
+		console.log('cal_val->', cal_val);
+
+		frappe.model.set_value(cdt, cdn, 'amount', cal_val);
+
+		console.log('locals->', locals);
+		console.log('cdt->', cdt);
+		console.log('cdn->', cdn);
+		console.log('d->', d);
+
+		//total_price_temp
+		console.log('total_price_temp');
+		var total_price_temp = 0;
+		frm.doc.raw_material_from_template.forEach(function(d) { total_price_temp += d.amount; });
+		console.log('total_price_temp', total_price_temp);
+		frm.set_value("total_price", total_price_temp);
+        refresh_field('raw_material_from_template');
     },
 });
 

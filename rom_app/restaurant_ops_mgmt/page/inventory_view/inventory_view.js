@@ -214,8 +214,34 @@ let opening_new_tab_simple = function (report_name, filters, date_clicked){
 	}
 
 	// ^^^^^^^^^^^^^^^^   NEW TAB simple end   ^^^^^^^^^^^^^^^^^^
+
+		let inventory_transaction_by_amount  = function(time_of_invoke){
+
+		let filters = "";
+		if(time_of_invoke == 'on-load'){
+			console.log('on-load');
+		    filters = global_get_filters();
+		} else {
+			console.log('on-submit');
+			filters = global_get_filters_on_submit();
+		}
+
+		console.log('-----filters----- Inventory Transaction by Amount ')
+		console.log(filters);
+		frappe.call({
+			method: "rom_app.restaurant_ops_mgmt.page.inventory_view.inventory_view_sql.inventory_transaction_by_amount_data",
+			args: {
+				'filters':filters
+			},
+			callback: function(data) {
+				console.log(filters);
+				chef_opening_checklist_chef_audit_chart(data, filters);
+				chef_opening_checklist_rm_audit_chart(data, filters);
+			}
+		})
+	}
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	$(frappe.render_template("inventory_view", {})).appendTo(page.body);
-    //expense_report_register_by_amount('on-load');
+    inventory_transaction_by_amount('on-load');
 
 }

@@ -7,10 +7,11 @@
  "field_order": [
   "branch_name",
   "po_template",
+  "branch_id",
   "column_break_oiog",
   "date",
   "user_name",
-  "branch_id",
+  "total_price",
   "section_break_wqyo",
   "raw_material_from_template"
  ],
@@ -68,11 +69,19 @@
    "fieldtype": "Table",
    "label": "Raw Material From Template",
    "options": "Purchase Order Child2"
+  },
+  {
+   "columns": 1,
+   "fieldname": "total_price",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Total Price",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-09-05 12:03:31.243701",
+ "modified": "2024-09-11 19:11:23.148503",
  "modified_by": "Administrator",
  "module": "Restaurant Ops Mgmt",
  "name": "Purchase Order",

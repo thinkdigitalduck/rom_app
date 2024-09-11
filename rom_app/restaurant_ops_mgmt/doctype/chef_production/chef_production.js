@@ -133,11 +133,6 @@ frappe.ui.form.on("Chef Prod Child Briyani", {
 		frm.set_value("briyani_category_wastage_amount", waste_total);
 		refresh_field("briyani_category_wastage_amount");
 
-
-
-
-
-
     }
 });
 
