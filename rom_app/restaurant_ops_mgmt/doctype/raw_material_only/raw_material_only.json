@@ -8,11 +8,12 @@
   "branch",
   "item",
   "unit",
+  "price",
   "column_break_vwfd",
   "date",
-  "price",
   "opening_stock",
-  "closing_stock"
+  "closing_stock",
+  "min_stock"
  ],
  "fields": [
   {
@@ -78,11 +79,18 @@
    "fieldtype": "Float",
    "in_list_view": 1,
    "label": "Clos. Stock"
+  },
+  {
+   "columns": 1,
+   "fieldname": "min_stock",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Min Stock"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-09-10 10:57:51.478111",
+ "modified": "2024-09-11 15:44:55.611977",
  "modified_by": "Administrator",
  "module": "Restaurant Ops Mgmt",
  "name": "Raw Material Only",

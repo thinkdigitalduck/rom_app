@@ -8,9 +8,10 @@
  "field_order": [
   "raw_material",
   "unit",
-  "quantity",
   "price",
   "clos_stock",
+  "quantity",
+  "diff",
   "remarks"
  ],
  "fields": [
@@ -38,14 +39,13 @@
    "fieldname": "quantity",
    "fieldtype": "Float",
    "in_list_view": 1,
-   "label": "Quantity",
+   "label": "Count Qty",
    "reqd": 1
   },
   {
    "columns": 1,
    "fieldname": "remarks",
    "fieldtype": "Data",
-   "in_list_view": 1,
    "label": "Remarks"
   },
   {
@@ -63,14 +63,21 @@
    "fieldname": "clos_stock",
    "fieldtype": "Float",
    "in_list_view": 1,
-   "label": "Clos Stock",
+   "label": "Close Stock",
    "read_only": 1
+  },
+  {
+   "columns": 1,
+   "fieldname": "diff",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Diff"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2024-09-10 12:13:34.401396",
+ "modified": "2024-09-11 13:42:22.096313",
  "modified_by": "Administrator",
  "module": "Restaurant Ops Mgmt",
  "name": "Inventory Counting Child",

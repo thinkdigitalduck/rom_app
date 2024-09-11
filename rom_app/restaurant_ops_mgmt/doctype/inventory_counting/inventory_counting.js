@@ -25,3 +25,31 @@ frappe.ui.form.on("Inventory Counting", {
 		}
     },
 });
+
+
+frappe.ui.form.on("Inventory Counting Child", {
+    // raw_material  unit  price  clos_stock  quantity diff
+    quantity:function(frm,cdt,cdn) {
+		console.log("----clos_stock---");
+		var d = locals[cdt][cdn];
+
+		let clos_stock = 0;
+		let counted_quantity = 0;
+		let cal_val = 0;
+
+		// if(parseInt(d.clos_stock)>=0)
+		clos_stock_temp = parseFloat(d.clos_stock);
+
+		// if(parseInt(d.quantity)>=0)
+		counted_quantity_temp = parseFloat(d.quantity);
+
+		cal_val =  counted_quantity_temp - clos_stock_temp;
+
+		console.log('clos_stock_temp->', clos_stock_temp);
+		console.log('counted_quantity_temp->',counted_quantity_temp);
+		console.log('cal_val->', cal_val);
+
+		frappe.model.set_value(cdt, cdn, 'diff', cal_val);
+		refresh_field("items");
+    }
+});
