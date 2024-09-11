@@ -217,6 +217,8 @@ let opening_new_tab_simple = function (report_name, filters, date_clicked){
 
 		let inventory_transaction_by_amount  = function(time_of_invoke){
 
+		console.log('inventory_transaction_by_amount')
+
 		let filters = "";
 		if(time_of_invoke == 'on-load'){
 			console.log('on-load');
@@ -234,12 +236,59 @@ let opening_new_tab_simple = function (report_name, filters, date_clicked){
 				'filters':filters
 			},
 			callback: function(data) {
-				console.log(filters);
-				chef_opening_checklist_chef_audit_chart(data, filters);
-				chef_opening_checklist_rm_audit_chart(data, filters);
+				console.log(data);
+				inventory_transaction_by_amount_chart(data);
+
 			}
 		})
 	}
+
+	let inventory_transaction_by_amount_chart  = function(data){
+		console.log("-------------- chef_production_register_briyani -------------- ");
+
+		// http://rom_site:8000/app/query-report/Chef%20Production%20Register
+		// ?from_date_filter=2024-07-29&to_date_filter=2024-08-12&
+		//category_filter=Briyani&item_filter=Mandi+Briyani
+		let category_filter = "Total Amount";
+		let report_name = "Inventory Transaction by Amount";
+		console.log(' +++ inventory_transaction_by_amount_chart +++ ')
+		console.log(data);
+		let inventory_transaction = [];
+		let total_amount = [];
+
+		total_amount.push("item");
+
+		let message = data.message;
+		message.forEach((item) => {
+			console.log(item);
+				inventory_transaction.push(item.inventory_transaction);
+				total_amount.push(item.total_amount);
+		});
+		console.log('inventory_transaction', inventory_transaction);
+		console.log('total_amount', total_amount);
+
+		var chart = bb.generate({
+			title: {text: "Inventory Transaction by Total Amount"},
+			data: {
+			type: "bar",
+			onclick: function(arg1){
+				console.log(arg1);
+				console.log(arg1.x);
+
+				let item_filter=inventory_transaction[arg1.x];
+				console.log(item_filter); // Mutton briyani
+				console.log(arg1.value);
+				//opening_new_tab(report_name, filters, "category_filter", category_filter, "item_filter", item_filter);
+			},
+			columns: [total_amount,],
+		},
+		axis: {
+			x: {type: "category",categories: inventory_transaction,},
+		},
+		bindto: "#inventory_transaction_by_amount_chart",
+		});
+	}
+
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	$(frappe.render_template("inventory_view", {})).appendTo(page.body);
     inventory_transaction_by_amount('on-load');
