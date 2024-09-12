@@ -6,17 +6,17 @@
  "engine": "InnoDB",
  "field_order": [
   "branch_id",
-  "raw_material",
-  "quantity",
-  "column_break_fatx",
   "date",
-  "price",
+  "raw_material",
   "unit",
-  "closing_quantity"
+  "price",
+  "quantity",
+  "price_x_qty",
+  "closing_quantity",
+  "closing_amount"
  ],
  "fields": [
   {
-   "columns": 1,
    "fieldname": "branch_id",
    "fieldtype": "Link",
    "in_list_view": 1,
@@ -25,7 +25,6 @@
    "options": "Branch"
   },
   {
-   "columns": 1,
    "default": "Today",
    "fieldname": "date",
    "fieldtype": "Date",
@@ -35,11 +34,7 @@
    "read_only": 1
   },
   {
-   "fieldname": "column_break_fatx",
-   "fieldtype": "Column Break"
-  },
-  {
-   "columns": 3,
+   "columns": 2,
    "fieldname": "raw_material",
    "fieldtype": "Link",
    "in_list_view": 1,
@@ -48,21 +43,18 @@
    "options": "Raw Material Only"
   },
   {
-   "columns": 1,
    "fieldname": "closing_quantity",
    "fieldtype": "Float",
    "in_list_view": 1,
-   "label": "Inv Qty"
+   "label": "Clos Qty"
   },
   {
-   "columns": 1,
    "fieldname": "price",
    "fieldtype": "Currency",
    "in_list_view": 1,
-   "label": "Price"
+   "label": "Unit Price"
   },
   {
-   "columns": 1,
    "fieldname": "unit",
    "fieldtype": "Select",
    "in_list_view": 1,
@@ -70,16 +62,29 @@
    "options": "Kg\nLtr\nBox\nPkt\nPcs\nBtl\nTry"
   },
   {
-   "columns": 1,
    "fieldname": "quantity",
    "fieldtype": "Float",
    "in_list_view": 1,
    "label": "Quantity"
+  },
+  {
+   "fieldname": "price_x_qty",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Price x Qty",
+   "precision": "2"
+  },
+  {
+   "fieldname": "closing_amount",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Clos Amount",
+   "precision": "2"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-09-09 23:43:53.456018",
+ "modified": "2024-09-12 12:44:03.638958",
  "modified_by": "Administrator",
  "module": "Restaurant Ops Mgmt",
  "name": "Inventory Summary",
