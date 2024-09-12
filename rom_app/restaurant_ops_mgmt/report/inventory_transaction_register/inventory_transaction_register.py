@@ -99,11 +99,28 @@ def get_data(filters):
     sql_indent = build_sql_indent(conditions)
     sql_waste = build_sql_waste(conditions)
     sql_invcount = build_sql_invcount(conditions)
-    full_sql = f"{sql_po}  UNION  {sql_indent}  UNION  {sql_waste}  UNION  {sql_invcount}"
+    full_sql = find_transtype_only_sql(conditions, sql_po, sql_indent, sql_waste, sql_invcount)
     print("-------- full sql ------------")
     print(full_sql)
     data = frappe.db.sql(full_sql, as_dict=True)
     return data
+
+
+def find_transtype_only_sql(conditions, sql_po, sql_indent, sql_waste, sql_invcount):
+    print('find_transtype_only_sql')
+
+    if "trans_type_filter" in conditions:
+        filter_val = conditions['trans_type_filter']
+        if filter_val == 'PO':
+            return sql_po
+        elif filter_val == 'Indent':
+            return sql_indent
+        elif filter_val == 'Waste':
+            return sql_waste
+        elif filter_val == 'InvCount':
+            return sql_invcount
+    full_sql = f"{sql_po}  UNION  {sql_indent}  UNION  {sql_waste}  UNION  {sql_invcount}"
+    return full_sql
 
 
 def build_sql_po(conditions):
@@ -168,7 +185,6 @@ def get_where_filter(sql, conditions):
         where_cond = where_cond + f" AND branch_id = '{conditions['branch_filter']}' "
     if "raw_material_filter" in conditions:
         where_cond = where_cond + f" AND raw_material = '{conditions['raw_material_filter']}' "
-
     sql = f"{sql}  {where_cond}"
     return sql
 

@@ -90,7 +90,8 @@ frappe.pages['inventory-view'].on_page_load = function(wrapper) {
 		fieldtype: 'Button',
 		fieldname: 'submit_button',
 		click: function ()  {
-			//expense_report_register_by_amount('on-submit');
+			inventory_transaction_by_amount('on-submit');
+			top_ten_items_below_min_stock('on-submit');
 		}
 	});
 
@@ -239,12 +240,38 @@ let opening_new_tab_simple = function (report_name, filters, date_clicked){
 				console.log(data);
 				inventory_transaction_by_amount_chart(data);
 
+
 			}
 		})
 	}
 
+	let top_ten_items_below_min_stock  = function(time_of_invoke){
+		console.log('top_ten_items_below_min_stock')
+		let filters = "";
+		if(time_of_invoke == 'on-load'){
+			console.log('on-load');
+		    filters = global_get_filters();
+		} else {
+			console.log('on-submit');
+			filters = global_get_filters_on_submit();
+		}
+		console.log('-----filters----- top_ten_items_below_min_stock ')
+		console.log(filters);
+		frappe.call({
+			method: "rom_app.restaurant_ops_mgmt.page.inventory_view.inventory_view_sql.top_ten_items_below_min_stock_data",
+			args: {
+				'filters':filters
+			},
+			callback: function(data) {
+				console.log(data);
+				top_ten_items_below_min_stock_chart(data);
+			}
+		})
+	}
+
+ // --------------------  inventory_transaction_by_amount_chart  ---------------------------
 	let inventory_transaction_by_amount_chart  = function(data){
-		console.log("-------------- chef_production_register_briyani -------------- ");
+		console.log("-- inventory_transaction_by_amount_chart -------------- ");
 
 		// http://rom_site:8000/app/query-report/Chef%20Production%20Register
 		// ?from_date_filter=2024-07-29&to_date_filter=2024-08-12&
@@ -285,12 +312,62 @@ let opening_new_tab_simple = function (report_name, filters, date_clicked){
 		axis: {
 			x: {type: "category",categories: inventory_transaction,},
 		},
-		bindto: "#inventory_transaction_by_amount_chart",
+		bindto: "#inventory_transaction_by_amount",
 		});
 	}
+// --------------------  top_ten_items_below_min_stock_chart  ---------------------------
+let top_ten_items_below_min_stock_chart  = function(data){
+		console.log("---top_ten_items_below_min_stock_chart -------------- ");
+
+		let report_name = "Top 10 Items Below the Minimum Stock";
+		console.log(data);
+		let raw_material = [];
+
+		let min_stock = [];
+		let closing_stock = [];
+
+		min_stock.push("Min Stock");
+		closing_stock.push("Closing Stock");
+
+		let message = data.message;
+		message.forEach((item) => {
+			console.log(item);
+			raw_material.push(item.raw_material);
+			min_stock.push(item.min_stock);
+			closing_stock.push(item.closing_stock);
+		});
+
+		console.log('raw_material', raw_material);
+		console.log('min_stock', min_stock);
+		console.log('closing_stock', closing_stock);
+
+		var chart = bb.generate({
+			title: {text: "Top 10 Items Below the Minimum Stock"},
+			data: {
+				type: "bar",
+				onclick: function(arg1){
+					// console.log(arg1);
+					// let raw_material_clicked = raw_material[arg1.index];
+					// console.log(raw_material_clicked); // raw_material
+     //
+					// opening_new_tab_simple(report_name, filters, raw_material_clicked);
+				},
+				columns: [
+					min_stock,
+					closing_stock
+				]
+			},
+		axis: {
+			x: {type: "category",categories: raw_material,},
+		},
+		bindto: "#top_ten_items_below_min_stock",
+		});
+	}
+
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	$(frappe.render_template("inventory_view", {})).appendTo(page.body);
     inventory_transaction_by_amount('on-load');
+    top_ten_items_below_min_stock('on-load');
 
 }
