@@ -42,22 +42,22 @@ fixtures = [
             ]
         ]
     },
-    {
-        "dt": "User",
-        "filters": [
-                ["name", "in",
-                 frappe.get_all("Has Role",
-                                filters={"role": ["in",
-                                                  ["Rom_Dashboard_Role",
-                                                   "Rom_Admin_Role",
-                                                   "Rom_Chef_Role",
-                                                   "Rom_RM_Role",
-                                                   "Rom_DM_Role",
-                                                   "Rom_Store_Role",
-                                                   "Rom_Cash_Role"]]},
-                                pluck="parent")]
-        ]
-    },
+    # {
+    #     "dt": "User",
+    #     "filters": [
+    #             ["name", "in",
+    #              frappe.get_all("Has Role",
+    #                             filters={"role": ["in",
+    #                                               ["Rom_Dashboard_Role",
+    #                                                "Rom_Admin_Role",
+    #                                                "Rom_Chef_Role",
+    #                                                "Rom_RM_Role",
+    #                                                "Rom_DM_Role",
+    #                                                "Rom_Store_Role",
+    #                                                "Rom_Cash_Role"]]},
+    #                             pluck="parent")]
+    #     ]
+    # },
 
     # {
     #     "dt": "Role Permission for Page and Report",
