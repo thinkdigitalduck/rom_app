@@ -417,7 +417,7 @@ def get_raw_materials():
 def get_purchase_orders():
     sql = """
     SELECT par.name AS par_name, chi.name AS chi_name,
-    par.branch_id, chi.raw_material, chi.unit, chi.price, chi.ord_qty, par.date, chi.amount, par.total_price
+    par.branch_id, chi.raw_material, chi.unit, chi.unit_price as price, chi.ord_qty, par.date, chi.amount, par.total_price
     FROM `tabPurchase Order` par
     INNER JOIN `tabPurchase Order Child2` chi
     ON par.name = chi.parent
@@ -446,7 +446,7 @@ def get_indents():
 def get_wastages():
     sql = """
     SELECT par.branch_id, par.date, chi.raw_material,
-    chi.unit, chi.price,  chi.wastage_qty, chi.amount, par.total_price
+    chi.unit, chi.unit_price as price,  chi.wastage_qty, chi.amount, par.total_price
     FROM `tabInventory Wastage` par
     INNER JOIN `tabInventory Wastage Child` chi
     ON par.name = chi.parent
