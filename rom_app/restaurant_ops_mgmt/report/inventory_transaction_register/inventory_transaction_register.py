@@ -128,7 +128,7 @@ def build_sql_po(conditions):
     SELECT "PO" as trans_type,
     par.name, par.date, par.branch_name,  par.user_name,
     raw.item as raw_material, chi.unit, chi.ord_qty as qty,
-    chi.price, chi.total_price as amount, chi.clos_qty as closing_qty
+    chi.unit_price AS price, chi.amount, chi.clos_qty as closing_qty
     FROM `tabPurchase Order` par
     INNER JOIN `tabPurchase Order Child2` chi ON chi.parent = par.name
     INNER JOIN `tabRaw Material Only` raw ON chi.raw_material = raw.name
