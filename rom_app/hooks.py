@@ -17,7 +17,9 @@ fixtures = [
                     "Rom_Admin_Role",
                     "Rom_Chef_Role",
                     "Rom_RM_Role",
-                    "Rom_DM_Role"
+                    "Rom_DM_Role",
+                    "Rom_Store_Role",
+                    "Rom_Cash_Role"
                 ]
             ]
         ]
