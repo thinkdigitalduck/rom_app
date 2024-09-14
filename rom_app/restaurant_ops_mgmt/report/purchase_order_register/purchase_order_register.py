@@ -106,7 +106,7 @@ def get_data(filters):
         raw.item as raw_material,
         chi.unit,
         chi.ord_qty,
-        chi.price,
+        chi.unit_price as price,
         chi.total_price,
         chi.clos_qty,
         chi.remarks
