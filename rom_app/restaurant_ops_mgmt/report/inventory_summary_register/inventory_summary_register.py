@@ -21,6 +21,7 @@ def execute(filters=None):
             'unit': d.unit,
             'price': d.price,
             'closing_quantity': d.closing_quantity,
+            'closing_amount': d.closing_amount
         })
         data.append(row)
 
@@ -70,7 +71,13 @@ def get_columns():
             'fieldname': 'closing_quantity',
             'label': 'Closing Stock',
             'fieldtype': 'Data',
+        },
+        {
+            'fieldname': 'closing_amount',
+            'label': 'Closing Amount',
+            'fieldtype': 'Data',
         }
+
     ]
 
 
@@ -87,7 +94,8 @@ def get_data(filters):
     inv.quantity,
     inv.price,
     inv.unit,
-    inv.closing_quantity
+    inv.closing_quantity,
+    inv.closing_amount
     FROM `tabInventory Summary` inv
     INNER JOIN `tabRaw Material Only` raw ON inv.raw_material = raw.name
     INNER JOIN `tabBranch` bra ON inv.branch_id = bra.name
