@@ -92,6 +92,9 @@ frappe.pages['inventory-view'].on_page_load = function(wrapper) {
 		click: function ()  {
 			inventory_transaction_by_amount('on-submit');
 			top_ten_items_below_min_stock('on-submit');
+			inventory_valuation('on-submit');
+			inventory_wastage('on-submit');
+			inventory_po('on-submit');
 		}
 	});
 
@@ -216,6 +219,8 @@ let opening_new_tab_simple = function (report_name, filters, date_clicked){
 
 	// ^^^^^^^^^^^^^^^^   NEW TAB simple end   ^^^^^^^^^^^^^^^^^^
 
+		 // --------------------  inventory_transaction_by_amount_chart  ---------------------------
+
 		let inventory_transaction_by_amount  = function(time_of_invoke){
 
 		console.log('inventory_transaction_by_amount')
@@ -244,32 +249,6 @@ let opening_new_tab_simple = function (report_name, filters, date_clicked){
 			}
 		})
 	}
-
-	let top_ten_items_below_min_stock  = function(time_of_invoke){
-		console.log('top_ten_items_below_min_stock')
-		let filters = "";
-		if(time_of_invoke == 'on-load'){
-			console.log('on-load');
-		    filters = global_get_filters();
-		} else {
-			console.log('on-submit');
-			filters = global_get_filters_on_submit();
-		}
-		console.log('-----filters----- top_ten_items_below_min_stock ')
-		console.log(filters);
-		frappe.call({
-			method: "rom_app.restaurant_ops_mgmt.page.inventory_view.inventory_view_sql.top_ten_items_below_min_stock_data",
-			args: {
-				'filters':filters
-			},
-			callback: function(data) {
-				console.log(data);
-				top_ten_items_below_min_stock_chart(data);
-			}
-		})
-	}
-
- // --------------------  inventory_transaction_by_amount_chart  ---------------------------
 	let inventory_transaction_by_amount_chart  = function(data){
 		console.log("-- inventory_transaction_by_amount_chart -------------- ");
 
@@ -315,7 +294,32 @@ let opening_new_tab_simple = function (report_name, filters, date_clicked){
 		bindto: "#inventory_transaction_by_amount",
 		});
 	}
+
 // --------------------  top_ten_items_below_min_stock_chart  ---------------------------
+
+	let top_ten_items_below_min_stock  = function(time_of_invoke){
+		console.log('top_ten_items_below_min_stock')
+		let filters = "";
+		if(time_of_invoke == 'on-load'){
+			console.log('on-load');
+		    filters = global_get_filters();
+		} else {
+			console.log('on-submit');
+			filters = global_get_filters_on_submit();
+		}
+		console.log('-----filters----- top_ten_items_below_min_stock ')
+		console.log(filters);
+		frappe.call({
+			method: "rom_app.restaurant_ops_mgmt.page.inventory_view.inventory_view_sql.top_ten_items_below_min_stock_data",
+			args: {
+				'filters':filters
+			},
+			callback: function(data) {
+				console.log(data);
+				top_ten_items_below_min_stock_chart(data);
+			}
+		})
+	}
 let top_ten_items_below_min_stock_chart  = function(data){
 		console.log("---top_ten_items_below_min_stock_chart -------------- ");
 
@@ -363,11 +367,225 @@ let top_ten_items_below_min_stock_chart  = function(data){
 		bindto: "#top_ten_items_below_min_stock",
 		});
 	}
+// --------------------  inventory_valuation chart  ---------------------------
+
+
+	let inventory_valuation  = function(time_of_invoke){
+		console.log('inventory_valuation')
+		let filters = "";
+		if(time_of_invoke == 'on-load'){
+			console.log('on-load');
+		    filters = global_get_filters();
+		} else {
+			console.log('on-submit');
+			filters = global_get_filters_on_submit();
+		}
+
+		console.log('-----filters----- inventory_valuation ')
+		console.log(filters);
+		frappe.call({
+			method: "rom_app.restaurant_ops_mgmt.page.inventory_view.inventory_view_sql.inventory_valuation",
+			args: {
+				'filters':filters
+			},
+			callback: function(data) {
+				console.log(data);
+				inventory_valuation_chart(data);
+			}
+		})
+	}
+
+	let inventory_valuation_chart  = function(data){
+		console.log("-- inventory_valuation_chart -------------- ");
+		// http://rom_site:8000/app/query-report/Chef%20Production%20Register
+		// ?from_date_filter=2024-07-29&to_date_filter=2024-08-12&
+		//category_filter=Briyani&item_filter=Mandi+Briyani
+		let category_filter = "Total Amount";
+		let report_name = "Inventory Valuation by Date";
+		console.log(' +++ inventory_valuation_chart +++ ')
+		console.log(data);
+		let date = [];
+		let inventory_valuation = [];
+
+		inventory_valuation.push("item");
+
+		let message = data.message;
+		message.forEach((item) => {
+			console.log(item);
+				date.push(item.date);
+				inventory_valuation.push(item.inventory_valuation);
+		});
+		console.log('date', date);
+		console.log('inventory_valuation', inventory_valuation);
+
+		var chart = bb.generate({
+			title: {text: "Inventory Valuation by Date"},
+			data: {
+			type: "bar",
+			onclick: function(arg1){
+				console.log(arg1);
+				console.log(arg1.x);
+
+				let item_filter=date[arg1.x];
+				console.log(item_filter); // Mutton briyani
+				console.log(arg1.value);
+				//opening_new_tab(report_name, filters, "category_filter", category_filter, "item_filter", item_filter);
+			},
+			columns: [inventory_valuation,],
+		},
+		axis: {
+			x: {type: "category",categories: date,},
+		},
+		bindto: "#inventory_valuation",
+		});
+	}
+
+// --------------------  inventory_wastage chart  ---------------------------
+	let inventory_wastage  = function(time_of_invoke){
+		console.log('inventory_wastage')
+		let filters = "";
+		if(time_of_invoke == 'on-load'){
+			console.log('on-load');
+		    filters = global_get_filters();
+		} else {
+			console.log('on-submit');
+			filters = global_get_filters_on_submit();
+		}
+		console.log(filters);
+		frappe.call({
+			method: "rom_app.restaurant_ops_mgmt.page.inventory_view.inventory_view_sql.inventory_wastage",
+			args: {
+				'filters':filters
+			},
+			callback: function(data) {
+				console.log(data);
+				inventory_wastage_chart(data);
+			}
+		})
+	}
+
+	let inventory_wastage_chart  = function(data){
+		console.log("-- inventory_wastage_chart -------------- ");
+		// http://rom_site:8000/app/query-report/Chef%20Production%20Register
+		// ?from_date_filter=2024-07-29&to_date_filter=2024-08-12&
+		//category_filter=Briyani&item_filter=Mandi+Briyani
+		let category_filter = "Total Amount";
+		let report_name = "Inventory Wastage by Date";
+
+		console.log(data);
+		let date = [];
+		let inv_wastage = [];
+
+		inv_wastage.push("item");
+
+		let message = data.message;
+		message.forEach((item) => {
+			console.log(item);
+				date.push(item.date);
+				inv_wastage.push(item.inv_wastage);
+		});
+		console.log('date', date);
+		console.log('inv_wastage', inv_wastage);
+
+		var chart = bb.generate({
+			title: {text: "Inventory Wastage by Date"},
+			data: {
+			type: "bar",
+			onclick: function(arg1){
+				console.log(arg1);
+				console.log(arg1.x);
+
+				let item_filter=date[arg1.x];
+				console.log(item_filter); // Mutton briyani
+				console.log(arg1.value);
+				//opening_new_tab(report_name, filters, "category_filter", category_filter, "item_filter", item_filter);
+			},
+			columns: [inv_wastage,],
+		},
+		axis: {
+			x: {type: "category",categories: date,},
+		},
+		bindto: "#inventory_wastage",
+		});
+	}
+
+
+// --------------------  inventory_po chart  ---------------------------
+	let inventory_po  = function(time_of_invoke){
+		console.log('inventory_po')
+		let filters = "";
+		if(time_of_invoke == 'on-load'){
+			console.log('on-load');
+		    filters = global_get_filters();
+		} else {
+			console.log('on-submit');
+			filters = global_get_filters_on_submit();
+		}
+		console.log(filters);
+		frappe.call({
+			method: "rom_app.restaurant_ops_mgmt.page.inventory_view.inventory_view_sql.inventory_po",
+			args: {
+				'filters':filters
+			},
+			callback: function(data) {
+				console.log(data);
+				inventory_po_chart(data);
+			}
+		})
+	}
+
+	let inventory_po_chart  = function(data){
+		console.log("-- inventory_po_chart -------------- ");
+		// http://rom_site:8000/app/query-report/Chef%20Production%20Register
+		// ?from_date_filter=2024-07-29&to_date_filter=2024-08-12&
+		//category_filter=Briyani&item_filter=Mandi+Briyani
+		let category_filter = "Total Amount";
+		let report_name = "Inventory PO by Date";
+
+		console.log(data);
+		let date = [];
+		let inv_po = [];
+
+		inv_po.push("item");
+
+		let message = data.message;
+		message.forEach((item) => {
+			console.log(item);
+				date.push(item.date);
+				inv_po.push(item.inv_po);
+		});
+		console.log('date', date);
+		console.log('inv_po', inv_po);
+
+		var chart = bb.generate({
+			title: {text: "Inventory PO by Date"},
+			data: {
+			type: "bar",
+			onclick: function(arg1){
+				console.log(arg1);
+				console.log(arg1.x);
+
+				let item_filter=date[arg1.x];
+				console.log(item_filter); // Mutton briyani
+				console.log(arg1.value);
+				//opening_new_tab(report_name, filters, "category_filter", category_filter, "item_filter", item_filter);
+			},
+			columns: [inv_po,],
+		},
+		axis: {
+			x: {type: "category",categories: date,},
+		},
+		bindto: "#inventory_po",
+		});
+	}
 
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	$(frappe.render_template("inventory_view", {})).appendTo(page.body);
     inventory_transaction_by_amount('on-load');
     top_ten_items_below_min_stock('on-load');
+	inventory_valuation('on-load');
+	inventory_wastage('on-load');
+	inventory_po('on-load');
 
 }
