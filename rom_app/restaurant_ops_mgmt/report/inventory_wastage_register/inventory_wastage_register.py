@@ -21,7 +21,8 @@ def execute(filters=None):
             'raw_material': d.raw_material,
             'unit': d.unit,
             'wastage_qty': d.wastage_qty,
-            'price': d.price,
+            'unit_price': d.unit_price,
+            'amount': d.amount,
             'clos_stock': d.clos_stock,
             'remarks': d.remarks,
         })
@@ -70,8 +71,13 @@ def get_columns():
             'fieldtype': 'Data',
         },
         {
-            'fieldname': 'price',
-            'label': 'Price',
+            'fieldname': 'unit_price',
+            'label': 'Unit Price',
+            'fieldtype': 'Data',
+        },
+        {
+            'fieldname': 'amount',
+            'label': 'Amount',
             'fieldtype': 'Data',
         },
         {
@@ -100,7 +106,8 @@ def get_data(filters):
         raw.item as raw_material,
         chi.unit,
         chi.wastage_qty,
-        chi.price,
+        chi.unit_price,
+        chi.amount,
         chi.clos_stock,
         chi.remarks
     FROM
