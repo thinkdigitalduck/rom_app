@@ -246,7 +246,7 @@ def get_domain_name_of_the_site():
     print("Your Computer Name is:" + hostname)
     print("Your Computer IP Address is:" + IPAddr)
     domain_url = frappe.db.get_value('Rom Settings',
-                                     {'settings_name': IPAddr},
+                                     {'settings_name': 'domain_name'},
                                      ['settings_value'])
     print('domain_url ---> ', domain_url)
     return domain_url
