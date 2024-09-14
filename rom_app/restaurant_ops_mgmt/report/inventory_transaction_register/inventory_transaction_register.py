@@ -1,6 +1,7 @@
 import frappe
 import yaml
 import json
+import socket
 
 
 def execute(filters=None):
@@ -24,6 +25,7 @@ def execute(filters=None):
             'price': d.price,
             'amount': d.amount,
             'closing_qty': d.closing_qty,
+            'link': d.link
         })
         data.append(row)
 
@@ -40,7 +42,7 @@ def get_columns():
         {
             'fieldname': 'name',
             'label': 'Id',
-            'fieldtype': 'Data',
+            'fieldtype': 'HTML',
         },
         {
             'fieldname': 'date',
@@ -103,7 +105,10 @@ def get_data(filters):
     print("-------- full sql ------------")
     print(full_sql)
     data = frappe.db.sql(full_sql, as_dict=True)
-    return data
+    data_with_anchor = formate_link_column_to_anchor_link(data)
+    print('data_with_anchor')
+    print(data_with_anchor)
+    return data_with_anchor
 
 
 def find_transtype_only_sql(conditions, sql_po, sql_indent, sql_waste, sql_invcount):
@@ -189,6 +194,23 @@ def get_where_filter(sql, conditions):
     return sql
 
 
+def formate_link_column_to_anchor_link(data):
+    print('format_link_column_to_anchor_link')
+    domain_url = get_domain_name_of_the_site()
+
+    for d in data:
+        print(d)
+        # d.update({})
+        trans_type = d.trans_type
+        name = d.name
+        print(trans_type, name)
+        formatted_url = formate_the_url(domain_url, trans_type, name)
+        print(formatted_url)
+        d.name = formatted_url
+
+    return data
+
+
 def get_conditions(filters):
     conditions = {}
     if (type(filters) is str):
@@ -198,3 +220,38 @@ def get_conditions(filters):
         if filters.get(key):
             conditions[key] = value
     return conditions
+
+
+def formate_the_url(domain_name, trans_type, trans_id):
+    part_url = get_url_path_based_on_trans_type(trans_type)
+    farmate_part_url_with_id = f"{domain_name}/app/{part_url}/{trans_id}"
+    anchor = f"<a href='{farmate_part_url_with_id}' target='_blank'>{trans_id}</a>"
+    return anchor
+
+
+def get_url_path_based_on_trans_type(trans_type):
+    if trans_type == 'PO':
+        return 'purchase-order'
+    elif trans_type == 'Indent':
+        return 'chef-indent-by-dept'
+    elif trans_type == 'Waste':
+        return 'inventory-wastage'
+    elif trans_type == 'InvCount':
+        return 'inventory-counting'
+
+
+def get_domain_name_of_the_site():
+    hostname = socket.gethostname()
+    IPAddr = socket.gethostbyname(hostname)
+    print("Your Computer Name is:" + hostname)
+    print("Your Computer IP Address is:" + IPAddr)
+    domain_url = frappe.db.get_value('Rom Settings',
+                                     {'settings_name': IPAddr},
+                                     ['settings_value'])
+    print('domain_url ---> ', domain_url)
+    return domain_url
+
+# http://rom_site:8000/app/purchase-order/47
+# http://rom_site:8000/app/chef-indent-by-dept/19
+# http://rom_site:8000/app/inventory-wastage/8
+# http://rom_site:8000/app/inventory-counting/5

@@ -1,31 +1,35 @@
 {
  "actions": [],
  "autoname": "autoincrement",
- "creation": "2024-09-03 15:09:15.725391",
+ "creation": "2024-09-14 21:26:19.325746",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
-  "title",
-  "html_column"
+  "settings_name",
+  "settings_value"
  ],
  "fields": [
   {
-   "fieldname": "title",
+   "fieldname": "settings_name",
    "fieldtype": "Data",
-   "label": "title"
+   "in_list_view": 1,
+   "label": "Settings Name",
+   "reqd": 1
   },
   {
-   "fieldname": "html_column",
-   "fieldtype": "HTML",
-   "label": "html column"
+   "fieldname": "settings_value",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Settings Value",
+   "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-09-14 16:50:03.473382",
+ "modified": "2024-09-14 21:28:21.576021",
  "modified_by": "Administrator",
  "module": "Restaurant Ops Mgmt",
- "name": "Task",
+ "name": "Rom Settings",
  "naming_rule": "Autoincrement",
  "owner": "Administrator",
  "permissions": [
@@ -42,9 +46,7 @@
    "write": 1
   }
  ],
- "show_title_field_in_link": 1,
  "sort_field": "creation",
  "sort_order": "DESC",
- "states": [],
- "title_field": "title"
+ "states": []
 }
