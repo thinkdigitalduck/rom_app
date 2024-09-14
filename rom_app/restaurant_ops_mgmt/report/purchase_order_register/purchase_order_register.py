@@ -107,7 +107,7 @@ def get_data(filters):
         chi.unit,
         chi.ord_qty,
         chi.unit_price as price,
-        chi.total_price,
+        chi.amount as total_price,
         chi.clos_qty,
         chi.remarks
     FROM
