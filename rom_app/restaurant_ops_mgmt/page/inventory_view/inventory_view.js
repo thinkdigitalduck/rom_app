@@ -110,10 +110,12 @@ frappe.pages['inventory-view'].on_page_load = function(wrapper) {
 									){
 
 		console.log('opening_new_tab');
-		// http://rom_site:8000/app/query-report/Chef%20Production%20Register
-		// ?from_date_filter=2024-07-29&to_date_filter=2024-08-12
-		// &category_filter=Briyani
-		// &item_filter=Mandi+Briyani
+	    // http://rom_site:8000/app/query-report/Inventory%20Transaction%20Register?
+        // from_date_filter=2024-09-14&to_date_filter=2024-09-15&
+        // branch_filter=8&raw_material_filter=11&trans_type_filter=Waste
+
+		//display text =  Purchase Order  Chef Indent  Inventory Wastage  Inventory Counting
+		// trans_type_filter= PO Indent Waste InvCount
 
 		let report_cond2_path = "&{report_cond2}={report_cond_result2}";
 //		let report_cond3_path = "&{report_cond3}={report_cond_result3}";
@@ -126,6 +128,8 @@ frappe.pages['inventory-view'].on_page_load = function(wrapper) {
 		console.log("*****************************");
 		console.log("from_date-",from_date);
 		console.log("to_date-",to_date);
+		console.log("report_cond ", report_cond);
+		console.log("report_cond_result", report_cond_result);
 
 		let path_report_name = "/app/query-report/{report_name}?";
 		let path_cond ="from_date_filter={from_date_filter}&to_date_filter={to_date_filter}"+
@@ -219,9 +223,27 @@ let opening_new_tab_simple = function (report_name, filters, date_clicked){
 
 	// ^^^^^^^^^^^^^^^^   NEW TAB simple end   ^^^^^^^^^^^^^^^^^^
 
+	let transaction_type_convert_text_to_keyword = function(display_text){
+		keyword = ""
+		if (display_text == 'Purchase Order')
+			keyword = "PO";
+
+		if (display_text == 'Chef Indent')
+			keyword = "Indent";
+
+		if (display_text == 'Inventory Wastage')
+			keyword = "Waste";
+
+		if (display_text == 'Inventory Counting')
+			keyword = "InvCount";
+
+		console.log('keyword = ' + keyword);
+		return keyword;
+	}
+
 		 // --------------------  inventory_transaction_by_amount_chart  ---------------------------
 
-		let inventory_transaction_by_amount  = function(time_of_invoke){
+	let inventory_transaction_by_amount  = function(time_of_invoke){
 
 		console.log('inventory_transaction_by_amount')
 
@@ -243,20 +265,21 @@ let opening_new_tab_simple = function (report_name, filters, date_clicked){
 			},
 			callback: function(data) {
 				console.log(data);
-				inventory_transaction_by_amount_chart(data);
+				inventory_transaction_by_amount_chart(data, filters);
 
 
 			}
 		})
 	}
-	let inventory_transaction_by_amount_chart  = function(data){
+	let inventory_transaction_by_amount_chart  = function(data, filters){
 		console.log("-- inventory_transaction_by_amount_chart -------------- ");
+		console.log('filters - ', filters)
 
 		// http://rom_site:8000/app/query-report/Chef%20Production%20Register
 		// ?from_date_filter=2024-07-29&to_date_filter=2024-08-12&
 		//category_filter=Briyani&item_filter=Mandi+Briyani
-		let category_filter = "Total Amount";
-		let report_name = "Inventory Transaction by Amount";
+		//let category_filter = "";
+		let report_name = "Inventory Transaction Register";
 		console.log(' +++ inventory_transaction_by_amount_chart +++ ')
 		console.log(data);
 		let inventory_transaction = [];
@@ -282,9 +305,14 @@ let opening_new_tab_simple = function (report_name, filters, date_clicked){
 				console.log(arg1.x);
 
 				let item_filter=inventory_transaction[arg1.x];
-				console.log(item_filter); // Mutton briyani
+				console.log('____ item_filter _____');
+				console.log(item_filter);
+
+
 				console.log(arg1.value);
-				//opening_new_tab(report_name, filters, "category_filter", category_filter, "item_filter", item_filter);
+				let item_filter_key_word = transaction_type_convert_text_to_keyword(item_filter)
+				console.log("item_filter_key_word -> ",item_filter_key_word);
+				opening_new_tab(report_name, filters, "trans_type_filter", item_filter_key_word);
 			},
 			columns: [total_amount,],
 		},
@@ -320,7 +348,7 @@ let opening_new_tab_simple = function (report_name, filters, date_clicked){
 			}
 		})
 	}
-let top_ten_items_below_min_stock_chart  = function(data){
+	let top_ten_items_below_min_stock_chart  = function(data){
 		console.log("---top_ten_items_below_min_stock_chart -------------- ");
 
 		let report_name = "Top 10 Items Below the Minimum Stock";
@@ -390,18 +418,18 @@ let top_ten_items_below_min_stock_chart  = function(data){
 			},
 			callback: function(data) {
 				console.log(data);
-				inventory_valuation_chart(data);
+				inventory_valuation_chart(data, filters);
 			}
 		})
 	}
 
-	let inventory_valuation_chart  = function(data){
+	let inventory_valuation_chart  = function(data, filters){
 		console.log("-- inventory_valuation_chart -------------- ");
-		// http://rom_site:8000/app/query-report/Chef%20Production%20Register
-		// ?from_date_filter=2024-07-29&to_date_filter=2024-08-12&
-		//category_filter=Briyani&item_filter=Mandi+Briyani
-		let category_filter = "Total Amount";
-		let report_name = "Inventory Valuation by Date";
+		// http://rom_site:8000/app/query-report/Inventory%20Summary%20Register?
+		// from_date_filter=2024-09-15&to_date_filter=2024-09-15&branch_filter=8
+
+		//let category_filter = "Total Amount";
+		let report_name = "Inventory Summary Register";
 		console.log(' +++ inventory_valuation_chart +++ ')
 		console.log(data);
 		let date = [];
@@ -427,9 +455,12 @@ let top_ten_items_below_min_stock_chart  = function(data){
 				console.log(arg1.x);
 
 				let item_filter=date[arg1.x];
+				console.log('item_filter'); // Mutton briyani
 				console.log(item_filter); // Mutton briyani
 				console.log(arg1.value);
 				//opening_new_tab(report_name, filters, "category_filter", category_filter, "item_filter", item_filter);
+				opening_new_tab_simple(report_name, filters, item_filter);
+
 			},
 			columns: [inventory_valuation,],
 		},

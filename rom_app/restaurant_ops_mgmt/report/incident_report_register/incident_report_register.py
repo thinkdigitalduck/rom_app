@@ -172,7 +172,6 @@ def get_data(filters):
     if "department_filter" in conditions:
         where_cond = where_cond + f" AND td.name = '{conditions['department_filter']}' "
 
-
     build_sql = f"{build_sql}  {where_cond}"
     print("-------- full sql ------------")
     print(build_sql)
