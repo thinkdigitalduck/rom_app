@@ -14,9 +14,9 @@ def execute(filters=None):
     data = []
     for d in cs_data:
         row = frappe._dict({
-            'name': d.name,
+            # 'name': d.name,
             'date': d.date,
-            'branch': d.branch,
+            'branch_name': d.branch_name,
             'item': d.item,
             'unit': d.unit,
             'price': d.price,
@@ -32,26 +32,20 @@ def execute(filters=None):
 
 def get_columns():
     return [
-        {
-            'fieldname': 'name',
-            'label': 'Id',
-            'fieldtype': 'Data',
-        },
+        # {
+        #     'fieldname': 'name',
+        #     'label': 'Id',
+        #     'fieldtype': 'Data',
+        # },
         {
             'fieldname': 'date',
             'label': 'Date',
             'fieldtype': 'Data',
         },
         {
-            'fieldname': 'branch',
+            'fieldname': 'branch_name',
             'label': 'Branch',
-            "fieldtype": "Link",
-            "options": "Branch",
-        },
-        {
-            'fieldname': 'user_name',
-            'label': 'User Name',
-            'fieldtype': 'Data',
+            "fieldtype": "Data",
         },
         {
             'fieldname': 'item',
@@ -105,9 +99,10 @@ def get_data(filters):
 
 def build_sql(conditions):
     sql = """
-    SELECT name,   branch,  item, unit, price,
-    opening_stock, opening_amount, closing_stock,
-    min_stock, `date` FROM `tabRaw Material Only`;
+    SELECT raw.name,   bra.branch_name,  raw.item, raw.unit, raw.price,
+    raw.opening_stock, raw.opening_amount, raw.closing_stock,
+    raw.min_stock, raw.`date` FROM `tabRaw Material Only` raw
+    INNER JOIN `tabBranch` bra ON branch = bra.name
     """
     # full_sql = get_where_filter(sql, conditions)
     return sql
