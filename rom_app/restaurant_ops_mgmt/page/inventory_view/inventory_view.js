@@ -175,11 +175,9 @@ frappe.pages['inventory-view'].on_page_load = function(wrapper) {
 
 //  ^^^^^^^^^^^^^^^^^^   NEW TAB simple START   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-let opening_new_tab_simple = function (report_name, filters, date_clicked){
+    let opening_new_tab_simple = function (report_name, filters, date_clicked){
 
 		console.log('opening_new_tab_simple');
-		// http://rom_site:8000/app/query-report/Sales Report Register?
-		// from_date_filter=2024-08-13&to_date_filter=2024-08-13
 
 		let protocol_host = window.location.protocol + '//' + window.location.host;
 
@@ -190,6 +188,7 @@ let opening_new_tab_simple = function (report_name, filters, date_clicked){
 		let path_report_name = "/app/query-report/{report_name}?";
 		let path_cond ="from_date_filter={from_date_filter}&to_date_filter={to_date_filter}";
 		let path_branch="&branch_filter={branch_filter}";
+		let path_trans_type="&trans_type_filter={trans_type_filter}";
 
 
 
@@ -213,6 +212,14 @@ let opening_new_tab_simple = function (report_name, filters, date_clicked){
 			path_branch = path_branch.replace("{branch_filter}", branch_id);
 			console.log(branch_id, path_branch);
 			report_url = report_url + path_branch;
+		}
+
+		if (filters.hasOwnProperty("trans_type_filter")) {
+			console.log("trans_type_filter exists");
+			let trans_type_id = filters.trans_type_filter;
+			path_trans_type = path_trans_type.replace("{trans_type_filter}", trans_type_id);
+			console.log(trans_type_id, path_trans_type);
+			report_url = report_url + path_trans_type;
 		}
 
 
@@ -275,9 +282,7 @@ let opening_new_tab_simple = function (report_name, filters, date_clicked){
 		console.log("-- inventory_transaction_by_amount_chart -------------- ");
 		console.log('filters - ', filters)
 
-		// http://rom_site:8000/app/query-report/Chef%20Production%20Register
-		// ?from_date_filter=2024-07-29&to_date_filter=2024-08-12&
-		//category_filter=Briyani&item_filter=Mandi+Briyani
+
 		//let category_filter = "";
 		let report_name = "Inventory Transaction Register";
 		console.log(' +++ inventory_transaction_by_amount_chart +++ ')
@@ -344,11 +349,14 @@ let opening_new_tab_simple = function (report_name, filters, date_clicked){
 			},
 			callback: function(data) {
 				console.log(data);
-				top_ten_items_below_min_stock_chart(data);
+				top_ten_items_below_min_stock_chart(data, filters);
 			}
 		})
 	}
-	let top_ten_items_below_min_stock_chart  = function(data){
+	let top_ten_items_below_min_stock_chart  = function(data, filters){
+		// http://rom_site:8000/app/raw-material-only/
+		//view/list?min_stock=5&item=%5B%22like%22%2C%22%25egg%25%22%5D
+
 		console.log("---top_ten_items_below_min_stock_chart -------------- ");
 
 		let report_name = "Top 10 Items Below the Minimum Stock";
@@ -497,11 +505,15 @@ let opening_new_tab_simple = function (report_name, filters, date_clicked){
 
 	let inventory_wastage_chart  = function(data){
 		console.log("-- inventory_wastage_chart -------------- ");
-		// http://rom_site:8000/app/query-report/Chef%20Production%20Register
-		// ?from_date_filter=2024-07-29&to_date_filter=2024-08-12&
-		//category_filter=Briyani&item_filter=Mandi+Briyani
+	    // http://rom_site:8000/app/query-report/Inventory%20Transaction%20Register?
+        // from_date_filter=2024-09-14&to_date_filter=2024-09-15&
+        // branch_filter=8&raw_material_filter=11&trans_type_filter=Waste
+
+		//display text =  Purchase Order  Chef Indent  Inventory Wastage  Inventory Counting
+		// trans_type_filter= PO Indent Waste InvCount
+
 		let category_filter = "Total Amount";
-		let report_name = "Inventory Wastage by Date";
+		let report_name = "Inventory Transaction Register";
 
 		console.log(data);
 		let date = [];
@@ -529,7 +541,11 @@ let opening_new_tab_simple = function (report_name, filters, date_clicked){
 				let item_filter=date[arg1.x];
 				console.log(item_filter); // Mutton briyani
 				console.log(arg1.value);
-				//opening_new_tab(report_name, filters, "category_filter", category_filter, "item_filter", item_filter);
+				//opening_new_tab(report_name, filters, "trans_type_filter", :Waste", "item_filter", item_filter);
+
+				filters = Object.assign({}, filters, {trans_type_filter:'Waste'});
+				opening_new_tab_simple(report_name, filters, item_filter);
+
 			},
 			columns: [inv_wastage,],
 		},
@@ -571,7 +587,7 @@ let opening_new_tab_simple = function (report_name, filters, date_clicked){
 		// ?from_date_filter=2024-07-29&to_date_filter=2024-08-12&
 		//category_filter=Briyani&item_filter=Mandi+Briyani
 		let category_filter = "Total Amount";
-		let report_name = "Inventory PO by Date";
+		let report_name = "Inventory Transaction Register";
 
 		console.log(data);
 		let date = [];
@@ -600,6 +616,8 @@ let opening_new_tab_simple = function (report_name, filters, date_clicked){
 				console.log(item_filter); // Mutton briyani
 				console.log(arg1.value);
 				//opening_new_tab(report_name, filters, "category_filter", category_filter, "item_filter", item_filter);
+				filters = Object.assign({}, filters, {trans_type_filter:'PO'});
+				opening_new_tab_simple(report_name, filters, item_filter);
 			},
 			columns: [inv_po,],
 		},

@@ -191,8 +191,47 @@
   {
    "hidden": 0,
    "is_query_report": 0,
+   "label": "Dining Mgr Reports",
+   "link_count": 3,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Opening",
+   "link_count": 0,
+   "link_to": "Dm Opening Checklist Register",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Closing",
+   "link_count": 0,
+   "link_to": "Dm Closing Checklist Register",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Incident",
+   "link_count": 0,
+   "link_to": "Incident Report Register",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
    "label": "Store Mgr Reports",
-   "link_count": 5,
+   "link_count": 6,
    "link_type": "DocType",
    "onboard": 0,
    "type": "Card Break"
@@ -249,45 +288,16 @@
   },
   {
    "hidden": 0,
-   "is_query_report": 0,
-   "label": "Dining Mgr Reports",
-   "link_count": 3,
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Card Break"
-  },
-  {
-   "hidden": 0,
    "is_query_report": 1,
-   "label": "Opening",
+   "label": "Raw Material",
    "link_count": 0,
-   "link_to": "Dm Opening Checklist Register",
-   "link_type": "Report",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 1,
-   "label": "Closing",
-   "link_count": 0,
-   "link_to": "Dm Closing Checklist Register",
-   "link_type": "Report",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 1,
-   "label": "Incident",
-   "link_count": 0,
-   "link_to": "Incident Report Register",
+   "link_to": "Raw Material Only Register",
    "link_type": "Report",
    "onboard": 0,
    "type": "Link"
   }
  ],
- "modified": "2024-09-14 21:07:33.768745",
+ "modified": "2024-09-16 00:43:29.976234",
  "modified_by": "Administrator",
  "module": "Restaurant Ops Mgmt",
  "name": "Dashboard Space",
