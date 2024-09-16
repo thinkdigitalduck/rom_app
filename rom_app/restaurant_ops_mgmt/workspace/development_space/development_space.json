@@ -1,6 +1,6 @@
 {
  "charts": [],
- "content": "[{\"id\":\"BE7yQ022cf\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Development Space<br></span>\",\"col\":12}},{\"id\":\"EG9OtsVMFq\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"DocType\",\"col\":3}},{\"id\":\"RSWAdFNz1o\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Role\",\"col\":3}},{\"id\":\"4LBq1goFQf\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Permission Inspector\",\"col\":3}},{\"id\":\"pWCGXfQREs\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Role Permissions Manager\",\"col\":3}},{\"id\":\"QghH9I7Kfz\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"User Permission\",\"col\":3}},{\"id\":\"wdSt9_5eEB\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Report\",\"col\":3}},{\"id\":\"yqdVM1P3rm\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Role Permission for Page and Report\",\"col\":4}},{\"id\":\"5txKySd68N\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Task\",\"col\":3}},{\"id\":\"a-DWODx-wZ\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Workspace\",\"col\":3}},{\"id\":\"8s9tSj5WWI\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Development Work\",\"col\":3}}]",
+ "content": "[{\"id\":\"BE7yQ022cf\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Development Space<br></span>\",\"col\":12}},{\"id\":\"EG9OtsVMFq\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"DocType\",\"col\":3}},{\"id\":\"RSWAdFNz1o\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Role\",\"col\":3}},{\"id\":\"4LBq1goFQf\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Permission Inspector\",\"col\":3}},{\"id\":\"pWCGXfQREs\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Role Permissions Manager\",\"col\":3}},{\"id\":\"QghH9I7Kfz\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"User Permission\",\"col\":3}},{\"id\":\"wdSt9_5eEB\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Report\",\"col\":3}},{\"id\":\"yqdVM1P3rm\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Role Permission for Page and Report\",\"col\":4}},{\"id\":\"5txKySd68N\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Task\",\"col\":3}},{\"id\":\"a-DWODx-wZ\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Workspace\",\"col\":3}},{\"id\":\"8s9tSj5WWI\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Development Work\",\"col\":3}},{\"id\":\"0KItHIocFb\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"DevelopLog\",\"col\":3}}]",
  "creation": "2024-08-28 08:13:30.289878",
  "custom_blocks": [],
  "docstatus": 0,
@@ -13,7 +13,7 @@
  "is_hidden": 0,
  "label": "Development Space",
  "links": [],
- "modified": "2024-09-16 00:44:48.480661",
+ "modified": "2024-09-16 12:41:55.272799",
  "modified_by": "Administrator",
  "module": "Restaurant Ops Mgmt",
  "name": "Development Space",
@@ -88,6 +88,14 @@
    "doc_view": "List",
    "label": "Development Work",
    "link_to": "Development Work",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Green",
+   "doc_view": "List",
+   "label": "DevelopLog",
+   "link_to": "DevelopLog",
    "stats_filter": "[]",
    "type": "DocType"
   },
