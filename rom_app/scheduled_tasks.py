@@ -161,8 +161,7 @@ def process_indents(df_inventory, df_indnets):
         # total_amount = df_pur_orders.iloc[i]['total_price']
 
         # print('****************', i)
-        # print(branch_id, '-', raw_material, '-', req_qty, '-',
-        #       issued_qty, '-', date, '-', unit)
+        print(branch_id, '-', raw_material, '-',  issued_qty, '-')
         # print("**********************************")
         # print(df_inventory.dtypes)
         df_inventory = df_inventory.astype({"branch_id": int, "raw_material": int})
@@ -171,9 +170,9 @@ def process_indents(df_inventory, df_indnets):
         df_filter = df_inventory.loc[
             (df_inventory['branch_id'] == int(branch_id))
             & (df_inventory['raw_material'] == int(raw_material))]
-        # print('df_filter', df_filter)
+        print('df_filter', df_filter)
         index_val = df_filter.index[0]
-        # print('index_val', index_val)
+        print('index_val', index_val)
         quantity = df_filter.loc[index_val, 'quantity']
         price_x_qty = df_filter.loc[index_val, 'price_x_qty']
 
