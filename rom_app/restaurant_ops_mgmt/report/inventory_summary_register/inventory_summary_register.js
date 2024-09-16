@@ -4,7 +4,7 @@ frappe.query_reports["Inventory Summary Register"] = {
 			"fieldname": "from_date_filter",
 			"label": "From Date *",
 			"fieldtype": "Date",
-			"default": frappe.datetime.add_days(frappe.datetime.get_today(), -1),
+			"default": frappe.datetime.now_date(),
 			"mandatory": 1,
 		},
 		{
