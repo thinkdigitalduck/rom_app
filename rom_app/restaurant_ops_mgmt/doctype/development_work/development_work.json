@@ -1,24 +1,26 @@
 {
  "actions": [],
- "allow_rename": 1,
+ "autoname": "autoincrement",
  "creation": "2024-09-16 00:44:00.578242",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
-  "section_break_w5hl"
+  "test"
  ],
  "fields": [
   {
-   "fieldname": "section_break_w5hl",
-   "fieldtype": "Section Break"
+   "fieldname": "test",
+   "fieldtype": "Data",
+   "label": "Test"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-09-16 00:44:00.578242",
+ "modified": "2024-09-16 11:00:26.607734",
  "modified_by": "Administrator",
  "module": "Restaurant Ops Mgmt",
  "name": "Development Work",
+ "naming_rule": "Autoincrement",
  "owner": "Administrator",
  "permissions": [
   {
@@ -34,7 +36,9 @@
    "write": 1
   }
  ],
+ "show_title_field_in_link": 1,
  "sort_field": "creation",
  "sort_order": "DESC",
- "states": []
+ "states": [],
+ "title_field": "test"
 }

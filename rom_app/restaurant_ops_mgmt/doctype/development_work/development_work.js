@@ -1,8 +1,20 @@
-// Copyright (c) 2024, Pubs and contributors
-// For license information, please see license.txt
+frappe.ui.form.on("Development Work", {
+	refresh(frm) {
+		frm.add_custom_button('Count Inventory', function(){
 
-// frappe.ui.form.on("Development Work", {
-// 	refresh(frm) {
+			// ------------------Inventory Counting---------------------------
 
-// 	},
-// });
+			let api_url = "rom_app.scheduled_tasks.inventory_summary"
+			frappe.call({
+				method: api_url,
+				callback: function(res) {
+					console.log(res);
+				}
+			});
+
+			// ------------------Inventory Counting---------------------------
+
+    }, );
+
+	},
+});
