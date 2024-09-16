@@ -174,7 +174,7 @@ def build_sql_invcount(conditions):
     sql = """
     SELECT  "InvCount" as trans_type,
     par.name,  par.date, par.branch_name,  par.user_name,
-    raw.item as raw_material,   chi.unit,  chi.quantity as qty,
+    raw.item as raw_material,   chi.unit,  chi.diff as qty,
     chi.price,  chi.amount, chi.clos_stock as closing_qty
     FROM  `tabInventory Counting`  par
     INNER JOIN `tabInventory Counting Child` chi ON chi.parent = par.name
