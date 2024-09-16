@@ -147,6 +147,8 @@ def process_indents(df_inventory, df_indnets):
     # log_into_developlog('process_indents')
     # log_into_developlog(df_str)
     print("update_inventory_summary_for_indents")
+    print(' = = = df_indnets = = =')
+    print(df_indnets)
     for i in range(0, len(df_indnets)):
         # print("-------- for loop ---------")
         branch_id = df_indnets.iloc[i]['branch_id']
@@ -164,7 +166,7 @@ def process_indents(df_inventory, df_indnets):
         # print("**********************************")
         # print(df_inventory.dtypes)
         df_inventory = df_inventory.astype({"branch_id": int, "raw_material": int})
-        print(df_inventory.dtypes)
+        # print(df_inventory.dtypes)
         # print("**********************************")
         df_filter = df_inventory.loc[
             (df_inventory['branch_id'] == int(branch_id))
