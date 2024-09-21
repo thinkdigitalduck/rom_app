@@ -49,7 +49,7 @@ class ChefIndentByDept(Document):
     def get_raw_material_with_id(self, branch, department):
         print("inside python")
         sql = """
-        SELECT child.name, child.indent_unit
+        SELECT child.raw_material, child.indent_unit
         FROM `tabRaw Material For Indent` parent
         JOIN `tabRaw Material For Indent Child` child
         ON	parent.name = child.parent
@@ -63,7 +63,6 @@ class ChefIndentByDept(Document):
         print(res_length)
         print(item_data)
         return item_data
-
 
     @frappe.whitelist()
     def test(self):

@@ -1,3 +1,5 @@
+
+
 frappe.ui.form.on("Chef Indent By Dept", {
 	refresh(frm) {
 		// frm.set_df_property('raw_materials', 'cannot_add_rows', true);
@@ -12,9 +14,34 @@ frappe.ui.form.on("Chef Indent By Dept", {
 		// 	console.log("no value in department ");
 		// }
 
+		frm.add_custom_button('test_but', function(){
+
+				frappe.db.get_value('Raw Material Only', 1, 'item')
+				.then(r => {
+					console.log(r.message.item);
+				});
+		});
+
 	},
 
 	onload(frm) {
+		let var1 = 'Rice';
+		// frappe.form.link_formatters['Raw Material Only'] = function(value, doc, var1) {
+		// 	if(value) {
+		// 		console.log("link_formatters 5656 - > ", value, doc);
+		// 		//let value_number = Number(value);
+		// 		// frappe.db.get_value('Raw Material Only', 2, 'item')
+		// 		// .then(r => {
+		// 		// 	console.log(r.message);
+		// 		// 	return r.message.item;
+		// 		// });
+		// 		return 'Rice'
+		// 		//return var1;
+		// 	}
+  //             //refresh_field("raw_materials");
+  //            return value;
+		// }
+
 		if (frm.is_new()) {
 
 			console.log('is_new');
