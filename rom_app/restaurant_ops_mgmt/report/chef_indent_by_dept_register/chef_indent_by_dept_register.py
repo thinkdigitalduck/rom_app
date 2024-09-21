@@ -23,6 +23,8 @@ def execute(filters=None):
             'req_qty': d.req_qty,
             'issued_qty': d.issued_qty,
             'rm_approval': d.rm_approval,
+            'price': d.price,
+            'amount': d.amount,
             'remarks':  d.remarks,
         })
         data.append(row)
@@ -94,6 +96,18 @@ def get_columns():
             'width': '80'
         },
         {
+            'fieldname': 'price',
+            'label': 'Price',
+            'fieldtype': 'Data',
+            'width': '80'
+        },
+        {
+            'fieldname': 'amount',
+            'label': 'Amount',
+            'fieldtype': 'Data',
+            'width': '80'
+        },
+        {
             'fieldname': 'remarks',
             'label': 'Remarks',
             'fieldtype': 'Data',
@@ -109,8 +123,9 @@ def get_data(filters):
     print(conditions)
     build_sql_1 = """
     SELECT
-    ci.`name`, ci.`date`, ci.user_name,	ci.branch_name,	d.department_name, ci.rm_approval,
-    cic.raw_material, cic.unit,	cic.req_qty, cic.issued_qty, cic.remarks
+    ci.`name`, ci.`date`, ci.user_name,	ci.branch_name,	d.department_name,
+    ci.rm_approval, cic.raw_material, cic.unit,	cic.req_qty, cic.issued_qty,
+    cic.price, cic.amount, cic.remarks
     FROM
     `tabChef Indent By Dept` ci
     INNER JOIN `tabChef Indent By Dept Child` cic on
@@ -126,26 +141,28 @@ def get_data(filters):
     if "raw_material_filter" in conditions:
         where_cond_1 = where_cond_1 + f" AND cic.raw_material LIKE '%{conditions['raw_material_filter']}%' "
 
-    build_sql_2 = """
-    SELECT
-    ci.`name`, ci.`date`, ci.user_name,	ci.branch_name,	d.department_name,	ci.rm_approval,
-    cic.raw_material, cic.unit, cic.req_qty, cic.issued_qty, cic.remarks
-    FROM
-    `tabChef Indent By Dept` ci
-    INNER JOIN `tabChef Indent By Dept Child Additional` cic on
-    ci.name = cic.parent
-    INNER JOIN `tabDepartment` d on
-    ci.department = d.name
-        """
-    where_cond_2 = f" WHERE ci.`date` between '{conditions['from_date_filter']}' AND  '{conditions['to_date_filter']}' "
-    if "branch_filter" in conditions:
-        where_cond_2 = where_cond_2 + f" AND ci.branch_id = '{conditions['branch_filter']}' "
-    if "department_filter" in conditions:
-        where_cond_2 = where_cond_2 + f" AND ci.department = '{conditions['department_filter']}' "
-    if "raw_material_filter" in conditions:
-        where_cond_2 = where_cond_2 + f" AND cic.raw_material LIKE '%{conditions['raw_material_filter']}%' "
+    # build_sql_2 = """
+    # SELECT
+    # ci.`name`, ci.`date`, ci.user_name,	ci.branch_name,	d.department_name,	ci.rm_approval,
+    # cic.raw_material, cic.unit, cic.req_qty, cic.issued_qty, cic.remarks
+    # FROM
+    # `tabChef Indent By Dept` ci
+    # INNER JOIN `tabChef Indent By Dept Child Additional` cic on
+    # ci.name = cic.parent
+    # INNER JOIN `tabDepartment` d on
+    # ci.department = d.name
+    #     """
+    # where_cond_2 = f" WHERE ci.`date` between '{conditions['from_date_filter']}' AND  '{conditions['to_date_filter']}' "
+    # if "branch_filter" in conditions:
+    #     where_cond_2 = where_cond_2 + f" AND ci.branch_id = '{conditions['branch_filter']}' "
+    # if "department_filter" in conditions:
+    #     where_cond_2 = where_cond_2 + f" AND ci.department = '{conditions['department_filter']}' "
+    # if "raw_material_filter" in conditions:
+    #     where_cond_2 = where_cond_2 + f" AND cic.raw_material LIKE '%{conditions['raw_material_filter']}%' "
+    #
+    # build_sql = f"{build_sql_1}  {where_cond_1}   UNION ALL  {build_sql_2}  {where_cond_2}"
 
-    build_sql = f"{build_sql_1}  {where_cond_1}   UNION ALL  {build_sql_2}  {where_cond_2}"
+    build_sql = f"{build_sql_1}  {where_cond_1} "
     print("-------- full sql ------------")
     print(build_sql)
     data = frappe.db.sql(build_sql, as_dict=True)

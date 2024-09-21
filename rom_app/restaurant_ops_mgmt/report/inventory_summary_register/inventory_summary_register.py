@@ -21,7 +21,9 @@ def execute(filters=None):
             'unit': d.unit,
             'price': d.price,
             'closing_quantity': d.closing_quantity,
-            'closing_amount': d.closing_amount
+            'closing_amount': d.closing_amount,
+            'min_stock': d.min_stock,
+            'cs_ms': d.cs_ms
         })
         data.append(row)
 
@@ -76,8 +78,17 @@ def get_columns():
             'fieldname': 'closing_amount',
             'label': 'Closing Amount',
             'fieldtype': 'Data',
+        },
+        {
+            'fieldname': 'min_stock',
+            'label': 'Min Stock',
+            'fieldtype': 'Data',
+        },
+        {
+            'fieldname': 'cs_ms',
+            'label': 'Clos.St - Min',
+            'fieldtype': 'Data',
         }
-
     ]
 
 
@@ -95,7 +106,9 @@ def get_data(filters):
     inv.price,
     inv.unit,
     inv.closing_quantity,
-    inv.closing_amount
+    inv.closing_amount,
+    raw.min_stock,
+    (inv.closing_quantity - raw.min_stock) as cs_ms
     FROM `tabInventory Summary` inv
     INNER JOIN `tabRaw Material Only` raw ON inv.raw_material = raw.name
     INNER JOIN `tabBranch` bra ON inv.branch_id = bra.name
