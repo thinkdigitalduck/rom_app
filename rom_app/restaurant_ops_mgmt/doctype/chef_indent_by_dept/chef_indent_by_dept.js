@@ -37,7 +37,7 @@ frappe.ui.form.on("Chef Indent By Dept", {
 
 		let var1 = 'Rice';
 		frappe.form.link_formatters['Raw Material Only'] = function(value, doc, var1) {
-			if(value) {
+			if(doc.raw_material_title) {
 				// console.log("link_formatters 5656 - > ", value, doc);
 				// let value_number = Number(value);
 				// let ress = frappe.db.get_value('Raw Material Only', 2, 'item');
