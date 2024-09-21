@@ -2,6 +2,13 @@
 
 frappe.ui.form.on("Chef Indent By Dept", {
 	refresh(frm) {
+
+		// frm.add_custom_button('Call Apis', function(){
+		// 	//resolve_title_by_calling_api();
+  //
+		// }, );
+
+
 		// frm.set_df_property('raw_materials', 'cannot_add_rows', true);
   //       frm.set_df_property('raw_materials', 'cannot_delete_rows', true);
   //       frm.set_df_property('raw_materials', 'cannot_delete_all_rows', true);
@@ -25,22 +32,24 @@ frappe.ui.form.on("Chef Indent By Dept", {
 	},
 
 	onload(frm) {
-		//let var1 = 'Rice';
-		// frappe.form.link_formatters['Raw Material Only'] = function(value, doc, var1) {
-		// 	if(value) {
-		// 		console.log("link_formatters 5656 - > ", value, doc);
-		// 		//let value_number = Number(value);
-		// 		// frappe.db.get_value('Raw Material Only', 2, 'item')
-		// 		// .then(r => {
-		// 		// 	console.log(r.message);
-		// 		// 	return r.message.item;
-		// 		// });
-		// 		return 'Rice'
-		// 		//return var1;
-		// 	}
+
+
+
+		let var1 = 'Rice';
+		frappe.form.link_formatters['Raw Material Only'] = function(value, doc, var1) {
+			if(value) {
+				// console.log("link_formatters 5656 - > ", value, doc);
+				// let value_number = Number(value);
+				// let ress = frappe.db.get_value('Raw Material Only', 2, 'item');
+				// console.log(ress.message);
+				// 	//return r.message.item;
+				// return 'Rice'
+				//return var1;
+				return doc.raw_material_title;
+			}
   //             //refresh_field("raw_materials");
-  //            return value;
-		// }
+			return value;
+		 }
 
 		if (frm.is_new()) {
 
@@ -76,6 +85,7 @@ frappe.ui.form.on("Chef Indent By Dept", {
 			console.log('branch_selected=',branch_selected);
 			console.log('dept_selected=',dept_selected);
 
+			//resolve_title_by_calling_api();
 			//-- frappe call start --
 
 			frm.call({
@@ -104,6 +114,7 @@ frappe.ui.form.on("Chef Indent By Dept", {
 								let entry = frm.add_child("raw_materials");
 								entry.raw_material = e[0];
 								entry.unit = e[1];
+								entry.raw_material_title = e[2];
 							});
 							// ------ load end --------
 						}
@@ -119,6 +130,62 @@ frappe.ui.form.on("Chef Indent By Dept", {
 		}
 	}
 });
+
+
+
+function resolve_title_by_calling_api()
+{
+	x='Raw+Material+Only';
+	y=2;
+	frappe.utils.fetch_link_titlee(x, y);
+
+	// let api_url = "http://rom_site:8000/api/method/frappe.desk.search.get_link_title";
+ //
+	// frappe.call({
+	// 	method: api_url,
+	// 	type: "POST",
+	// 	args: {"doctype": "Raw+Material+Only","docname": "2"},
+	// 	callback: function(res) {
+	// 		let res_message = res.message;
+	// 		console.log('res_message->',res_message);
+	// 	}
+	// });
+};
+
+
+// function fetch_link_title(doctype, name) {
+// 		if (!doctype || !name) {
+// 			return;
+// 		}
+// 		try {
+// 			return frappe
+// 				.xcall("frappe.desk.search.get_link_title", {
+// 					doctype: doctype,
+// 					docname: name,
+// 				})
+// 				.then((title) => {
+// 					frappe.utils.add_link_title(doctype, name, title);
+// 					return title;
+// 				});
+// 		} catch (error) {
+// 			console.log("Error while fetching link title.");
+// 			console.log(error);
+// 			return Promise.resolve(name);
+// 		}
+// 	};
+//
+// add_link_title(doctype, name, value) {
+// 		if (!doctype || !name) {
+// 			return;
+// 		}
+//
+// 		if (!frappe._link_titles) {
+// 			// for link titles
+// 			frappe._link_titles = {};
+// 		}
+//
+// 		frappe._link_titles[doctype + "::" + name] = value;
+// 	}
 
 // Chef Indent By Dept Child  raw_materials
 // branch_name department user_name date branch_id total_price raw_materials

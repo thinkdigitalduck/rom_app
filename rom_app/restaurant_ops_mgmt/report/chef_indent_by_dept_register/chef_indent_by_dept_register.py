@@ -199,26 +199,27 @@ def get_data_by_group_by_date(filters):
     print("-------- build_sql_1 ------------")
     print(build_sql_1)
 
-    build_sql_2 = """
-    SELECT ci.`date`, cic.req_qty, cic.issued_qty
-    FROM `tabChef Indent By Dept` ci
-    INNER JOIN `tabChef Indent By Dept Child Additional` cic on ci.name = cic.parent
-    INNER JOIN `tabDepartment` d on ci.department = d.name
-    """
-    where_cond_2 = f" WHERE ci.date between '{conditions['from_date_filter']}' AND '{conditions['to_date_filter']}' "
-    if "branch_filter" in conditions:
-        where_cond_2 = where_cond_2 + f" AND ci.branch_id = '{conditions['branch_filter']}' "
-    build_sql_2 = f"{build_sql_2}  {where_cond_2}"
+    # build_sql_2 = """
+    # SELECT ci.`date`, cic.req_qty, cic.issued_qty
+    # FROM `tabChef Indent By Dept` ci
+    # INNER JOIN `tabChef Indent By Dept Child Additional` cic on ci.name = cic.parent
+    # INNER JOIN `tabDepartment` d on ci.department = d.name
+    # """
+    # where_cond_2 = f" WHERE ci.date between '{conditions['from_date_filter']}' AND '{conditions['to_date_filter']}' "
+    # if "branch_filter" in conditions:
+    #     where_cond_2 = where_cond_2 + f" AND ci.branch_id = '{conditions['branch_filter']}' "
+    # build_sql_2 = f"{build_sql_2}  {where_cond_2}"
+    #
+    # print("-------- build_sql_2 ------------")
+    # print(build_sql_2)
 
-    print("-------- build_sql_2 ------------")
-    print(build_sql_2)
+    # build_sql_top = "SELECT  tmp.date AS date, sum(req_qty) AS req_qty , sum(issued_qty) AS issued_qty FROM ("
+    # build_sql_bottom = " ) AS tmp "
+    group_by = " GROUP By date "
+    order_by = " ORDER BY date DESC "
 
-    build_sql_top = "SELECT  tmp.date AS date, sum(req_qty) AS req_qty , sum(issued_qty) AS issued_qty FROM ("
-    build_sql_bottom = " ) AS tmp "
-    group_by = " GROUP By tmp.date "
-    order_by = " ORDER BY tmp.date DESC "
-
-    build_sql = f"{build_sql_top} {build_sql_1} UNION {build_sql_2} {build_sql_bottom} {group_by} {order_by}"
+    # build_sql = f"{build_sql_top} {build_sql_1} UNION {build_sql_2} {build_sql_bottom} {group_by} {order_by}"
+    build_sql = f"{build_sql_1}  {group_by} {order_by}"
 
     print("-------- full sql ------------")
     print(build_sql)

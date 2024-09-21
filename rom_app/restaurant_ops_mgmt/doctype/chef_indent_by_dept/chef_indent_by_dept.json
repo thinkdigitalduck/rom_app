@@ -13,10 +13,8 @@
   "date",
   "user_name",
   "total_price",
-  "section_break_lywh",
-  "raw_materials",
-  "section_break_pauq",
-  "additional_items"
+  "section_break_fjsc",
+  "raw_materials"
  ],
  "fields": [
   {
@@ -39,10 +37,6 @@
   {
    "fieldname": "column_break_ydrh",
    "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "section_break_lywh",
-   "fieldtype": "Section Break"
   },
   {
    "fieldname": "raw_materials",
@@ -75,16 +69,6 @@
    "read_only": 1
   },
   {
-   "fieldname": "section_break_pauq",
-   "fieldtype": "Section Break"
-  },
-  {
-   "fieldname": "additional_items",
-   "fieldtype": "Table",
-   "label": "Additional Items",
-   "options": "Chef Indent By Dept Child Additional"
-  },
-  {
    "default": "0",
    "fieldname": "rm_approval",
    "fieldtype": "Check",
@@ -98,11 +82,15 @@
    "label": "Total Price",
    "precision": "2",
    "read_only": 1
+  },
+  {
+   "fieldname": "section_break_fjsc",
+   "fieldtype": "Section Break"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-09-11 20:53:13.015112",
+ "modified": "2024-09-21 23:28:17.550409",
  "modified_by": "Administrator",
  "module": "Restaurant Ops Mgmt",
  "name": "Chef Indent By Dept",
